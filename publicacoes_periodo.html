@@ -124,7 +124,7 @@
                                         var data_hora = response.data[i].comments.data[j].created_time.split('T', 2);
                                         var data = data_hora[0].split('-', 3);
                                         var hora = data_hora[1].split(':', 3);
-                                       
+                                       console.log(response.data[i].comments.data[j].from.name);
                                         string[y] = data_post[2] + data_post[1] + data_post[0] + hora_post[0] + hora_post[1] + hora_post[2] + "id_;_" + id_post[1] + "_;_autor_;_" + nome_autor
                                                 + "_;_comentario_;_" + response.data[i].comments.data[j].from.name + "_;_"
                                                 + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_post[1] + "\">Ver publicação</a>"
