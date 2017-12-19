@@ -43,22 +43,18 @@
             }
 
             window.fbAsyncInit = function () {
-                var nome = $("#nome").val();
-                localStorage.setItem("nome", nome);
-
-                var dia_ini = $("#dia_ini").find("option:selected").val();
-                var mes_ini = $("#mes_ini").find("option:selected").val();
-                var ano_ini = $("#ano_ini").find("option:selected").val();
-                var dia_fim = $("#dia_fim").find("option:selected").val();
-                var mes_fim = $("#mes_fim").find("option:selected").val();
-                var ano_fim = $("#ano_fim").find("option:selected").val();
-                var datas = dia_ini + ";" + mes_ini + ";" + ano_ini + ";" + dia_fim + ";" + mes_fim + ";" + ano_fim;
-                localStorage.setItem("datas", datas);
-
+                var datas = localStorage.getItem("datas");
+                var datas2 = datas.split(';', 6);
+                var dia_ini = datas2[0];
+                var mes_ini = datas2[1];
+                var ano_ini = datas2[2];
+                var dia_fim = datas2[3];
+                var mes_fim = datas2[4];
+                var ano_fim = datas2[5];
+                var nome = localStorage.getItem("nome2");
+                //var datas = dia_ini + ";" + mes_ini + ";" + ano_ini + ";" + dia_fim + ";" + mes_fim + ";" + ano_fim;
+        
                 var y = 0;
-                var a = 0;
-                var b = 0;
-                var c = 0;
 
                 FB.init({
                     appId: '149129182478024',
@@ -131,7 +127,6 @@
                                                 + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_post[1] + "\">Ver publicação</a>"
                                                 + "_;_descricao_;_" + comment + "_;_desccom_;_" + response.data[i].comments.data[j].message
                                                 + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_post[1] + "/?comment_id=" + response.data[i].comments.data[j].id + "\">Ver comentário</a>";
-                                        //console.log(string[y]);
                                         y++;
                                     }
                                     hide = "nao";
@@ -151,9 +146,6 @@
                         accessToken = response.authResponse.accessToken;
                         var token = accessToken.toString();
                         var string_total = [];
-                        var string_total2 = [];
-                        var string_total3 = [];
-                        var string_total4 = [];
                         var res = [];
                         string_total = getInfo2(token);
                         res = string_total;
@@ -161,7 +153,6 @@
                         var str2 = "";
                         var quant = 0;
                         var autores = [];
-                        //var autor = [];
                         var posts = [];
                         var z = 0;
                         var cont = 0;
@@ -325,108 +316,19 @@
             </div>
         </nav>
         <div class="container">
-
             <div class="row">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3">
-                        <div class="panel panel-primary" style="width: 100%; background-color: #fefefe;margin-top:50px; ">
-                            <div class="panel-body text-center" style="background-color: #333333;height:85px; border-style: double">
-                                <h3 class="" style="margin: auto;color:#fefefe"><span class="glyphicon glyphicon-comment " style=" margin-right: 6px;"></span>Quantidade de publicações comentadas por alguém em um período</h4>
+            <div class="col-md-6 col-md-offset-3"  style="border-style: solid; border-width:1px; border-radius:10px; border-color:#f7f7f7">
 
-                            </div>  
+                    <div class="panel panel-primary" style="width: 100%;margin-top:50px; ">
+                        <div class="panel-body text-center" style="height:85px;">
 
-                            <div class="panel-body text-center" style="">
-
-                                <div style="font-size:large; margin-top:10px;color:#919191">Digite o nome* da pessoa cujos comentários você quer ver
-
-                                </div>
-                                <div id="aviso2" class="text-center" style="font-size:small; margin-bottom:10px;color:#919191">*nome completo no Facebook
-                                </div>
-
-                                <input type="text" style="width:70%; margin:auto" id="nome" class="form-control text-center input-lg" placeholder="">
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-5 col-md-4 text-left col-md-offset-2"  style="border-style: solid; border-width:1px; border-radius:10px; border-color:#f7f7f7">
-                                        <form class="form-inline" style="margin-left:10px">
-                                            <label style="margin-top: 10px; color:#919191; font-size:large; margin-left: 21px">Data inicial</label>
-                                            <div class="form-group-sm">
-                                                <label for="dia_ini">Dia</label>
-                                                <select style="margin-left:6px; width:100px" class="form-control" id="dia_ini">
-                                                    <option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option>
-                                                    <option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option>
-                                                    <option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
-                                                    <option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option>
-                                                    <option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
-                                                    <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option>
-                                                    <option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option>
-                                                    <option value="29">29</option><option value="30">30</option><option value="31">31</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group-sm">
-                                                <label for="mes_ini">Mês</label>
-                                                <select  style="margin-left:2px;" class="form-control" id="mes_ini">
-                                                    <option value="01">Janeiro</option><option value="02">Fevereiro</option><option value="03">Março</option><option value="04">Abril</option>
-                                                    <option value="05">Maio</option><option value="06">Junho</option><option value="07">Julho</option><option value="08">Agosto</option>
-                                                    <option value="09">Setembro</option><option value="10">Outubro</option><option value="11">Novembro</option><option value="12">Dezembro</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group-sm">
-                                                <label for="ano_ini">Ano</label>
-                                                <select style="margin-left:2px; width:100px" class="form-control" id="ano_ini">
-                                                    <option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option>
-                                                    <option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option>
-                                                    <option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option>
-                                                </select>
-                                            </div>
-                                        </form>
-                                        <br>
-                                    </div>     
-                                    <div class="col-md-5 col-md-4 text-left" style="border-style: solid; border-width:1px; border-radius:10px; border-color:#f7f7f7" >
-                                        <form class="form-inline" style="margin-left:10px">
-                                            <label style="margin-top: 10px; color:#919191; font-size:large; margin-left: 27px">Data final</label>
-                                            <div class="form-group-sm">
-                                                <label for="dia_ini">Dia</label>
-                                                <select style="margin-left:6px; width:100px" class="form-control" id="dia_fim">
-                                                    <option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option>
-                                                    <option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option>
-                                                    <option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
-                                                    <option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option>
-                                                    <option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
-                                                    <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option>
-                                                    <option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option>
-                                                    <option value="29">29</option><option value="30">30</option><option value="31">31</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group-sm">
-                                                <label for="mes_ini">Mês</label>
-                                                <select  style="margin-left:2px;" class="form-control" id="mes_fim">
-                                                    <option value="01">Janeiro</option><option value="02">Fevereiro</option><option value="03">Março</option><option value="04">Abril</option>
-                                                    <option value="05">Maio</option><option value="06">Junho</option><option value="07">Julho</option><option value="08">Agosto</option>
-                                                    <option value="09">Setembro</option><option value="10">Outubro</option><option value="11">Novembro</option><option value="12">Dezembro</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group-sm">
-                                                <label for="ano_ini">Ano</label>
-                                                <select style="margin-left:2px; width:100px" class="form-control" id="ano_fim">
-                                                    <option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option>
-                                                    <option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option>
-                                                    <option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option>
-                                                </select>
-                                            </div>
-                                            <br>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div id="aviso3" class="text-center" style="display:none; margin-top:18px"><b>Procurando publicações... por favor aguarde alguns segundos</b></div>
-                                <div id="aviso4" class="text-center" style="display:none;margin-top:18px"></div>
-                                <button class="btn btn-xs btn-primary text-center" id="bt_principal" style="margin-top:18px; height:52px; width:52px; border-radius: 50%; font-size:x-large" type="submit" onclick="window.fbAsyncInit(); clicarBotao();">OK</button>
-                                <div class="text-left">
-                                    <button class="btn btn-xs btn-default text-left"  style="font-size:large;border-bottom-style:none; height:32px; width:32px;border-radius: 50%;" type="button" onclick="location.href = 'http://www.fernandacanazzo.github.io/appgrupos/menu.html';"><span class="glyphicon glyphicon-arrow-left" style="color:#333333"></span></button>
-                                </div>
-                            </div>
+                            <div id="aviso3" class="text-center" style=" margin-top:18px"><b>Procurando publicações... por favor aguarde alguns segundos</b></div>
                         </div>
-                    </div>
-
+                        
+                        <div class="text-left">
+                                <button class="btn btn-xs btn-default text-left"  style="margin-left:20px; margin-bottom: 20px; font-size:large;border-bottom-style:none; height:32px; width:32px;border-radius: 50%;" type="button" onclick="location.href = 'https://fernandacanazzo.github.io/appgrupos/menu.html';"><span class="glyphicon glyphicon-arrow-left" style="color:#333333"></span></button>
+                        </div>
+                    </div>            
 
                 </div>
 
