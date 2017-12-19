@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -9,394 +9,431 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/shop-homepage.css" rel="stylesheet">
-
         <title>App</title>
-        <style>
-
-            .table-responsive {
-                max-height:300px;
-            }
-
-
-        </style>
+        <style>.fixed-panel {
+                max-height: 500px;
+                overflow-y: auto;
+            }</style>
 
     </head>
     <body style="background-color: #f7f7f7">
+        <script type="text/javascript">
+            var id = localStorage.getItem("id_grupo");
+            var arrayid = [];
+            arrayid = id.split('_;_', 2);
+            var string = [];
+            var string2 = [];
+            var string3 = [];
+            var string4 = [];
 
+            var hide = "sim";
+            function clicarBotao() {
+                if (document.getElementById('aviso4').style.display === "block") {
+                    document.getElementById('aviso4').style.display = "none";
+                } else {
+                    document.getElementById('aviso3').style.display = "block";
+                    document.getElementById('bt_principal').className = "btn btn-xs btn-primary text-center disabled";
+                    setTimeout(function () {
+                        document.getElementById('bt_principal').className = "btn btn-xs btn-primary text-center";
+                        document.getElementById('aviso3').style.display = "none";
+                        window.fbAsyncInit();
+                      location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_publicacoes_periodo.html';
+                    }, 20000);
+                }
+            }
+
+            window.fbAsyncInit = function () {
+                var nome = $("#nome").val();
+                localStorage.setItem("nome", nome);
+
+                var dia_ini = $("#dia_ini").find("option:selected").val();
+                var mes_ini = $("#mes_ini").find("option:selected").val();
+                var ano_ini = $("#ano_ini").find("option:selected").val();
+                var dia_fim = $("#dia_fim").find("option:selected").val();
+                var mes_fim = $("#mes_fim").find("option:selected").val();
+                var ano_fim = $("#ano_fim").find("option:selected").val();
+                var datas = dia_ini + ";" + mes_ini + ";" + ano_ini + ";" + dia_fim + ";" + mes_fim + ";" + ano_fim;
+                localStorage.setItem("datas", datas);
+
+                var y = 0;
+                var a = 0;
+                var b = 0;
+                var c = 0;
+
+                FB.init({
+                    appId: '149129182478024',
+                    autoLogAppEvents: true,
+                    xfbml: true,
+                    version: 'v2.10'
+                });
+                FB.AppEvents.logPageView();
+
+               
+                
+            function getInfo2(token) {
+                    var url = "";
+                     if ((parseInt(dia_fim) === 30 && parseInt(mes_fim) === 01) ||
+                            (parseInt(dia_fim) === 30 && parseInt(mes_fim) === 03) ||
+                            (parseInt(dia_fim) === 30 && parseInt(mes_fim) === 05) ||
+                            (parseInt(dia_fim) === 30 && parseInt(mes_fim) === 07) ||
+                            (parseInt(dia_fim) === 30 && parseInt(mes_fim) === 08) ||
+                            (parseInt(dia_fim) === 30 && parseInt(mes_fim) === 10) ||
+                            (parseInt(dia_fim) === 30 && parseInt(mes_fim) === 12) ||
+                            (parseInt(dia_fim) === 29 && parseInt(mes_fim) === 04) ||
+                            (parseInt(dia_fim) === 29 && parseInt(mes_fim) === 06) ||
+                            (parseInt(dia_fim) === 29 && parseInt(mes_fim) === 09) ||
+                            (parseInt(dia_fim) === 29 && parseInt(mes_fim) === 11))
+                        dia_fim = parseInt(dia_fim) + 1;
+
+                    if(dia_fim === 31 && mes_fim === 12){
+                        ano_fim = parseInt(ano_fim) + 1;
+                        dia_fim = 1;
+                        mes_fim = 1;
+                    }
+         
+                    if(parseInt(dia_fim) >=1 && parseInt(dia_fim) <=28){
+                        dia_fim = parseInt(dia_fim)+1;
+                    }
+                    var data_ini = ano_ini + "-" + mes_ini + "-" + dia_ini;
+                    var data_fim = ano_fim + "-" + mes_fim + "-" + dia_fim;
+                    url = "/feed?fields=from,message,updated_time,comments&limit=50&since=" + data_ini + "&until=" + data_fim + "&access_token=";
+                    var cn = 0;
+                    FB.api(
+                            "/" + arrayid[0] + url + token, doSomething);
+                    function doSomething(response) {
+                        if (cn < 5 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
+                            FB.api(response.paging.next, doSomething);
+                            var l = response.data.length;
+                            var i = 0;
+                            for (i; i < l; i++) {
+                                var j = 0;
+                                var comment = "";
+                                if (response.data[i].comments) {
+                                    var nome_autor = response.data[i].from.name;
+                                    var id_post = response.data[i].id.split('_', 2);
+                                    var data_hora_post = response.data[i].updated_time.split('T', 2);
+                                    var data_post = data_hora_post[0].split('-', 3);
+                                    var hora_post = data_hora_post[1].split(':', 3);
+                                     if (response.data[i].message){
+                                            comment = response.data[i].message;
+                                                    
+                                        }else{
+                                            
+                                            comment = "Publicação não possui uma descrição.";
+                                        }
+                                    for (j; j < response.data[i].comments.data.length; j++) {
+                                        var data_hora = response.data[i].comments.data[j].created_time.split('T', 2);
+                                        var data = data_hora[0].split('-', 3);
+                                        var hora = data_hora[1].split(':', 3);
+                                       
+                                        string[y] = data_post[2] + data_post[1] + data_post[0] + hora_post[0] + hora_post[1] + hora_post[2] + "id_;_" + id_post[1] + "_;_autor_;_" + nome_autor
+                                                + "_;_comentario_;_" + response.data[i].comments.data[j].from.name + "_;_"
+                                                + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_post[1] + "\">Ver publicação</a>"
+                                                + "_;_descricao_;_" + comment + "_;_desccom_;_" + response.data[i].comments.data[j].message
+                                                + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_post[1] + "/?comment_id=" + response.data[i].comments.data[j].id + "\">Ver comentário</a>";
+                                        //console.log(string[y]);
+                                        y++;
+                                    }
+                                    hide = "nao";
+                                    
+                                }
+
+                            }
+                           
+                        }
+                     cn++;    
+                    }
+                    return string;
+                }
+
+                FB.getLoginStatus(function (response) {
+                    if (response.status === 'connected') {
+                        accessToken = response.authResponse.accessToken;
+                        var token = accessToken.toString();
+                        var string_total = [];
+                        var string_total2 = [];
+                        var string_total3 = [];
+                        var string_total4 = [];
+                        var res = [];
+                        string_total = getInfo2(token);
+                        res = string_total;
+                        var str = [];
+                        var str2 = "";
+                        var quant = 0;
+                        var autores = [];
+                        //var autor = [];
+                        var posts = [];
+                        var z = 0;
+                        var cont = 0;
+                        var cont2 = 0;
+                        var dados = [];
+                        var ctd = 1;
+                        var k = 0;
+                        var comentarios = "";
+                        var p_com = [];
+                        var palavras = [];
+                        var bd = 1;
+
+                        var freq_autores = "[";
+                        function naturalCompare(b, a) {
+                            var ax = [], bx = [];
+
+                            a.replace(/(\d+)|(\D+)/g, function (_, $1, $2) {
+                                ax.push([$1 || Infinity, $2 || ""])
+                            });
+                            b.replace(/(\d+)|(\D+)/g, function (_, $1, $2) {
+                                bx.push([$1 || Infinity, $2 || ""])
+                            });
+
+                            while (ax.length && bx.length) {
+                                var an = ax.shift();
+                                var bn = bx.shift();
+                                var nn = (an[0] - bn[0]) || an[1].localeCompare(bn[1]);
+                                if (nn)
+                                    return nn;
+                            }
+
+                            return ax.length - bx.length;
+                        }
+                        for (i = 0; i < res.length; i++) {
+
+                            if ((res[i].toLowerCase()).indexOf("comentario_;_" + (nome.toLowerCase())) !== -1) {
+                                dados[k] = res[i];
+                                k++;
+                            }
+                        }
+
+                        dados = dados.sort(naturalCompare);
+
+
+                        for (i = 0; i < dados.length; i++) {
+
+                            autor = dados[i].split('_;_', 15);
+                            comentarios += autor[13] + " ";
+                                if (posts.indexOf(autor[1].toString()) === -1) {
+                                    var qtd = 1;
+                                    quant++;
+                                    posts[cont] = autor[1];
+                                    cont++;
+                                    str2 += '<tr><td><span class="badge">'+ bd.toString() + '</span> <b>Descrição:</b> ' + autor[11] + " " + autor[9];
+                                    str2 += '<br><p style="font-size:small"><b> Autor:</b> ' + autor[3] + '</p><b><p>Comentários: </b></p><span class="glyphicon glyphicon-comment" style="margin-right: 6px; font-size: small"></span>' + autor[13] + ' (' + autor[6] + "/" + autor[7] + "/" + autor[8] + ') ' + autor[14] + "</td></tr>";
+                                    autores[z] = autor[3];
+                                    z++;
+                                    ctd++;
+                                    bd++;
+                                } else {
+                                    qtd++;
+                                    str2 = str2.replace(/<\/td><\/tr>$/, '');
+                                    str2 += '<br><span class="glyphicon glyphicon-comment" style="margin-right: 6px; font-size: small"></span>' + autor[13] + ' (' + autor[6] + "/" + autor[7] + "/" + autor[8] + ') ' + autor[14] + "</td></tr>";
+                                }
+
+                        }
+                       
+                        localStorage.setItem("quant", z);
+                        var stopwords = ["acerca", "adeus", "agora", "ainda", "alem", "algmas", "algo", "algumas", "alguns", "ali", "alem", "ambas", "ambos", "ano", "anos", "antes", "ao", "aonde", "aos", "apenas", "apoio", "apontar", "apos", "apos", "aquela", "aquelas", "aquele", "aqueles", "aqui", "aquilo", "as", "assim", "atraves", "atras", "ate", "ai", "baixo", "bastante", "bem", "boa", "boas", "bom", "bons", "breve", "cada", "caminho", "catorze", "cedo", "cento", "certamente", "certeza", "cima", "cinco", "coisa", "com", "como", "comprido", "conhecido", "conselho", "contra", "contudo", "corrente", "cuja", "cujas", "cujo", "cujos", "custa", "ca", "da", "daquela", "daquelas", "daquele", "daqueles", "dar", "das", "de", "debaixo", "dela", "delas", "dele", "deles", "demais", "dentro", "depois", "desde", "desligado", "dessa", "dessas", "desse", "desses", "desta", "destas", "deste", "destes", "deve", "devem", "devera", "dez", "dezanove", "dezasseis", "dezassete", "dezoito", "dia", "diante", "direita", "dispoe", "dispoem", "diversa", "diversas", "diversos", "diz", "dizem", "dizer", "do", "dois", "dos", "doze", "duas", "durante", "da", "dao", "duvida", "ela", "elas", "ele", "eles", "em", "embora", "enquanto", "entao", "entre", "entao", "era", "eram", "essa", "essas", "esse", "esses", "esta", "estado", "estamos", "estar", "estara", "estas", "estava", "estavam", "este", "esteja", "estejam", "estejamos", "estes", "esteve", "estive", "estivemos", "estiver", "estivera", "estiveram", "estiverem", "estivermos", "estivesse", "estivessem", "estiveste", "estivestes", "estiveramos", "estivessemos", "estou", "esta", "estas", "estavamos", "estao", "eu", "exemplo", "falta", "fara", "favor", "faz", "fazeis", "fazem", "fazemos", "fazer", "fazes", "fazia", "faco", "fez", "fim", "final", "foi", "fomos", "for", "fora", "foram", "forem", "forma", "formos", "fosse", "fossem", "foste", "fostes", "fui", "foramos", "fossemos", "geral", "grande", "grandes", "grupo", "ha", "haja", "hajam", "hajamos", "havemos", "havia", "hei", "hoje", "hora", "horas", "houve", "houvemos", "houver", "houvera", "houveram", "houverei", "houverem", "houveremos", "houveria", "houveriam", "houvermos", "houvera", "houverao", "houveriamos", "houvesse", "houvessem", "houveramos", "houvessemos", "ha", "hao", "iniciar", "inicio", "ir", "ira", "isso", "ista", "iste", "isto", "ja", "lado", "lhe", "lhes", "ligado", "local", "logo", "longe", "lugar", "la", "maior", "maioria", "maiorias", "mais", "mal", "mas", "me", "mediante", "meio", "menor", "menos", "meses", "mesma", "mesmas", "mesmo", "mesmos", "meu", "meus", "mil", "minha", "minhas", "momento", "muito", "muitos", "maximo", "mes", "na", "nada", "nao", "naquela", "naquelas", "naquele", "naqueles", "nas", "nem", "nenhuma", "nessa", "nessas", "nesse", "nesses", "nesta", "nestas", "neste", "nestes", "no", "noite", "nome", "nos", "nossa", "nossas", "nosso", "nossos", "nova", "novas", "nove", "novo", "novos", "num", "numa", "numas", "nunca", "nuns", "nao", "nivel", "nos", "numero", "obra", "obrigada", "obrigado", "oitava", "oitavo", "oito", "onde", "ontem", "onze", "os", "ou", "outra", "outras", "outro", "outros", "para", "parece", "parte", "partir", "paucas", "pegar", "pela", "pelas", "pelo", "pelos", "perante", "perto", "pessoas", "pode", "podem", "poder", "podera", "podia", "pois", "ponto", "pontos", "por", "porque", "porque", "portanto", "posicao", "possivelmente", "posso", "possivel", "pouca", "pouco", "poucos", "povo", "primeira", "primeiras", "primeiro", "primeiros", "promeiro", "propios", "proprio", "propria", "proprias", "proprio", "proprios", "proxima", "proximas", "proximo", "proximos", "puderam", "pode", "poe", "poem", "quais", "qual", "qualquer", "quando", "quanto", "quarta", "quarto", "quatro", "que", "quem", "quer", "quereis", "querem", "queremas", "queres", "quero", "questao", "quieto", "quinta", "quinto", "quinze", "quais", "que", "relacao", "sabe", "sabem", "saber", "se", "segunda", "segundo", "sei", "seis", "seja", "sejam", "sejamos", "sem", "sempre", "sendo", "ser", "serei", "seremos", "seria", "seriam", "sera", "serao", "seriamos", "sete", "seu", "seus", "sexta", "sexto", "sim", "sistema", "sob", "sobre", "sois", "somente", "somos", "sou", "sua", "suas", "sao", "setima", "setimo", "so", "ta", "tal", "talvez", "tambem", "tambem", "tanta", "tantas", "tanto", "tarde", "te", "tem", "temos", "tempo", "tendes", "tenha", "tenham", "tenhamos", "tenho", "tens", "tentar", "tentaram", "tente", "tentei", "ter", "terceira", "terceiro", "terei", "teremos", "teria", "teriam", "tera", "terao", "teriamos", "teu", "teus", "teve", "tinha", "tinham", "tipo", "tive", "tivemos", "tiver", "tivera", "tiveram", "tiverem", "tivermos", "tivesse", "tivessem", "tiveste", "tivestes", "tiveramos", "tivessemos", "toda", "todas", "todo", "todos", "trabalhar", "trabalho", "treze", "tres", "tu", "tua", "tuas", "tudo", "tao", "tem", "tem", "tinhamos", "um", "uma", "umas", "uns", "usa", "usar", "vai", "vais", "valor", "veja", "vem", "vens", "ver", "verdade", "verdadeiro", "vez", "vezes", "viagem", "vindo", "vinte", "voce", "voces", "vos", "vossa", "vossas", "vosso", "vossos", "varios", "vao", "vem", "vos", "zero", "a", "as", "area", "e", "eramos", "es", "ultimo"]
+
+                       
+                        comentarios = comentarios.replace(/Á|À|Â|Ã|á|à|â|ã/gm, 'a');
+                        comentarios = comentarios.replace(/É|È|Ê|é|è|ê/gm, 'e');
+                        comentarios = comentarios.replace(/Í|Ï|í|ï/gm, 'i');
+                        comentarios = comentarios.replace(/Ó|Ô|Õ|Ö|ó|ô|õ|ö/gm, 'o');
+                        comentarios = comentarios.replace(/Ú|Ù|Ü|ù|ú|ü/gm, 'u');
+                        comentarios = comentarios.replace(/Ç|ç/gm, 'c');
+                        comentarios = comentarios.replace(/Ñ|ñ/gm, 'n');
+                        comentarios = comentarios.replace(/\b[a-z]\b/gm, '');
+                        comentarios = comentarios.replace(/\d|\W/gm, " ");
+                        
+                        comentarios = comentarios.toLowerCase();
+                        for (var i2 = 0; i2 < stopwords.length; i2++) {
+                            comentarios = comentarios.replace(new RegExp("\\b"+ stopwords[i2] + "\\b", 'g'), '');
+                        }
+                        
+                        palavras = comentarios.split(" ");
+                        palavras = palavras.filter(function (n) {
+                            return n !== "" && n !== "a" && n !== "e" && n !== "o";
+                        });
+
+
+                        for (var n1 = 0; n1 < palavras.length; n1++) {
+                            palavras[n1] = palavras[n1].replace(/\b[a-z]\b/gm, '');
+                            palavras[n1] = palavras[n1].replace(/\b[a-z][^e]\b/gm, '');
+                            palavras[n1] = palavras[n1].replace(/\b(\w)\1+\b/gm, '');
+                            
+                            if (p_com.indexOf(palavras[n1].toLowerCase()) === -1 && palavras[n1] !== "") {
+                                p_com[cont2] = palavras[n1].toLowerCase();
+
+                                var regExp = new RegExp("\\b" + palavras[n1].toLowerCase() + "\\b", "g");
+                                var count1 = (comentarios.match(regExp) || []).length;
+                                str[cont2] = palavras[n1] + "_;_" + count1;
+                                cont2++;
+                            }
+                        }
+
+                        for (var j = 0; j < str.length; j++)
+                        {
+                            var arraystr = str[j].split('_;_', 2);
+                            arraystr[0] = arraystr[0].replace(/(\r\n|\n|\r)/gm, "");
+                            if (arraystr[1] === '0')
+                                arraystr[1] = '1';
+                            freq_autores += "{\"text\":\"" + arraystr[0] + "\",\"size\":\"" + parseInt(arraystr[1]) + "\"},";
+                        }
+                        freq_autores = freq_autores.replace(/,$/, '');
+                        freq_autores += "]";
+
+                        localStorage.setItem("freq_autores", freq_autores);
+                      
+
+                        if (hide !== "sim") {
+
+                           
+                            localStorage.setItem("str_pronta", str2);
+                            
+                        }
+                    } else {
+                        var nada = "";
+                    }
+                });
+
+            }
+            ;
+
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+
+
+        </script>
+
+        <script type="text/javascript"></script>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-
                     <a class="navbar-brand" style="margin-top: 4px;"><b>Aplicação para grupos</b></a>
-
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a style="margin-top: 4px;" href="https://fernandacanazzo.github.io/appgrupos/index.html"><span class="glyphicon glyphicon-search " style=" font-size:small;margin-right: 6px;"></span>Pesquisar grupo</a></li>
+                    <li><a style="margin-top: 4px;" href="http://www.fernandacanazzo.github.io/appgrupos/index.html"><span class="glyphicon glyphicon-search " style=" font-size:small;margin-right: 6px;"></span>Pesquisar grupo</a></li>
                 </ul>
 
             </div>
         </nav>
         <div class="container">
+
             <div class="row">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="panel panel-primary" style="width: 100%; background-color: #fefefe;margin-top:50px; ">
+                            <div class="panel-body text-center" style="background-color: #333333;height:85px; border-style: double">
+                                <h3 class="" style="margin: auto;color:#fefefe"><span class="glyphicon glyphicon-comment " style=" margin-right: 6px;"></span>Quantidade de publicações comentadas por alguém em um período</h4>
 
-                <div class="col-md-12">
-                    <div class="panel-body text-center" style="background-color: #fefefe;">
-                        <button class="btn btn-xs btn-default text-left" id="voltar" style="display:block; position: fixed; margin-top:10px;font-size:large;border-bottom-style:none; height:30px; width:30px;border-radius: 50%;" type="button" onclick="location.href = 'https://fernandacanazzo.github.io/appgrupos/index.html'"><span class="glyphicon glyphicon-arrow-left" style="color:#333333"></span></button>
+                            </div>  
 
-                        <h2 id="nome"></h2>
+                            <div class="panel-body text-center" style="">
 
-                        <br><br>
-                        <div class="row" id="row1">
-                            <div class="col-md-5 col-md-offset-1">
-                                <div class="panel panel-primary " id="panel1" style="margin-right:25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe; height:295px; width: 100%; background-color: #fbfbfb">
-                                    <div class="panel-body text-center" id="div1" style="height:250px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-comment" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Publicações mais recentes comentadas por alguém <span style="font-size: small" title="Publicação mais recente é aquela que recebeu algum comentário por último" class=" text-primary glyphicon glyphicon-info-sign"></span></a>
-                                        <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%">
-                                            <input type="text" id="nome1"  class="form-control text-center" placeholder="Nome">
-                                            <span class="input-group-btn" >
-                                                <button class="btn btn-default" title="Nome completo no Facebook"><span class="glyphicon glyphicon-question-sign" ></span>
-                                                </button>
-
-
-                                            </span> 
-                                        </div>
-
-                                        <div class="input-group" style="margin-left:auto; margin-right: auto;margin-top: 5px; width:70%">
-                                            <input type="text" id="numero1"  class="form-control text-center" placeholder="Número de publicações" >
-                                            <span class="input-group-btn" >
-                                                <button class="btn btn-default" title="Máximo 1000 publicações"><span class="glyphicon glyphicon-question-sign" ></span></button>
-
-                                            </span> 
-
-
-                                        </div>
-
-                                        <button class="btn btn-lg btn-primary" id="bt_principal" style="margin-top:10px; margin-left:auto; margin-right: auto; font-size: larger" type="submit" onclick="rf01();">Ver</button>
-
-                                    </div>
-                                    <div class="panel-body text-left" id="div11" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
-                                        <a href="#" id="ler1" class=" text-primary" onclick="clickar1();"> <span class="glyphicon glyphicon-plus text-primary" style="font-size: large; margin-right: 6px;"></span></a><p id="p1"><br>&nbsp</p>
-
-                                        <p id="col1" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações mais recentes que foram comentadas por alguém:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas dos comentários<br>&#9679 Nuvem de palavras dos comentários</p>
-
-                                    </div>
+                                <div style="font-size:large; margin-top:10px;color:#919191">Digite o nome* da pessoa cujos comentários você quer ver
 
                                 </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="panel panel-primary" id="panel2" style="border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe; margin-left:-25px;height:405px; width: 100%; background-color: #fbfbfb">
-                                    <div class="panel-body text-center" id="div2" style="height:360px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-comment" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" href="https://fernandacanazzo.github.io/appgrupos/publicacoes_periodo.html">Publicações mais recentes comentadas por alguém num período <span style="font-size: small" title="Publicação mais recente é aquela que recebeu algum comentário por último <br> Podem ser retornadas até 1000 publicações" class=" text-primary glyphicon glyphicon-info-sign"></span></a> 
-                                        <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%">
-                                            <input type="text" id="nome1"  class="form-control text-center" placeholder="Nome">
-                                            <span class="input-group-btn" >
-                                                <button class="btn btn-default" title="Nome completo no Facebook"><span class="glyphicon glyphicon-question-sign" ></span>
-                                                </button>
+                                <div id="aviso2" class="text-center" style="font-size:small; margin-bottom:10px;color:#919191">*nome completo no Facebook
+                                </div>
 
-
-                                            </span> 
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6 col-md-5 col-md-offset-1 text-left"  style="margin-top:5px; border-style: solid; border-width:1px; border-radius:10px; border-color:#f7f7f7">
-                                                <form class="form-inline" style="margin-left:10px">
-                                                    <label style="margin-top: 10px; color:#919191; font-size:large; margin-left: 21px">Data inicial</label>
-                                                    <div class="form-group-sm">
-                                                        <label for="dia_ini">Dia</label>
-                                                        <select style="margin-left:6px; width:100px" class="form-control" id="dia_ini">
-                                                            <option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option>
-                                                            <option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option>
-                                                            <option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
-                                                            <option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option>
-                                                            <option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
-                                                            <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option>
-                                                            <option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option>
-                                                            <option value="29">29</option><option value="30">30</option><option value="31">31</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group-sm">
-                                                        <label for="mes_ini">Mês</label>
-                                                        <select  style="margin-left:2px;" class="form-control" id="mes_ini">
-                                                            <option value="01">Janeiro</option><option value="02">Fevereiro</option><option value="03">Março</option><option value="04">Abril</option>
-                                                            <option value="05">Maio</option><option value="06">Junho</option><option value="07">Julho</option><option value="08">Agosto</option>
-                                                            <option value="09">Setembro</option><option value="10">Outubro</option><option value="11">Novembro</option><option value="12">Dezembro</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group-sm">
-                                                        <label for="ano_ini">Ano</label>
-                                                        <select style="margin-left:2px; width:100px" class="form-control" id="ano_ini">
-                                                            <option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option>
-                                                            <option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option>
-                                                            <option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option>
-                                                        </select>
-                                                    </div>
-                                                </form>
-                                                <br>
-                                            </div>     
-                                            <div class="col-md-6 col-md-5 text-left" style="border-style: solid; border-width:1px; border-radius:10px; border-color:#f7f7f7" >
-                                                <form class="form-inline" style="margin-left:10px">
-                                                    <label style="margin-top: 10px; color:#919191; font-size:large; margin-left: 27px">Data final</label>
-                                                    <div class="form-group-sm">
-                                                        <label for="dia_ini">Dia</label>
-                                                        <select style="margin-left:6px; width:100px" class="form-control" id="dia_fim">
-                                                            <option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option>
-                                                            <option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option>
-                                                            <option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
-                                                            <option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option>
-                                                            <option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
-                                                            <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option>
-                                                            <option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option>
-                                                            <option value="29">29</option><option value="30">30</option><option value="31">31</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group-sm">
-                                                        <label for="mes_ini">Mês</label>
-                                                        <select  style="margin-left:2px;" class="form-control" id="mes_fim">
-                                                            <option value="01">Janeiro</option><option value="02">Fevereiro</option><option value="03">Março</option><option value="04">Abril</option>
-                                                            <option value="05">Maio</option><option value="06">Junho</option><option value="07">Julho</option><option value="08">Agosto</option>
-                                                            <option value="09">Setembro</option><option value="10">Outubro</option><option value="11">Novembro</option><option value="12">Dezembro</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group-sm">
-                                                        <label for="ano_ini">Ano</label>
-                                                        <select style="margin-left:2px; width:100px" class="form-control" id="ano_fim">
-                                                            <option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option>
-                                                            <option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option>
-                                                            <option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option>
-                                                        </select>
-                                                    </div>
-                                                    <br>
-                                                </form>
+                                <input type="text" style="width:70%; margin:auto" id="nome" class="form-control text-center input-lg" placeholder="">
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-5 col-md-4 text-left col-md-offset-2"  style="border-style: solid; border-width:1px; border-radius:10px; border-color:#f7f7f7">
+                                        <form class="form-inline" style="margin-left:10px">
+                                            <label style="margin-top: 10px; color:#919191; font-size:large; margin-left: 21px">Data inicial</label>
+                                            <div class="form-group-sm">
+                                                <label for="dia_ini">Dia</label>
+                                                <select style="margin-left:6px; width:100px" class="form-control" id="dia_ini">
+                                                    <option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option>
+                                                    <option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option>
+                                                    <option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                                                    <option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option>
+                                                    <option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
+                                                    <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option>
+                                                    <option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option>
+                                                    <option value="29">29</option><option value="30">30</option><option value="31">31</option>
+                                                </select>
                                             </div>
-                                        </div>
-
-                                        <button class="btn btn-lg btn-primary" id="bt_principal" style="margin-top:10px; margin-left:auto; margin-right: auto; font-size: larger" type="submit" onclick="rf01();">Ver</button>
-
-
+                                            <div class="form-group-sm">
+                                                <label for="mes_ini">Mês</label>
+                                                <select  style="margin-left:2px;" class="form-control" id="mes_ini">
+                                                    <option value="01">Janeiro</option><option value="02">Fevereiro</option><option value="03">Março</option><option value="04">Abril</option>
+                                                    <option value="05">Maio</option><option value="06">Junho</option><option value="07">Julho</option><option value="08">Agosto</option>
+                                                    <option value="09">Setembro</option><option value="10">Outubro</option><option value="11">Novembro</option><option value="12">Dezembro</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group-sm">
+                                                <label for="ano_ini">Ano</label>
+                                                <select style="margin-left:2px; width:100px" class="form-control" id="ano_ini">
+                                                    <option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option>
+                                                    <option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option>
+                                                    <option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                        <br>
+                                    </div>     
+                                    <div class="col-md-5 col-md-4 text-left" style="border-style: solid; border-width:1px; border-radius:10px; border-color:#f7f7f7" >
+                                        <form class="form-inline" style="margin-left:10px">
+                                            <label style="margin-top: 10px; color:#919191; font-size:large; margin-left: 27px">Data final</label>
+                                            <div class="form-group-sm">
+                                                <label for="dia_ini">Dia</label>
+                                                <select style="margin-left:6px; width:100px" class="form-control" id="dia_fim">
+                                                    <option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option>
+                                                    <option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option>
+                                                    <option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                                                    <option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option>
+                                                    <option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
+                                                    <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option>
+                                                    <option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option>
+                                                    <option value="29">29</option><option value="30">30</option><option value="31">31</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group-sm">
+                                                <label for="mes_ini">Mês</label>
+                                                <select  style="margin-left:2px;" class="form-control" id="mes_fim">
+                                                    <option value="01">Janeiro</option><option value="02">Fevereiro</option><option value="03">Março</option><option value="04">Abril</option>
+                                                    <option value="05">Maio</option><option value="06">Junho</option><option value="07">Julho</option><option value="08">Agosto</option>
+                                                    <option value="09">Setembro</option><option value="10">Outubro</option><option value="11">Novembro</option><option value="12">Dezembro</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group-sm">
+                                                <label for="ano_ini">Ano</label>
+                                                <select style="margin-left:2px; width:100px" class="form-control" id="ano_fim">
+                                                    <option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option>
+                                                    <option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option>
+                                                    <option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option>
+                                                </select>
+                                            </div>
+                                            <br>
+                                        </form>
                                     </div>
-                                    <div class="panel-body text-left" id="div22" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
-                                        <a href="#" id="ler2" class="text-left text-primary" onclick="clickar2();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p2"><br>&nbsp</p>
-
-                                        <p id="col2" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações mais recentes que foram comentadas por alguém dentro de um determinado período:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas dos comentários<br>&#9679 Nuvem de palavras dos comentários</p>
-
-                                    </div>
-
                                 </div>
-                            </div>
-
-
-                        </div>
-                        <div class="row">
-
-                            <div class="col-md-5  col-md-offset-1">
-                                <div class="panel panel-primary text-left" id="panel3" style="margin-top:-15px;margin-right:25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:150px; width: 100%; background-color: #fbfbfb">
-                                    <div class="panel-body" id="div3" style="height:105px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-search" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" href="https://fernandacanazzo.github.io/appgrupos/palavras_publicacoes.html">Quantidade de publicações com uma palavra específica</a> 
-                                    </div>
-                                    <div class="panel-body" id="div33" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
-                                        <a href="#panel3" id="ler3" class="text-left text-primary" onclick="clickar3();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p3"><br>&nbsp</p>
-
-                                        <p id="col3" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações mais recentes que contêm uma determinada palavra:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas<br>&#9679 Nuvem de palavras das descrições</p>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-5">
-                                <div class="panel panel-primary text-left" id="panel4" style="margin-top:-15px;margin-left:-25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:150px; width: 100%; background-color: #fbfbfb">
-                                    <div class="panel-body" id="div4" style="height:105px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-thumbs-up" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" href="https://fernandacanazzo.github.io/appgrupos/quantidade_publicacoes.html">Quantidade de publicações por dia e suas reações</a> 
-                                    </div>
-                                    <div class="panel-body" id="div44" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
-                                        <a href="#panel4"  id="ler4" class="text-left text-primary" onclick="clickar4();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p4"><br>&nbsp</p>
-
-                                        <p id="col4" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações em um gráfico de barras:<br>&#9679 Quantidade de publicações por dia<br>&#9679 Quantidade de reações que essas publicações possuem</p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <div class="row">
-
-                            <div class="col-md-5 col-md-offset-1">
-                                <div class="panel panel-primary text-left" id="panel5" style="margin-top:-15px;margin-right:25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:150px; width: 100%; background-color: #fbfbfb">
-                                    <div class="panel-body" id="div5" style="height:105px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-star" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" href="https://fernandacanazzo.github.io/appgrupos/popularidade.html">N publicações mais populares</a> 
-                                    </div>
-                                    <div class="panel-body" id="div55" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
-                                        <a href="#panel5" id="ler5" class="text-left text-primary" onclick="clickar5();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p5"><br>&nbsp</p>
-
-                                        <p id="col5" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra um gráfico de barras com o seguinte dado das publicações mais recentes:<br>&#9679 N publicações mais populares* <br><br>*Popularidade: (reações + comentários) / membros do grupo</p>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-5">
-                                <div class="panel panel-primary text-left" id="panel6" style="margin-top:-15px;margin-left:-25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:150px; width: 100%; background-color: #fbfbfb">
-                                    <div class="panel-body" id="div6" style="height:105px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-stats" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" href="https://fernandacanazzo.github.io/appgrupos/reacoes.html">Reações às publicações mais recentes</a> 
-                                    </div>
-                                    <div class="panel-body" id="div66" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
-                                        <a href="#panel6"  id="ler6" class="text-left text-primary" onclick="clickar6();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p6"><br>&nbsp</p>
-
-                                        <p id="col6" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra um gráfico de barras com os seguintes dados das publicações mais recentes:<br>&#9679 Quantidade de cada tipo de reação às publicações</p>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-
-
-                            <div class="col-md-5 col-md-offset-1">
-                                <div class="panel panel-primary text-left" id="panel7" style="margin-top:-15px;margin-right:25px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:150px; width: 100%; background-color: #fbfbfb">
-                                    <div class="panel-body" id="div7" style="height:105px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-comment" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" href="https://fernandacanazzo.github.io/appgrupos/pessoas_mais_comentarios.html">Pessoas que mais comentaram</a> 
-                                    </div>
-                                    <div class="panel-body" id="div77" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
-                                        <a href="#panel7"  id="ler7" class="text-left text-primary" onclick="clickar7();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p7"><br>&nbsp</p>
-
-                                        <p id="col7" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra uma nuvem com até 10 pessoas que mais comentaram nas publicações<br><br></p>
-
-                                    </div>
-
+                                <div id="aviso3" class="text-center" style="display:none; margin-top:18px"><b>Procurando publicações... por favor aguarde alguns segundos</b></div>
+                                <div id="aviso4" class="text-center" style="display:none;margin-top:18px"></div>
+                                <button class="btn btn-xs btn-primary text-center" id="bt_principal" style="margin-top:18px; height:52px; width:52px; border-radius: 50%; font-size:x-large" type="submit" onclick="window.fbAsyncInit(); clicarBotao();">OK</button>
+                                <div class="text-left">
+                                    <button class="btn btn-xs btn-default text-left"  style="font-size:large;border-bottom-style:none; height:32px; width:32px;border-radius: 50%;" type="button" onclick="location.href = 'http://www.fernandacanazzo.github.io/appgrupos/menu.html';"><span class="glyphicon glyphicon-arrow-left" style="color:#333333"></span></button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
                 </div>
+
             </div>
+
         </div>
 
-
-        <script type="text/javascript">
-            var id_grupo = localStorage.getItem("id_grupo");
-            var array = [];
-            function rf01() {
-                var numero1 = $("#numero1").val();
-                var nome1 = $("#nome1").val();
-                localStorage.setItem("numero1", numero1);
-                localStorage.setItem("nome1", nome1);
-                location.href = 'https://fernandacanazzo.github.io/appgrupos/publicacoes_mais_recentes.html';
-            }
-
-            // localStorage.setItem("numero2", numero2);
-
-            array = id_grupo.split('_;_', 2);
-            document.getElementById('nome').innerHTML = "O que você quer visualizar no grupo <b>" + array[1] + "</b>?";
-
-            function clickar1() {
-                if (document.getElementById("col1").style.display === "none") {
-                    document.getElementById("col1").style.display = "inline-block";
-                    document.getElementById("ler1").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
-                    document.getElementById("panel1").style.height = "381px";
-                    document.getElementById("div11").style.height = "170px";
-                    document.getElementById("p1").style.display = "none";
-                } else {
-                    document.getElementById("ler1").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large;margin-right: 6px"></span>';
-                    document.getElementById("col1").style.display = "none";
-                    document.getElementById("panel1").style.height = "255px";
-                    document.getElementById("div11").style.height = "44px";
-                }
-            }
-
-            function clickar2() {
-                if (document.getElementById("col2").style.display === "none") {
-                    document.getElementById("col2").style.display = "inline-block";
-                    document.getElementById("ler2").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
-                    document.getElementById("panel2").style.height = "321px";
-                    document.getElementById("div22").style.height = "215px";
-                    document.getElementById("p2").style.display = "none";
-                } else {
-                    document.getElementById("ler2").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
-                    document.getElementById("col2").style.display = "none";
-                    document.getElementById("panel2").style.height = "150px";
-                    document.getElementById("div22").style.height = "44px";
-                }
-            }
-
-            function clickar3() {
-                if (document.getElementById("col3").style.display === "none") {
-                    document.getElementById("col3").style.display = "inline-block";
-                    document.getElementById("ler3").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
-                    document.getElementById("panel3").style.height = "321px";
-                    document.getElementById("div33").style.height = "215px";
-                    document.getElementById("p3").style.display = "none";
-                } else {
-                    document.getElementById("ler3").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
-                    document.getElementById("col3").style.display = "none";
-                    document.getElementById("panel3").style.height = "150px";
-                    document.getElementById("div33").style.height = "44px";
-                }
-            }
-
-            function clickar4() {
-                if (document.getElementById("col4").style.display === "none") {
-                    document.getElementById("col4").style.display = "inline-block";
-                    document.getElementById("ler4").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
-                    document.getElementById("panel4").style.height = "306px";
-                    document.getElementById("div44").style.height = "200px";
-                    document.getElementById("p4").style.display = "none";
-                } else {
-                    document.getElementById("ler4").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
-                    document.getElementById("col4").style.display = "none";
-                    document.getElementById("panel4").style.height = "150px";
-                    document.getElementById("div44").style.height = "44px";
-                }
-            }
-
-            function clickar5() {
-                if (document.getElementById("col5").style.display === "none") {
-                    document.getElementById("col5").style.display = "inline-block";
-                    document.getElementById("ler5").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
-                    document.getElementById("panel5").style.height = "261px";
-                    document.getElementById("div55").style.height = "161px";
-                    document.getElementById("p5").style.display = "none";
-                } else {
-                    document.getElementById("ler5").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
-                    document.getElementById("col5").style.display = "none";
-                    document.getElementById("panel5").style.height = "150px";
-                    document.getElementById("div55").style.height = "44px";
-                }
-            }
-
-            function clickar6() {
-                if (document.getElementById("col6").style.display === "none") {
-                    document.getElementById("col6").style.display = "inline-block";
-                    document.getElementById("ler6").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
-                    document.getElementById("panel6").style.height = "261px";
-                    document.getElementById("div66").style.height = "165px";
-                    document.getElementById("p6").style.display = "none";
-                } else {
-                    document.getElementById("ler6").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
-                    document.getElementById("col6").style.display = "none";
-                    document.getElementById("panel6").style.height = "150px";
-                    document.getElementById("div66").style.height = "44px";
-                }
-            }
-
-            function clickar7() {
-                if (document.getElementById("col7").style.display === "none") {
-                    document.getElementById("col7").style.display = "inline-block";
-                    document.getElementById("ler7").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
-                    document.getElementById("panel7").style.height = "200px";
-                    document.getElementById("div77").style.height = "104px";
-                    document.getElementById("p7").style.display = "none";
-                } else {
-                    document.getElementById("ler7").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
-                    document.getElementById("col7").style.display = "none";
-                    document.getElementById("panel7").style.height = "150px";
-                    document.getElementById("div77").style.height = "44px";
-                }
-            }
-
-        </script>
     </body>
 </html>
 
