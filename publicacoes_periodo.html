@@ -101,6 +101,7 @@
                     function doSomething(response) {
                         if (cn < 20 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
                             FB.api(response.paging.next, doSomething);
+                            console.log(url);
                             var l = response.data.length;
                             var i = 0;
                             for (i; i < l; i++) {
