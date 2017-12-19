@@ -52,6 +52,7 @@
                 var mes_fim = datas2[4];
                 var ano_fim = datas2[5];
                 var nome = localStorage.getItem("nome2");
+                console.log(nome);
                 //var datas = dia_ini + ";" + mes_ini + ";" + ano_ini + ";" + dia_fim + ";" + mes_fim + ";" + ano_fim;
         
                 var y = 0;
@@ -97,7 +98,7 @@
                     FB.api(
                             "/" + arrayid[0] + url + token, doSomething);
                     function doSomething(response) {
-                        if (cn < 5 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
+                        if (cn < 20 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
                             FB.api(response.paging.next, doSomething);
                             var l = response.data.length;
                             var i = 0;
