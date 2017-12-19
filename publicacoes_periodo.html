@@ -27,20 +27,11 @@
             var string4 = [];
 
             var hide = "sim";
-            function clicarBotao() {
-                if (document.getElementById('aviso4').style.display === "block") {
-                    document.getElementById('aviso4').style.display = "none";
-                } else {
-                    document.getElementById('aviso3').style.display = "block";
-                    document.getElementById('bt_principal').className = "btn btn-xs btn-primary text-center disabled";
-                    setTimeout(function () {
-                        document.getElementById('bt_principal').className = "btn btn-xs btn-primary text-center";
-                        document.getElementById('aviso3').style.display = "none";
-                        window.fbAsyncInit();
-                      location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_publicacoes_periodo.html';
-                    }, 20000);
-                }
-            }
+            setTimeout(function () {
+                window.fbAsyncInit();
+                location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_publicacoes_periodo.html';
+            }, 20000);
+
 
             window.fbAsyncInit = function () {
                 var datas = localStorage.getItem("datas");
@@ -55,7 +46,7 @@
                 console.log(nome);
                 console.log(datas);
                 //var datas = dia_ini + ";" + mes_ini + ";" + ano_ini + ";" + dia_fim + ";" + mes_fim + ";" + ano_fim;
-        
+
                 var y = 0;
 
                 FB.init({
@@ -66,11 +57,11 @@
                 });
                 FB.AppEvents.logPageView();
 
-               
-                
-            function getInfo2(token) {
+
+
+                function getInfo2(token) {
                     var url = "";
-                     if ((parseInt(dia_fim) === 30 && parseInt(mes_fim) === 01) ||
+                    if ((parseInt(dia_fim) === 30 && parseInt(mes_fim) === 01) ||
                             (parseInt(dia_fim) === 30 && parseInt(mes_fim) === 03) ||
                             (parseInt(dia_fim) === 30 && parseInt(mes_fim) === 05) ||
                             (parseInt(dia_fim) === 30 && parseInt(mes_fim) === 07) ||
@@ -83,14 +74,14 @@
                             (parseInt(dia_fim) === 29 && parseInt(mes_fim) === 11))
                         dia_fim = parseInt(dia_fim) + 1;
 
-                    if(dia_fim === 31 && mes_fim === 12){
+                    if (dia_fim === 31 && mes_fim === 12) {
                         ano_fim = parseInt(ano_fim) + 1;
                         dia_fim = 1;
                         mes_fim = 1;
                     }
-         
-                    if(parseInt(dia_fim) >=1 && parseInt(dia_fim) <=28){
-                        dia_fim = parseInt(dia_fim)+1;
+
+                    if (parseInt(dia_fim) >= 1 && parseInt(dia_fim) <= 28) {
+                        dia_fim = parseInt(dia_fim) + 1;
                     }
                     var data_ini = ano_ini + "-" + mes_ini + "-" + dia_ini;
                     var data_fim = ano_fim + "-" + mes_fim + "-" + dia_fim;
@@ -101,7 +92,7 @@
                     function doSomething(response) {
                         if (cn < 20 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
                             FB.api(response.paging.next, doSomething);
-                     
+
                             var l = response.data.length;
                             var i = 0;
                             for (i; i < l; i++) {
@@ -113,13 +104,13 @@
                                     var data_hora_post = response.data[i].updated_time.split('T', 2);
                                     var data_post = data_hora_post[0].split('-', 3);
                                     var hora_post = data_hora_post[1].split(':', 3);
-                                     if (response.data[i].message){
-                                            comment = response.data[i].message;
-                                                    
-                                        }else{
-                                            
-                                            comment = "Publicação não possui uma descrição.";
-                                        }
+                                    if (response.data[i].message) {
+                                        comment = response.data[i].message;
+
+                                    } else {
+
+                                        comment = "Publicação não possui uma descrição.";
+                                    }
                                     for (j; j < response.data[i].comments.data.length; j++) {
                                         var data_hora = response.data[i].comments.data[j].created_time.split('T', 2);
                                         var data = data_hora[0].split('-', 3);
@@ -132,13 +123,13 @@
                                         y++;
                                     }
                                     hide = "nao";
-                                    
+
                                 }
 
                             }
-                           
+
                         }
-                     cn++;    
+                        cn++;
                     }
                     return string;
                 }
@@ -203,29 +194,29 @@
 
                             autor = dados[i].split('_;_', 15);
                             comentarios += autor[13] + " ";
-                                if (posts.indexOf(autor[1].toString()) === -1) {
-                                    var qtd = 1;
-                                    quant++;
-                                    posts[cont] = autor[1];
-                                    cont++;
-                                    str2 += '<tr><td><span class="badge">'+ bd.toString() + '</span> <b>Descrição:</b> ' + autor[11] + " " + autor[9];
-                                    str2 += '<br><p style="font-size:small"><b> Autor:</b> ' + autor[3] + '</p><b><p>Comentários: </b></p><span class="glyphicon glyphicon-comment" style="margin-right: 6px; font-size: small"></span>' + autor[13] + ' (' + autor[6] + "/" + autor[7] + "/" + autor[8] + ') ' + autor[14] + "</td></tr>";
-                                    autores[z] = autor[3];
-                                    z++;
-                                    ctd++;
-                                    bd++;
-                                } else {
-                                    qtd++;
-                                    str2 = str2.replace(/<\/td><\/tr>$/, '');
-                                    str2 += '<br><span class="glyphicon glyphicon-comment" style="margin-right: 6px; font-size: small"></span>' + autor[13] + ' (' + autor[6] + "/" + autor[7] + "/" + autor[8] + ') ' + autor[14] + "</td></tr>";
-                                }
+                            if (posts.indexOf(autor[1].toString()) === -1) {
+                                var qtd = 1;
+                                quant++;
+                                posts[cont] = autor[1];
+                                cont++;
+                                str2 += '<tr><td><span class="badge">' + bd.toString() + '</span> <b>Descrição:</b> ' + autor[11] + " " + autor[9];
+                                str2 += '<br><p style="font-size:small"><b> Autor:</b> ' + autor[3] + '</p><b><p>Comentários: </b></p><span class="glyphicon glyphicon-comment" style="margin-right: 6px; font-size: small"></span>' + autor[13] + ' (' + autor[6] + "/" + autor[7] + "/" + autor[8] + ') ' + autor[14] + "</td></tr>";
+                                autores[z] = autor[3];
+                                z++;
+                                ctd++;
+                                bd++;
+                            } else {
+                                qtd++;
+                                str2 = str2.replace(/<\/td><\/tr>$/, '');
+                                str2 += '<br><span class="glyphicon glyphicon-comment" style="margin-right: 6px; font-size: small"></span>' + autor[13] + ' (' + autor[6] + "/" + autor[7] + "/" + autor[8] + ') ' + autor[14] + "</td></tr>";
+                            }
 
                         }
-                       
+
                         localStorage.setItem("quant", z);
                         var stopwords = ["acerca", "adeus", "agora", "ainda", "alem", "algmas", "algo", "algumas", "alguns", "ali", "alem", "ambas", "ambos", "ano", "anos", "antes", "ao", "aonde", "aos", "apenas", "apoio", "apontar", "apos", "apos", "aquela", "aquelas", "aquele", "aqueles", "aqui", "aquilo", "as", "assim", "atraves", "atras", "ate", "ai", "baixo", "bastante", "bem", "boa", "boas", "bom", "bons", "breve", "cada", "caminho", "catorze", "cedo", "cento", "certamente", "certeza", "cima", "cinco", "coisa", "com", "como", "comprido", "conhecido", "conselho", "contra", "contudo", "corrente", "cuja", "cujas", "cujo", "cujos", "custa", "ca", "da", "daquela", "daquelas", "daquele", "daqueles", "dar", "das", "de", "debaixo", "dela", "delas", "dele", "deles", "demais", "dentro", "depois", "desde", "desligado", "dessa", "dessas", "desse", "desses", "desta", "destas", "deste", "destes", "deve", "devem", "devera", "dez", "dezanove", "dezasseis", "dezassete", "dezoito", "dia", "diante", "direita", "dispoe", "dispoem", "diversa", "diversas", "diversos", "diz", "dizem", "dizer", "do", "dois", "dos", "doze", "duas", "durante", "da", "dao", "duvida", "ela", "elas", "ele", "eles", "em", "embora", "enquanto", "entao", "entre", "entao", "era", "eram", "essa", "essas", "esse", "esses", "esta", "estado", "estamos", "estar", "estara", "estas", "estava", "estavam", "este", "esteja", "estejam", "estejamos", "estes", "esteve", "estive", "estivemos", "estiver", "estivera", "estiveram", "estiverem", "estivermos", "estivesse", "estivessem", "estiveste", "estivestes", "estiveramos", "estivessemos", "estou", "esta", "estas", "estavamos", "estao", "eu", "exemplo", "falta", "fara", "favor", "faz", "fazeis", "fazem", "fazemos", "fazer", "fazes", "fazia", "faco", "fez", "fim", "final", "foi", "fomos", "for", "fora", "foram", "forem", "forma", "formos", "fosse", "fossem", "foste", "fostes", "fui", "foramos", "fossemos", "geral", "grande", "grandes", "grupo", "ha", "haja", "hajam", "hajamos", "havemos", "havia", "hei", "hoje", "hora", "horas", "houve", "houvemos", "houver", "houvera", "houveram", "houverei", "houverem", "houveremos", "houveria", "houveriam", "houvermos", "houvera", "houverao", "houveriamos", "houvesse", "houvessem", "houveramos", "houvessemos", "ha", "hao", "iniciar", "inicio", "ir", "ira", "isso", "ista", "iste", "isto", "ja", "lado", "lhe", "lhes", "ligado", "local", "logo", "longe", "lugar", "la", "maior", "maioria", "maiorias", "mais", "mal", "mas", "me", "mediante", "meio", "menor", "menos", "meses", "mesma", "mesmas", "mesmo", "mesmos", "meu", "meus", "mil", "minha", "minhas", "momento", "muito", "muitos", "maximo", "mes", "na", "nada", "nao", "naquela", "naquelas", "naquele", "naqueles", "nas", "nem", "nenhuma", "nessa", "nessas", "nesse", "nesses", "nesta", "nestas", "neste", "nestes", "no", "noite", "nome", "nos", "nossa", "nossas", "nosso", "nossos", "nova", "novas", "nove", "novo", "novos", "num", "numa", "numas", "nunca", "nuns", "nao", "nivel", "nos", "numero", "obra", "obrigada", "obrigado", "oitava", "oitavo", "oito", "onde", "ontem", "onze", "os", "ou", "outra", "outras", "outro", "outros", "para", "parece", "parte", "partir", "paucas", "pegar", "pela", "pelas", "pelo", "pelos", "perante", "perto", "pessoas", "pode", "podem", "poder", "podera", "podia", "pois", "ponto", "pontos", "por", "porque", "porque", "portanto", "posicao", "possivelmente", "posso", "possivel", "pouca", "pouco", "poucos", "povo", "primeira", "primeiras", "primeiro", "primeiros", "promeiro", "propios", "proprio", "propria", "proprias", "proprio", "proprios", "proxima", "proximas", "proximo", "proximos", "puderam", "pode", "poe", "poem", "quais", "qual", "qualquer", "quando", "quanto", "quarta", "quarto", "quatro", "que", "quem", "quer", "quereis", "querem", "queremas", "queres", "quero", "questao", "quieto", "quinta", "quinto", "quinze", "quais", "que", "relacao", "sabe", "sabem", "saber", "se", "segunda", "segundo", "sei", "seis", "seja", "sejam", "sejamos", "sem", "sempre", "sendo", "ser", "serei", "seremos", "seria", "seriam", "sera", "serao", "seriamos", "sete", "seu", "seus", "sexta", "sexto", "sim", "sistema", "sob", "sobre", "sois", "somente", "somos", "sou", "sua", "suas", "sao", "setima", "setimo", "so", "ta", "tal", "talvez", "tambem", "tambem", "tanta", "tantas", "tanto", "tarde", "te", "tem", "temos", "tempo", "tendes", "tenha", "tenham", "tenhamos", "tenho", "tens", "tentar", "tentaram", "tente", "tentei", "ter", "terceira", "terceiro", "terei", "teremos", "teria", "teriam", "tera", "terao", "teriamos", "teu", "teus", "teve", "tinha", "tinham", "tipo", "tive", "tivemos", "tiver", "tivera", "tiveram", "tiverem", "tivermos", "tivesse", "tivessem", "tiveste", "tivestes", "tiveramos", "tivessemos", "toda", "todas", "todo", "todos", "trabalhar", "trabalho", "treze", "tres", "tu", "tua", "tuas", "tudo", "tao", "tem", "tem", "tinhamos", "um", "uma", "umas", "uns", "usa", "usar", "vai", "vais", "valor", "veja", "vem", "vens", "ver", "verdade", "verdadeiro", "vez", "vezes", "viagem", "vindo", "vinte", "voce", "voces", "vos", "vossa", "vossas", "vosso", "vossos", "varios", "vao", "vem", "vos", "zero", "a", "as", "area", "e", "eramos", "es", "ultimo"]
 
-                       
+
                         comentarios = comentarios.replace(/Á|À|Â|Ã|á|à|â|ã/gm, 'a');
                         comentarios = comentarios.replace(/É|È|Ê|é|è|ê/gm, 'e');
                         comentarios = comentarios.replace(/Í|Ï|í|ï/gm, 'i');
@@ -235,12 +226,12 @@
                         comentarios = comentarios.replace(/Ñ|ñ/gm, 'n');
                         comentarios = comentarios.replace(/\b[a-z]\b/gm, '');
                         comentarios = comentarios.replace(/\d|\W/gm, " ");
-                        
+
                         comentarios = comentarios.toLowerCase();
                         for (var i2 = 0; i2 < stopwords.length; i2++) {
-                            comentarios = comentarios.replace(new RegExp("\\b"+ stopwords[i2] + "\\b", 'g'), '');
+                            comentarios = comentarios.replace(new RegExp("\\b" + stopwords[i2] + "\\b", 'g'), '');
                         }
-                        
+
                         palavras = comentarios.split(" ");
                         palavras = palavras.filter(function (n) {
                             return n !== "" && n !== "a" && n !== "e" && n !== "o";
@@ -251,7 +242,7 @@
                             palavras[n1] = palavras[n1].replace(/\b[a-z]\b/gm, '');
                             palavras[n1] = palavras[n1].replace(/\b[a-z][^e]\b/gm, '');
                             palavras[n1] = palavras[n1].replace(/\b(\w)\1+\b/gm, '');
-                            
+
                             if (p_com.indexOf(palavras[n1].toLowerCase()) === -1 && palavras[n1] !== "") {
                                 p_com[cont2] = palavras[n1].toLowerCase();
 
@@ -274,13 +265,13 @@
                         freq_autores += "]";
 
                         localStorage.setItem("freq_autores", freq_autores);
-                      
+
 
                         if (hide !== "sim") {
 
-                           
+
                             localStorage.setItem("str_pronta", str2);
-                            
+
                         }
                     } else {
                         var nada = "";
@@ -319,16 +310,16 @@
         </nav>
         <div class="container">
             <div class="row">
-            <div class="col-md-6 col-md-offset-3"  style="border-style: solid; border-width:1px; border-radius:10px; border-color:#f7f7f7">
+                <div class="col-md-6 col-md-offset-3"  style="border-style: solid; border-width:1px; border-radius:10px; border-color:#f7f7f7">
 
                     <div class="panel panel-primary" style="width: 100%;margin-top:50px; ">
                         <div class="panel-body text-center" style="height:85px;">
 
                             <div id="aviso3" class="text-center" style=" margin-top:18px"><b>Procurando publicações... por favor aguarde alguns segundos</b></div>
                         </div>
-                        
+
                         <div class="text-left">
-                                <button class="btn btn-xs btn-default text-left"  style="margin-left:20px; margin-bottom: 20px; font-size:large;border-bottom-style:none; height:32px; width:32px;border-radius: 50%;" type="button" onclick="location.href = 'https://fernandacanazzo.github.io/appgrupos/menu.html';"><span class="glyphicon glyphicon-arrow-left" style="color:#333333"></span></button>
+                            <button class="btn btn-xs btn-default text-left"  style="margin-left:20px; margin-bottom: 20px; font-size:large;border-bottom-style:none; height:32px; width:32px;border-radius: 50%;" type="button" onclick="location.href = 'https://fernandacanazzo.github.io/appgrupos/menu.html';"><span class="glyphicon glyphicon-arrow-left" style="color:#333333"></span></button>
                         </div>
                     </div>            
 
