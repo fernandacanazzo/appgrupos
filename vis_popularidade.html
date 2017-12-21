@@ -76,14 +76,14 @@
             data = JSON.parse(frequency_list);
             var teste = [];
            
-            document.getElementById('titulo').innerHTML =  localStorage.getItem("numero2") + ' publicações mais populares';
+            document.getElementById('titulo').innerHTML =  localStorage.getItem("numero5") + ' publicações mais populares';
             
             console.log(data);
             var data_sorted = {};
             data_sorted = data.sort(function (a, b) {
                 return b.size - a.size;
             });
-             for (var l = 0; l < parseInt(localStorage.getItem("numero2")); l++) {
+             for (var l = 0; l < parseInt(localStorage.getItem("numero5")); l++) {
                     teste[l] = data_sorted[l];
 
                 }
