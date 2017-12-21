@@ -264,11 +264,23 @@
                             </div>
 
                             <div class="col-md-5">
-                                <div class="panel panel-primary text-left" id="panel6" style="margin-top:-15px;margin-left:-25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:150px; width: 100%; background-color: #fbfbfb">
-                                    <div class="panel-body" id="div6" style="height:105px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-stats" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" href="https://fernandacanazzo.github.io/appgrupos/reacoes.html">Reações às publicações mais recentes</a> 
+                                <div class="panel panel-primary" id="panel6" style="margin-top:-15px;margin-left:-25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:250px; width: 100%; background-color: #fbfbfb">
+                                    <div class="panel-body text-center" id="div6" style="height:205px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
+                                        <span class="glyphicon glyphicon-stats" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Reações às publicações mais recentes</a> 
+                                    <div class="input-group" style="margin-left:auto; margin-right: auto;margin-top: 5px; width:70%">
+                                            <input type="text" id="numero6"  class="form-control text-center" placeholder="Número de publicações" >
+                                            <span class="input-group-btn" >
+                                                <button class="btn btn-default" title="Máximo 1000 publicações"><span class="glyphicon glyphicon-question-sign" ></span></button>
+
+                                            </span> 
+
+                                            
+                                        </div>
+                                    
+                                         <button class="btn btn-lg btn-primary" id="bt_principal6" style="margin-top:10px; margin-left:auto; margin-right: auto; font-size: larger" type="submit" onclick="rf06();">Ver</button>
+
                                     </div>
-                                    <div class="panel-body" id="div66" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
+                                    <div class="panel-body text-left" id="div66" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
                                         <a href="#panel6"  id="ler6" class="text-left text-primary" onclick="clickar6();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p6"><br>&nbsp</p>
 
                                         <p id="col6" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra um gráfico de barras com os seguintes dados das publicações mais recentes:<br>&#9679 Quantidade de cada tipo de reação às publicações</p>
@@ -341,6 +353,12 @@
                 location.href = 'https://fernandacanazzo.github.io/appgrupos/popularidade.html';
             }
 
+            function rf06() {
+                var numero6 = $("#numero6").val();
+                localStorage.setItem("numero6", numero6);
+                location.href = 'https://fernandacanazzo.github.io/appgrupos/reacoes.html';
+            }
+            
             array = id_grupo.split('_;_', 2);
             document.getElementById('nome').innerHTML = "O que você quer visualizar no grupo <b>" + array[1] + "</b>?";
 
