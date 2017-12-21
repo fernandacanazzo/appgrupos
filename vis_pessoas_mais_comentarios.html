@@ -198,6 +198,9 @@
                         .on("mouseout", function (d, i) {
                             d3.select(this).style("fill", color(i));
                         })
+                        .on("click", function (d) {
+                        window.open(d.link, '_blank');
+                        })
                         .append("title")
                         .text(function (d) {
                             //console.log(d.size);
