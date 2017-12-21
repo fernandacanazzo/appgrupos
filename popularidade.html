@@ -99,7 +99,7 @@
                                 var hora = data_hora[1].split(':', 3);
 
                                 string2[y] = data[2] + "_;_" + data[1] + "_;_" + data[0] + hora[0] + hora[1] + hora[2] + "reacoes_;_" + reacoes
-                                        + "_;_comentarios_;_" + comentarios + "_;_numero_;_" + numero + "_;_id_;_" + id_post[1] + "_;_descricao_;_" + response.data[i].message;
+                                        + "_;_comentarios_;_" + comentarios + "_;_numero_;_" + "30" + "_;_id_;_" + id_post[1] + "_;_descricao_;_" + response.data[i].message;
                                 
                                 y++;
                             }
@@ -108,7 +108,6 @@
                         }
 
                     }
-                    console.log(string2);
                     return string2;
                     
                 }
