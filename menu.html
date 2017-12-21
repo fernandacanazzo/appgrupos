@@ -191,7 +191,15 @@
                             <div class="col-md-5  col-md-offset-1">
                                 <div class="panel panel-primary text-left" id="panel3" style="margin-top:-15px;margin-right:25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:150px; width: 100%; background-color: #fbfbfb">
                                     <div class="panel-body" id="div3" style="height:105px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-search" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" href="https://fernandacanazzo.github.io/appgrupos/palavras_publicacoes.html">Publicações com uma palavra específica</a> 
+                                        <span class="glyphicon glyphicon-search" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" >Publicações com uma palavra específica <span style="font-size: small;" title="Publicação mais recente é aquela que recebeu algum comentário por último \nPodem ser retornadas até 1000 publicações" class=" text-primary glyphicon glyphicon-info-sign"></span></a> 
+                                        <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%">
+                                            <input type="text" id="palavra"  class="form-control text-center" placeholder="Palavra">
+ 
+                                        </div>
+                                        
+                                   <button class="btn btn-lg btn-primary" id="bt_principal3" style="margin-top:10px; margin-left:auto; margin-right: auto; font-size: larger" type="submit" onclick="rf03();">Ver</button>
+
+                                    
                                     </div>
                                     <div class="panel-body" id="div33" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
                                         <a href="#panel3" id="ler3" class="text-left text-primary" onclick="clickar3();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p3"><br>&nbsp</p>
@@ -298,6 +306,12 @@
                 var datas = dia_ini + ";" + mes_ini + ";" + ano_ini + ";" + dia_fim + ";" + mes_fim + ";" + ano_fim;
                 localStorage.setItem("datas", datas);
                 location.href = 'https://fernandacanazzo.github.io/appgrupos/publicacoes_periodo.html';
+            }
+            
+            function rf03() {
+                var palavra = $("#palavra").val();
+                localStorage.setItem("palavra", palavra);
+                location.href = 'https://fernandacanazzo.github.io/appgrupos/palavras_publicacoes.html';
             }
 
 
