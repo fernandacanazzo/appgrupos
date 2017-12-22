@@ -109,18 +109,15 @@
             var teste2 = [];
             var mult = 1.0;
             if (parseInt(quant) !== 1){
-            document.getElementById('titulo_res').innerHTML = quant + " publicações mais recentes*" + " entre " +
-            datas[0] + "/" + datas[1] + "/" + datas[2] + " e " + datas[3] + "/" + datas[4] + "/" + datas[5] + " comentadas por " + nome 
-            + '<p style="font-size: small;margin-top:6px">*Últimas publicações que foram comentadas por alguém dentro do período especificado</p>';
+            document.getElementById('titulo_res').innerHTML = quant + " publicações mais recentes" + " entre " +
+            datas[0] + "/" + datas[1] + "/" + datas[2] + " e " + datas[3] + "/" + datas[4] + "/" + datas[5] + " comentadas por " + nome;
     
             } else{
               document.getElementById('titulo_res').innerHTML = "Publicação mais recente* entre " +
-            datas[0] + "/" + datas[1] + "/" + datas[2] + " e " + datas[3] + "/" + datas[4] + "/" + datas[5] + " comentada por " + nome
-    + '<p style="font-size: small;margin-top:6px" >*Última publicação que foi comentada por alguém dentro do período especificado</p>';
+            datas[0] + "/" + datas[1] + "/" + datas[2] + " e " + datas[3] + "/" + datas[4] + "/" + datas[5] + " comentada por " + nome;
       
             }
             
-
             document.getElementById('resp').innerHTML = str_pronta;
 
             var frequency_list = localStorage.getItem("freq_autores");
