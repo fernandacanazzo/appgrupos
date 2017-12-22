@@ -137,7 +137,7 @@
                             if (arraystr[2] === '0') {
                                 arraystr[2] = '1';
                             } 
-                            freq_comentario += "{\"text\":\"" + arraystr[0] + '","link":"https://www.facebook.com/profile.php?id=' + arraystr[1] + '",' + "\"size\":\"" + parseInt(arraystr[2]) + "\"},";
+                            freq_comentario += "{\"text\":\"" + arraystr[0] + '","link":"https://www.facebook.com/' + arraystr[1] + '",' + "\"size\":\"" + parseInt(arraystr[2]) + "\"},";
                         }
                         freq_comentario = freq_comentario.replace(/,$/, '');
                         freq_comentario += "]";
