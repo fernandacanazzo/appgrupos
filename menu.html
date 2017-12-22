@@ -380,6 +380,8 @@
                     document.getElementById('span5').style.display = "inline";
                     document.getElementById('aviso5').style.display = "inline";
                     document.getElementById('basic-addon55').style.display = "none";
+                    document.getElementById("panel5").style.height = "300px";
+                    document.getElementById("div5").style.height = "255px";
                 } else {
                     localStorage.setItem("numero5", numero5);
                     location.href = 'https://fernandacanazzo.github.io/appgrupos/popularidade.html';
@@ -394,6 +396,8 @@
                     document.getElementById('span6').style.display = "inline";
                     document.getElementById('aviso6').style.display = "inline";
                     document.getElementById('basic-addon66').style.display = "none";
+                    document.getElementById("panel6").style.height = "300px";
+                    document.getElementById("div6").style.height = "255px";
                 } else {
                     localStorage.setItem("numero6", numero6);
                     location.href = 'https://fernandacanazzo.github.io/appgrupos/reacoes.html';
@@ -493,6 +497,7 @@
             }
 
             function clickar5() {
+                if(document.getElementById('basic-addon55').style.display !== "none"){
                 if (document.getElementById("col5").style.display === "none") {
                     document.getElementById("col5").style.display = "inline-block";
                     document.getElementById("ler5").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
@@ -505,9 +510,24 @@
                     document.getElementById("panel5").style.height = "257px";
                     document.getElementById("div55").style.height = "44px";
                 }
+            }else{
+                if (document.getElementById("col5").style.display === "none") {
+                    document.getElementById("col5").style.display = "inline-block";
+                    document.getElementById("ler5").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                    document.getElementById("panel5").style.height = "390px";
+                    document.getElementById("div55").style.height = "134px";
+                    document.getElementById("p5").style.display = "none";
+                } else {
+                    document.getElementById("ler5").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                    document.getElementById("col5").style.display = "none";
+                    document.getElementById("panel5").style.height = "300px";
+                    document.getElementById("div55").style.height = "44px";
+                }
+            }
             }
 
             function clickar6() {
+                if(document.getElementById('basic-addon66').style.display !== "none"){
                 if (document.getElementById("col6").style.display === "none") {
                     document.getElementById("col6").style.display = "inline-block";
                     document.getElementById("ler6").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
@@ -520,6 +540,20 @@
                     document.getElementById("panel6").style.height = "257px";
                     document.getElementById("div66").style.height = "44px";
                 }
+            }else{
+                if (document.getElementById("col6").style.display === "none") {
+                    document.getElementById("col6").style.display = "inline-block";
+                    document.getElementById("ler6").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                    document.getElementById("panel6").style.height = "354px";
+                    document.getElementById("div66").style.height = "98px";
+                    document.getElementById("p6").style.display = "none";
+                } else {
+                    document.getElementById("ler6").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                    document.getElementById("col6").style.display = "none";
+                    document.getElementById("panel6").style.height = "300px";
+                    document.getElementById("div66").style.height = "44px";
+                }
+            }
             }
 
             function clickar7() {
