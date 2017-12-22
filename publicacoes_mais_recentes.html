@@ -99,7 +99,7 @@
                                     }
                                     FB.api(
                                             "/" + arrayid[0] + '_' + id_post[1] + '/comments?limit=25&access_token=' + token, doSomething2);
-                                    console.log("/" + arrayid[0] + '_' + id_post[1] + '/comments?limit=25&access_token=');
+                                    //console.log("/" + arrayid[0] + '_' + id_post[1] + '/comments?limit=25&access_token=');
                                     function doSomething2(response2) {
                                         if (cn2 < 6 && typeof response2.paging !== "undefined" && typeof response2.paging.next !== "undefined") {
                                             FB.api(response2.paging.next, doSomething2);
@@ -117,6 +117,7 @@
                                              console.log(string[y]);
                                              
                                              }*/
+                                            console.log(id_post[1]);
                                             for (j; j < response2.data.length; j++) {
                                                 console.log(response2.data[j].from.name);
                                             }
