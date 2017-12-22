@@ -447,7 +447,8 @@
             }
 
             function clickar3() {
-                if (document.getElementById("col3").style.display === "none") {
+                if(document.getElementById('basic-addon33').style.display !== "none"){
+                if (document.getElementById("col3").style.display === "none" ) {
                     document.getElementById("col3").style.display = "inline-block";
                     document.getElementById("ler3").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
                     document.getElementById("panel3").style.height = "410px";
@@ -459,6 +460,21 @@
                     document.getElementById("panel3").style.height = "302px";
                     document.getElementById("div33").style.height = "44px";
                 }
+            }else{
+                if (document.getElementById("col3").style.display === "none" ) {
+                    document.getElementById("col3").style.display = "inline-block";
+                    document.getElementById("ler3").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                    document.getElementById("panel3").style.height = "448px";
+                    document.getElementById("div33").style.height = "152px";
+                    document.getElementById("p3").style.display = "none";
+                } else {
+                    document.getElementById("ler3").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                    document.getElementById("col3").style.display = "none";
+                    document.getElementById("panel3").style.height = "340px";
+                    document.getElementById("div33").style.height = "44px";
+                }
+                
+            }
             }
 
             function clickar4() {
