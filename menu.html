@@ -412,6 +412,8 @@
                 document.getElementById('span7').style.display = "inline";
                 document.getElementById('aviso7').style.display = "inline";
                 document.getElementById('basic-addon77').style.display = "none";
+                document.getElementById("panel7").style.height = "300px";
+                document.getElementById("div6").style.height = "255px";
             } else{
                 localStorage.setItem("numero7", numero7);
                 location.href = 'https://fernandacanazzo.github.io/appgrupos/pessoas_mais_comentarios.html';
@@ -557,6 +559,7 @@
             }
 
             function clickar7() {
+                if(document.getElementById('basic-addon77').style.display !== "none"){
                 if (document.getElementById("col7").style.display === "none") {
                     document.getElementById("col7").style.display = "inline-block";
                     document.getElementById("ler7").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
@@ -569,6 +572,20 @@
                     document.getElementById("panel7").style.height = "257px";
                     document.getElementById("div77").style.height = "44px";
                 }
+            }else{
+                if (document.getElementById("col7").style.display === "none") {
+                    document.getElementById("col7").style.display = "inline-block";
+                    document.getElementById("ler7").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                    document.getElementById("panel7").style.height = "338px";
+                    document.getElementById("div77").style.height = "82px";
+                    document.getElementById("p7").style.display = "none";
+                } else {
+                    document.getElementById("ler7").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                    document.getElementById("col7").style.display = "none";
+                    document.getElementById("panel7").style.height = "300px";
+                    document.getElementById("div77").style.height = "44px";
+                }
+            }
             }
 
         </script>
