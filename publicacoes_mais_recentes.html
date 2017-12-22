@@ -97,7 +97,7 @@
                                         comment = "Publicação não possui uma descrição.";
                                     }
                                     FB.api(
-                                            "/" + arrayid[0] + '_' + id_post[1] + 'comments?limit=25&' + token, doSomething2);
+                                            "/" + arrayid[0] + '_' + id_post[1] + '/comments?limit=25&' + token, doSomething2);
                                    function doSomething2(response) {
                                    FB.api(response.paging.next, doSomething2);
                                     for (j; j < response.data[i].comments.data.length; j++) {
