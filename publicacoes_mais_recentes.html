@@ -72,13 +72,13 @@
 
                 function getInfo1(token) {
                     var url = "";
-                    url = "/feed?fields=from,message,created_time,comments&limit=50&access_token=";
+                    url = "/feed?fields=from,message,created_time,comments&limit=10&access_token=";
                     var cn = 0;
                     var cn2 = 0;
                     FB.api(
                             "/" + arrayid[0] + url + token, doSomething);
                     function doSomething(response) {
-                        if (cn < 6 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
+                        if (cn < 1 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
                             FB.api(response.paging.next, doSomething);
                             var l = response.data.length;
                             var i = 0;
