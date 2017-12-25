@@ -130,6 +130,7 @@
 
                     }
                     for (b; b < posts2.length ; b++){
+                    console.log(posts2);    
                     FB.api(
                             "/" + arrayid[0] + '_' + posts2[b] + '/comments?access_token=' + token, doSomething2);
                     //console.log("/" + arrayid[0] + '_' + id_post[1] + '/comments?access_token=' + token);
