@@ -97,7 +97,7 @@
 
                                         comment = "Publicação não possui uma descrição.";
                                     }
-                                    if(typeof response.paging === "undefined" && typeof response.paging.next === "undefined"){
+                                    if(typeof response.comments.paging === "undefined" && typeof response.comments.paging.next === "undefined"){
                                              var j = 0;
                                             for (j; j < response.data[i].comments.data.length; j++) {
                                              var data_hora = response.data[i].comments.data[j].created_time.split('T', 2);
@@ -119,7 +119,8 @@
                                             "/" + arrayid[0] + '_' + id_post[1] + '/comments?access_token=' + token, doSomething2);
                                    //console.log("/" + arrayid[0] + '_' + id_post[1] + '/comments?access_token=' + token);
                                     function doSomething2(response) {
-                                        if (cn2 < 4 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
+                                        if (cn2 < 4) {
+                                            //&& typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined";
                                             console.log(id_post[1]);
                                             FB.api(response.paging.next, doSomething2);
                                             var l2 = response.data.length;
