@@ -83,7 +83,7 @@
                             var l = response.data.length;
                             var i = 0;
                             for (i; i < l; i++) {
-                               // var j = 0;
+                                
                                 var comment = "";
                                 if (response.data[i].comments) {
                                     var nome_autor = response.data[i].from.name;
@@ -97,15 +97,9 @@
 
                                         comment = "Publicação não possui uma descrição.";
                                     }
-                                    FB.api(
-                                            "/" + arrayid[0] + '_' + id_post[1] + '/comments?access_token=' + token, doSomething2);
-                                   //console.log("/" + arrayid[0] + '_' + id_post[1] + '/comments?access_token=' + token);
-                                    function doSomething2(response) {
-                                        if (cn2 < 2 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
-                                            console.log(id_post[1]);
-                                            FB.api(response.paging.next, doSomething2);
-                                            var l2 = response.data.length;
-                                            /*for (j; j < response.data[i].comments.data.length; j++) {
+                                    if(typeof response.paging === "undefined" && typeof response.paging.next === "undefined"){
+                                             var j = 0;
+                                            for (j; j < response.data[i].comments.data.length; j++) {
                                              var data_hora = response.data[i].comments.data[j].created_time.split('T', 2);
                                              var data = data_hora[0].split('-', 3);
                                              var hora = data_hora[1].split(':', 3);
@@ -116,26 +110,26 @@
                                              + "_;_descricao_;_" + comment + "_;_desccom_;_" + response.data[i].comments.data[j].message
                                              + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_post[1] + "/?comment_id=" + response.data[i].comments.data[j].id + "\">Ver comentário</a>";
                                              y++;
-                                             console.log(string[y]);
+                                             console.log(response.data[j].from.name);
                                              
-                                             }*/
-                                           
-                                            console.log(cn);
-                                            console.log(cn2);
+                                             }
+                                            }
+                                            else{
+                                    FB.api(
+                                            "/" + arrayid[0] + '_' + id_post[1] + '/comments?access_token=' + token, doSomething2);
+                                   //console.log("/" + arrayid[0] + '_' + id_post[1] + '/comments?access_token=' + token);
+                                    function doSomething2(response) {
+                                        if (cn2 < 4 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
+                                            console.log(id_post[1]);
+                                            FB.api(response.paging.next, doSomething2);
+                                            var l2 = response.data.length;
                                             var j = 0;
                                             for (j; j < l2; j++) {
                                                 console.log(response.data[j].from.name);
                                             }
                                             cn2++;
                                         }
-                                        if(typeof response.paging === "undefined" && typeof response.paging.next === "undefined"){
-                                          FB.api(response, doSomething2);  
-                                          var j = 0;
-                                          var l2 = response.data.length;
-                                           for (j; j < l2; j++) {
-                                                console.log(response.data[j].from.name);
-                                            }
-                                        }
+                                    }
                                         
                                     }
                                     hide = "nao";
