@@ -149,7 +149,7 @@
                         } 
                         if(typeof response.paging !== "undefined" && typeof response.paging.next === "undefined"){
                            console.log(response); 
-                           FB.api(response, doSomething2);  
+                           FB.api("/" + arrayid[0] + '_' + posts2[b] + '/comments?access_token=' + token, doSomething2);  
                            var l2 = response.data.length;
                             var j = 0;
                             for (j; j < l2; j++) {
