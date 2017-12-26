@@ -145,9 +145,9 @@
                             for (j; j < l2; j++) {
                                 console.log(response.data[j].from.name);
                             }
-                            
+                        cn2++;   
                         } 
-                        if(response.paging.next === "undefined"){
+                        if(!response.paging.next){
                            FB.api(response, doSomething2);  
                            var l2 = response.data.length;
                             var j = 0;
@@ -155,7 +155,7 @@
                                 console.log(response.data[j].from.name);
                             }
                         }
-                        cn2++;
+                        
                     }
                 }
                     return string;
