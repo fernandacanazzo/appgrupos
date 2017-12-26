@@ -43,6 +43,7 @@
             var posts2 = [];
             var descricao = [];
             var n_autor = [];
+            var b = 0;
 
             var hide = "sim";
             setTimeout(function () {
@@ -61,7 +62,7 @@
                 var links = [];
                 var y = 0;
                 var a = 0;
-                var b = 0;
+                
                 var c = 0;
                 
 
@@ -153,7 +154,7 @@
                                             var data = data_hora[0].split('-', 3);
                                             var hora = data_hora[1].split(':', 3);
 
-                                            string[y] = data[2] + data[1] + data[0] + hora[0] + hora[1] + hora[2] + "id_;_" + posts2[0] + "_;_autor_;_" + n_autor[b]
+                                            string[y] = data[2] + data[1] + data[0] + hora[0] + hora[1] + hora[2] + "id_;_" + posts2[b] + "_;_autor_;_" + n_autor[b]
                                                     + "_;_comentario_;_" + response.data[j].from.name + "_;_"
                                                     + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + posts2[b] + "\">Ver publicação</a>"
                                                     + "_;_descricao_;_" + descricao[b] + "_;_desccom_;_" + response.data[j].message
