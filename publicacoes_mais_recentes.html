@@ -147,7 +147,7 @@
                             }
                             
                         } 
-                        if(typeof response.paging === "undefined" && typeof response.paging.next === "undefined")
+                        if(typeof response.paging === "undefined" && typeof response.paging.next === "undefined"){
                            FB.api(response, doSomething2);  
                         }
                         cn2++;
