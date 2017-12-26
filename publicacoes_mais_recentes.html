@@ -137,7 +137,7 @@
                             "/" + arrayid[0] + '_' + posts2[b] + '/comments?access_token=' + token, doSomething2);
                     //console.log("/" + arrayid[0] + '_' + id_post[1] + '/comments?access_token=' + token);
                     function doSomething2(response) {
-                        if (cn2 < 4 && typeof response.paging !== "undefined") {
+                        if (cn2 < 4 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
                           
                             FB.api(response.paging.next, doSomething2);
                             var l2 = response.data.length;
@@ -146,6 +146,8 @@
                                 console.log(response.data[j].from.name);
                             }
                             cn2++;
+                        } else{
+                           FB.api(response, doSomething2);  
                         }
                     }
                 }
