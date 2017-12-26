@@ -149,6 +149,11 @@
                         } 
                         if(typeof response.paging === "undefined" && typeof response.paging.next === "undefined"){
                            FB.api(response, doSomething2);  
+                           var l2 = response.data.length;
+                            var j = 0;
+                            for (j; j < l2; j++) {
+                                console.log(response.data[j].from.name);
+                            }
                         }
                         cn2++;
                     }
