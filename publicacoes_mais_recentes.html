@@ -43,7 +43,7 @@
             var posts2 = [];
             var descricao = [];
             var n_autor = [];
-            var b = 0;
+            //var b = 0;
 
             var hide = "sim";
             setTimeout(function () {
@@ -138,7 +138,7 @@
                         }
 
                     }
-                    for (b; b < posts2.length; b++){
+                    for (var b = 0; b < posts2.length; b++){
                       
                     FB.api(
                             "/" + arrayid[0] + '_' + posts2[b] + '/comments?access_token=' + token, doSomething2);
