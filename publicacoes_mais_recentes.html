@@ -41,6 +41,8 @@
             var string3 = [];
             var string4 = [];
             var posts2 = [];
+            var descricao = [];
+            var n_autor = [];
 
             var hide = "sim";
             setTimeout(function () {
@@ -118,8 +120,12 @@
                                     }
                                     else {
                                         posts2[a] = id_post[1];
-                                        console.log(posts2[a]);
+                                        descricao[a] = response.data[i].message;
+                                        n_autor[a] = response.data[i].from.name;
+                                        
+                                        //console.log(posts2[a]);
                                         a++;
+                                        
                                         
                                     }
                                     hide = "nao";
@@ -143,17 +149,35 @@
                             var l2 = response.data.length;
                             var j = 0;
                             for (j; j < l2; j++) {
-                                console.log(response.data[j].from.name);
+                                 var data_hora = response.data[j].created_time.split('T', 2);
+                                            var data = data_hora[0].split('-', 3);
+                                            var hora = data_hora[1].split(':', 3);
+
+                                            string[y] = data[2] + data[1] + data[0] + hora[0] + hora[1] + hora[2] + "id_;_" + posts2[b] + "_;_autor_;_" + n_autor[b]
+                                                    + "_;_comentario_;_" + response.data[j].from.name + "_;_"
+                                                    + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + posts2[b] + "\">Ver publicação</a>"
+                                                    + "_;_descricao_;_" + descricao[b] + "_;_desccom_;_" + response.data[j].message
+                                                    + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + posts2[b] + "/?comment_id=" + response.data[j].id + "\">Ver comentário</a>";
+                                            y++;
                             }
                         cn2++;   
                         } 
                         if(typeof response.paging !== "undefined" && typeof response.paging.next === "undefined"){
-                           console.log(response); 
+                           //console.log(response); 
                            FB.api("/" + arrayid[0] + '_' + posts2[b] + '/comments?access_token=' + token, doSomething2);  
                            var l2 = response.data.length;
                             var j = 0;
                             for (j; j < l2; j++) {
-                                console.log(response.data[j].from.name);
+                                var data_hora = response.data[j].created_time.split('T', 2);
+                                            var data = data_hora[0].split('-', 3);
+                                            var hora = data_hora[1].split(':', 3);
+
+                                            string[y] = data[2] + data[1] + data[0] + hora[0] + hora[1] + hora[2] + "id_;_" + posts2[b] + "_;_autor_;_" + n_autor[b]
+                                                    + "_;_comentario_;_" + response.data[j].from.name + "_;_"
+                                                    + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + posts2[b] + "\">Ver publicação</a>"
+                                                    + "_;_descricao_;_" + descricao[b] + "_;_desccom_;_" + response.data[j].message
+                                                    + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + posts2[b] + "/?comment_id=" + response.data[j].id + "\">Ver comentário</a>";
+                                            y++;
                             }
                         }
                         
