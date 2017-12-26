@@ -146,7 +146,8 @@
                                 console.log(response.data[j].from.name);
                             }
                             
-                        } else{
+                        } 
+                        if(typeof response.paging === "undefined" && typeof response.paging.next === "undefined")
                            FB.api(response, doSomething2);  
                         }
                         cn2++;
