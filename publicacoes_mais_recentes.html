@@ -145,7 +145,7 @@
               
                     function doSomething2(response) {
                         if (cn2 < 20 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
-                            console.log(posts2[b]); 
+                             
                             FB.api(response.paging.next, doSomething2);
                             var l2 = response.data.length;
                             var j = 0;
@@ -154,6 +154,7 @@
                                             var data = data_hora[0].split('-', 3);
                                             var hora = data_hora[1].split(':', 3);
                                             console.log(b);
+                                            console.log(posts2[b]);
                                             string[y] = data[2] + data[1] + data[0] + hora[0] + hora[1] + hora[2] + "id_;_" + posts2[b] + "_;_autor_;_" + n_autor[b]
                                                     + "_;_comentario_;_" + response.data[j].from.name + "_;_"
                                                     + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + posts2[b] + "\">Ver publicação</a>"
