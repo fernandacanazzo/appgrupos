@@ -173,7 +173,7 @@
                             }
                         cn2++; 
                         } 
-                       if(typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined"){
+                       /*if(typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined"){
                            //console.log(response); 
                            FB.api("/" + response.id + '?fields=from,id,message,comments.after('+ response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
                             
@@ -193,7 +193,7 @@
                                             //console.log(string2[c]);                            
                                             c++;        
                             }
-                        }
+                        }*/
                 }
                 return string2;
                 }
