@@ -148,7 +148,7 @@
                       
                     FB.api(
                             "/" + arrayid[0] + '_' + posts2[b] + '/comments?access_token=' + token, doSomething2);
-                    console.log(posts2[b]);
+                    //console.log(posts2[b]);
                     function doSomething2(response, b) {
                         if (cn2 < 20 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
                              
@@ -165,6 +165,7 @@
                                                     + "_;_descricao_;_" + descricao[b] + "_;_desccom_;_" + response.data[j].message
                                                     + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + posts2[b] + "/?comment_id=" + response.data[j].id + "\">Ver comentário</a>";                         
                 y++;
+                 console.log(posts2[b]); 
                             }
                         cn2++;   
                         } 
