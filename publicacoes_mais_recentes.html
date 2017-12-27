@@ -117,7 +117,7 @@
                                                     + "_;_descricao_;_" + comment + "_;_desccom_;_" + response.data[i].comments.data[j].message
                                                     + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_post[1] + "/?comment_id=" + response.data[i].comments.data[j].id + "\">Ver comentário</a>";
                                             y++;
-                                            console.log(response.data[i].comments.data[j].from.name);
+                                            //console.log(response.data[i].comments.data[j].from.name);
 
                                         }
                                     }
@@ -212,7 +212,7 @@
                         for (var b = 0; b < posts2.length; b++){
                         string_total2 += getInfo2(token, b);
                         }
-                        res = string_total;
+                        res = string_total.concat(string_total2);
                         var str = [];
                         var str2 = "";
                         var quant = "";
@@ -261,7 +261,7 @@
 
                         dados = dados.sort(naturalCompare);
 
-                        console.log(res);
+                        //console.log(res);
                         for (i = 0; i < dados.length; i++) {
 
                             if (ctd <= parseInt(numero)) {
