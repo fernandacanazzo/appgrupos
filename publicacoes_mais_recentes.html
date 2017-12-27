@@ -151,7 +151,7 @@
                     console.log(posts2[b]);
                     function doSomething2(response) {
                         if (cn2 < 20 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
-                            console.log(response.id); 
+                            
                             FB.api("/" + response.id + '?fields=from,id,message,comments.after('+ response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
                             var l2 = response.comments.data.length;
                             var j = 0;
@@ -160,7 +160,7 @@
                                             var data = data_hora[0].split('-', 3);
                                             var hora = data_hora[1].split(':', 3);
                                             var id_com = response.id.split('_',2);
-                                         
+                                            console.log(response.id); 
                                             string[y] = data[2] + data[1] + data[0] + hora[0] + hora[1] + hora[2] + "id_;_" + id_com[1] + "_;_autor_;_" + response.from.name
                                                     + "_;_comentario_;_" + response.comments.data[j].from.name + "_;_"
                                                     + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + response.id + "\">Ver publicação</a>"
