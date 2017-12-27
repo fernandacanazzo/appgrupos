@@ -79,13 +79,14 @@
 
                 function getInfo1(token) {
                     var url = "";
-                    url = "/feed?fields=from,message,created_time,comments&limit=50&access_token=";
+                    url = "/feed?fields=from,message,created_time,comments&limit=250&access_token=";
                     var cn = 0;
                     var cn2 = 0;
                     FB.api(
                             "/" + arrayid[0] + url + token, doSomething);
                     function doSomething(response) {
-                        if (cn < 7 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
+                        if (cn < 2 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
+                            console.log(response.paging.next);
                             FB.api(response.paging.next, doSomething);
                             var l = response.data.length;
                             var i = 0;
