@@ -149,7 +149,7 @@
                    //for (var b = 0; b < posts2.length; b++){
                       
                     FB.api(
-                            "/" + arrayid[0] + '_' + posts2[0] + '?fields=from,id,message,comments&access_token=' + token, doSomething2);
+                            "/" + arrayid[0] + '_' + posts2[2] + '?fields=from,id,message,comments&access_token=' + token, doSomething2);
                  
                     function doSomething2(response) {
                         if (cn2 < 20 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
