@@ -149,7 +149,7 @@
                     FB.api(
                             "/" + arrayid[0] + '_' + posts2[b] + '/comments?access_token=' + token, doSomething2);
                     console.log(posts2[b]);
-                    function doSomething2(response) {
+                    function doSomething2(response, b) {
                         if (cn2 < 20 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
                              
                             FB.api(response.paging.next, doSomething2);
