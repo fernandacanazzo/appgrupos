@@ -138,7 +138,13 @@
                         }
 
                     }
-                    for (b; b < posts2.length; b++){
+                                        
+                    return string;
+                }
+                
+                function getInfo2(token){
+                   var cn2 = 0; 
+                   for (b; b < posts2.length; b++){
                       
                     FB.api(
                             "/" + arrayid[0] + '_' + posts2[b] + '/comments?access_token=' + token, doSomething2);
@@ -188,12 +194,6 @@
                         
                     }
                 }
-                    
-                    return string;
-                }
-                
-                function getInfo2(){
-                    console.log(posts2);
                 }
 
 
@@ -206,7 +206,7 @@
                         var string_total = [];
                         var res = [];
                         string_total = getInfo1(token);
-                        getInfo2();
+                        getInfo2(token);
                         res = string_total;
                         var str = [];
                         var str2 = "";
