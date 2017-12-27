@@ -162,7 +162,7 @@
                                             var id_com = response.id.split('_',2);
                                          
                                             string[y] = data[2] + data[1] + data[0] + hora[0] + hora[1] + hora[2] + "id_;_" + id_com[1] + "_;_autor_;_" + response.from.name
-                                                    + "_;_comentario_;_" + response.data[j].from.name + "_;_"
+                                                    + "_;_comentario_;_" + response.comments.data[j].from.name + "_;_"
                                                     + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + response.id + "\">Ver publicação</a>"
                                                     + "_;_descricao_;_" + response.message + "_;_desccom_;_" + response.data[j].message
                                                     + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "/?comment_id=" + response.data[j].id + "\">Ver comentário</a>";                         
