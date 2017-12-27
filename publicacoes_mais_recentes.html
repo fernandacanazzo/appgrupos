@@ -151,7 +151,7 @@
                  
                     function doSomething2(response) {
                         if (cn2 < 20 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
-                            console.log("/" + response.id + '?fields=from,id,message,comments.after('+ response.comments.paging.cursors.after + ')&access_token=' + token);               
+                            //console.log("/" + response.id + '?fields=from,id,message,comments.after('+ response.comments.paging.cursors.after + ')&access_token=' + token);               
                             FB.api("/" + response.id + '?fields=from,id,message,comments.after('+ response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
                             
             var l2 = response.comments.data.length;
@@ -167,7 +167,7 @@
                                                     + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + response.id + "\">Ver publicação</a>"
                                                     + "_;_descricao_;_" + response.message + "_;_desccom_;_" + response.comments.data[j].message
                                                     + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "/?comment_id=" + response.comments.data[j].id + "\">Ver comentário</a>";                         
-                                            console.log(string2[c]);                            
+                                            //console.log(string2[c]);                            
                                             c++;
                                             
                             }
@@ -193,6 +193,7 @@
                             }
                         }*/
                 }
+                return string2;
                 }
 
 
@@ -203,12 +204,14 @@
                         accessToken = response.authResponse.accessToken;
                         var token = accessToken.toString();
                         var string_total = [];
+                        var string_total2 = [];
                         var res = [];
                         string_total = getInfo1(token);
                         for (var b = 0; b < posts2.length; b++){
-                        getInfo2(token, b);
+                        string_total2 += getInfo2(token, b);
                         }
-                        res = string_total;
+                        res = string_total.concat(string_total2);
+                        
                         var str = [];
                         var str2 = "";
                         var quant = "";
@@ -257,7 +260,7 @@
 
                         dados = dados.sort(naturalCompare);
 
-
+                        console.log(dados);
                         for (i = 0; i < dados.length; i++) {
 
                             if (ctd <= parseInt(numero)) {
