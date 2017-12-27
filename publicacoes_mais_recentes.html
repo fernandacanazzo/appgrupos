@@ -175,7 +175,7 @@
                         } 
                        if(typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined"){
                            //console.log(response); 
-                           FB.api("/" + response.id + '?fields=from,id,message,comments&access_token=' + token, doSomething2);
+                           FB.api("/" + response.id + '?fields=from,id,message,comments.after('+ response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
                             
                             var l2 = response.comments.data.length;
                             var j = 0;
@@ -262,7 +262,7 @@
 
                         dados = dados.sort(naturalCompare);
 
-                        console.log(res);
+                        console.log(dados);
                         for (i = 0; i < dados.length; i++) {
 
                             if (ctd <= parseInt(numero)) {
