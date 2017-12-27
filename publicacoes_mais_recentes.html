@@ -144,7 +144,8 @@
                 
                 function getInfo2(token){
                    var cn2 = 0; 
-                   for (var b = 0; b < posts2.length; b++){
+                   var d =0;
+                   while(d<10){
                       
                     FB.api(
                             "/" + arrayid[0] + '_' + posts2[b] + '/comments?access_token=' + token, doSomething2);
@@ -191,6 +192,7 @@
                         }
                         
                     }
+                 d++;   
                 }
                 }
 
