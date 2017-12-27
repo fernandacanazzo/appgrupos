@@ -85,7 +85,7 @@
                     FB.api(
                             "/" + arrayid[0] + url + token, doSomething);
                     function doSomething(response) {
-                        if (cn < 20 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
+                        if (cn < 7 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
                             FB.api(response.paging.next, doSomething);
                             var l = response.data.length;
                             var i = 0;
@@ -111,13 +111,13 @@
                                             var data = data_hora[0].split('-', 3);
                                             var hora = data_hora[1].split(':', 3);
 
-                                            string[y] = data[2] + data[1] + data[0] + hora[0] + hora[1] + hora[2] + "id_;_" + id_post[1] + "_;_autor_;_" + nome_autor
+                                            string[y] = data[2] + data[1] + data[0] + hora[0] + hora[1] + hora[2] + "id_;_" + id_post[1] + "_;_autor_;_" + response.data[i].from.name
                                                     + "_;_comentario_;_" + response.data[i].comments.data[j].from.name + "_;_"
                                                     + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_post[1] + "\">Ver publicação</a>"
                                                     + "_;_descricao_;_" + comment + "_;_desccom_;_" + response.data[i].comments.data[j].message
                                                     + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_post[1] + "/?comment_id=" + response.data[i].comments.data[j].id + "\">Ver comentário</a>";
                                             y++;
-                                            console.log(nome_autor);
+                                            console.log(response.data[i].from.name);
 
                                         }
                                     }
