@@ -144,12 +144,10 @@
                     return string;
                 }
                 
-                function getInfo2(token){
+                function getInfo2(token, b){
                    var cn2 = 0; 
-                   //for (var b = 0; b < posts2.length; b++){
-                      
                     FB.api(
-                            "/" + arrayid[0] + '_' + posts2[2] + '?fields=from,id,message,comments&access_token=' + token, doSomething2);
+                            "/" + arrayid[0] + '_' + posts2[b] + '?fields=from,id,message,comments&access_token=' + token, doSomething2);
                  
                     function doSomething2(response) {
                         if (cn2 < 20 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
@@ -194,8 +192,6 @@
                                            
                             }
                         }*/
-                        
-                    //}
                 }
                 }
 
@@ -209,7 +205,9 @@
                         var string_total = [];
                         var res = [];
                         string_total = getInfo1(token);
-                        getInfo2(token);
+                        for (var b = 0; b < posts2.length; b++){
+                        getInfo2(token, b);
+                        }
                         res = string_total;
                         var str = [];
                         var str2 = "";
