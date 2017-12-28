@@ -78,7 +78,6 @@
                     var url = "";
                     url = "/feed?fields=from,message,created_time,comments&limit=250&access_token=";
                     var cn = 0;
-                    var cn2 = 0;
                     FB.api(
                             "/" + arrayid[0] + url + token, doSomething);
                     function doSomething(response) {
@@ -120,6 +119,7 @@
                                         }
                                     }
                                     else {
+                                        var cn2=0;
                                         console.log(response.data[i].id);
                                         FB.api(
                                                 "/" + response.data[i].id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
