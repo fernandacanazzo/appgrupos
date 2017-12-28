@@ -140,10 +140,10 @@
                     return string;
                 }
                 
-                function getInfo2(token,posts2,b){
+                function getInfo2(token,posts3,b){
                    var cn2 = 0;
                     FB.api(
-                            "/" + arrayid[0] + '_' + posts2[b] + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
+                            "/" + arrayid[0] + '_' + posts3[b] + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
                     
                     function doSomething2(response) {
                         /*if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
