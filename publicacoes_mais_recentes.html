@@ -128,7 +128,7 @@
                                             if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined") {
                                                 //console.log(response); 
 
-                                                FB.api("/" + response.data[i].id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
+                                                FB.api("/" + response.id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
 
                                                 var l2 = response.comments.data.length;
                                                 var j = 0;
@@ -143,7 +143,7 @@
                                                             + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + response.id + "\">Ver publicação</a>"
                                                             + "_;_descricao_;_" + response.message + "_;_desccom_;_" + response.comments.data[j].message
                                                             + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "/?comment_id=" + response.comments.data[j].id + "\">Ver comentário</a>";
-                                                    
+                                                    console.log(string2[c]);
                                                     c++;
                                                 }
                                                 cn2++;
