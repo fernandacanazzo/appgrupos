@@ -148,7 +148,7 @@
                 function getInfo2(token, b){
                    var cn2 = 0; 
                     FB.api(
-                            "/" + arrayid[0] + '_' + posts2[0] + '?fields=from,id,message,comments.limit(25)&access_token=' + token, doSomething2);
+                            "/" + arrayid[0] + '_' + posts2[b] + '?fields=from,id,message,comments.limit(25)&access_token=' + token, doSomething2);
                  
                     function doSomething2(response) {
                         if (cn2 < 1) {
@@ -211,10 +211,11 @@
                         var string_total2 = [];
                         var res = [];
                         string_total = getInfo1(token);
-                       // for (var b = 0; b < posts2.length; b++){
-                        string_total2 = getInfo2(token, b);
-                       // }
-                        //console.log(string_total2);
+                        for (var b = 0; b < posts2.length; b++){
+                        string_total2 += getInfo2(token, b);
+                      }
+                       
+                        console.log(string_total2);
                         res = string_total.concat(string_total2);
                         var str = [];
                         var str2 = "";
