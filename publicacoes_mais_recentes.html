@@ -52,7 +52,7 @@
                 window.fbAsyncInit();
                 //location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_publicacoes_mais_recentes.html';
 
-            }, 100000);
+            }, 50000);
 
 
             window.fbAsyncInit = function () {
@@ -148,12 +148,12 @@
                 function getInfo2(token, b){
                    var cn2 = 0; 
                     FB.api(
-                            "/" + arrayid[0] + '_' + posts2[b] + '?fields=from,id,message,comments&access_token=' + token, doSomething2);
+                            "/" + arrayid[0] + '_' + posts2[b] + '?fields=from,id,message,comments.limit(250)&access_token=' + token, doSomething2);
                  
                     function doSomething2(response) {
-                        if (cn2 < 20 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
+                        if (cn2 < 4 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
                             //console.log("/" + response.id + '?fields=from,id,message,comments.after('+ response.comments.paging.cursors.after + ')&access_token=' + token);               
-                            FB.api("/" + response.id + '?fields=from,id,message,comments.after('+ response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
+                            FB.api("/" + response.id + '?fields=from,id,message,comments.limit(250).after('+ response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
                             
                             var l2 = response.comments.data.length;
                             var j = 0;
@@ -174,9 +174,9 @@
                             }
                         cn2++; 
                         } 
-                       /*if(typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined"){
+                       if(typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined"){
                            //console.log(response); 
-                           FB.api("/" + response.id + '?fields=from,id,message,comments.after('+ response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
+                           FB.api("/" + response.id + '?fields=from,id,message,comments.limit(250)&access_token=' + token, doSomething2);
                             
                             var l2 = response.comments.data.length;
                             var j = 0;
@@ -194,7 +194,7 @@
                                             //console.log(string2[c]);                            
                                             c++;        
                             }
-                        }*/
+                        }
                 }
                 return string2;
                 }
