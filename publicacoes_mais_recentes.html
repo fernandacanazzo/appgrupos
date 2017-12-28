@@ -168,7 +168,7 @@
                                                     + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + response.id + "\">Ver publicação</a>"
                                                     + "_;_descricao_;_" + response.message + "_;_desccom_;_" + response.comments.data[j].message
                                                     + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "/?comment_id=" + response.comments.data[j].id + "\">Ver comentário</a>";                         
-                                            //console.log(string2[c]);                            
+                                            console.log(string2[c]);                            
                                             c++;
                                             
                             }
@@ -191,7 +191,7 @@
                                                     + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + response.id + "\">Ver publicação</a>"
                                                     + "_;_descricao_;_" + response.message + "_;_desccom_;_" + response.comments.data[j].message
                                                     + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "/?comment_id=" + response.comments.data[j].id + "\">Ver comentário</a>";                         
-                                            //console.log(string2[c]);                            
+                                            console.log(string2[c]);                            
                                             c++;        
                             }
                         }
@@ -213,7 +213,7 @@
                         for (var b = 0; b < posts2.length; b++){
                         string_total2 += getInfo2(token, b);
                         }
-                        console.log(string_total2);
+                        //console.log(string_total2);
                         res = string_total.concat(string_total2);
                         var str = [];
                         var str2 = "";
