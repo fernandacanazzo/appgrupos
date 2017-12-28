@@ -154,7 +154,7 @@
                         if (cn2 < 1) {
                            // if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
                             //console.log("/" + response.id + '?fields=from,id,message,comments.after('+ response.comments.paging.cursors.after + ')&access_token=' + token);               
-                            FB.api("/" + response.id + '?fields=from,id,message,comments.limit(25).after('+ response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
+                            FB.api("/" + response.id + '?fields=from,id,message,comments.limit(250).after('+ response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
                             
                             var l2 = response.comments.data.length;
                             var j = 0;
