@@ -43,8 +43,8 @@
             var posts2 = [];
             var descricao = [];
             var n_autor = [];
-            
-            
+
+
 
             var hide = "sim";
             setTimeout(function () {
@@ -65,7 +65,7 @@
                 var a = 0;
                 var b = 0;
                 var c = 0;
-                
+
                 FB.init({
                     appId: '149129182478024',
                     autoLogAppEvents: true,
@@ -120,12 +120,35 @@
                                         }
                                     }
                                     else {
-                                        posts2[a] = id_post[1];
-                                        
-                                        //console.log(posts2[a]);
-                                        a++;
-                                        
-                                        
+                                        FB.api(
+                                                "/" + response.data[i].id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
+
+                                        function doSomething2(response) {
+                                            if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined") {
+                                                //console.log(response); 
+
+                                                FB.api("/" + response.id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
+
+                                                var l2 = response.comments.data.length;
+                                                var j = 0;
+                                                for (j; j < l2; j++) {
+                                                    var data_hora = response.comments.data[j].created_time.split('T', 2);
+                                                    var data = data_hora[0].split('-', 3);
+                                                    var hora = data_hora[1].split(':', 3);
+                                                    var id_com = response.id.split('_', 2);
+
+                                                    string2[c] = data[2] + data[1] + data[0] + hora[0] + hora[1] + hora[2] + "id_;_" + id_com[1] + "_;_autor_;_" + response.from.name
+                                                            + "_;_comentario_;_" + response.comments.data[j].from.name + "_;_"
+                                                            + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + response.id + "\">Ver publicação</a>"
+                                                            + "_;_descricao_;_" + response.message + "_;_desccom_;_" + response.comments.data[j].message
+                                                            + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "/?comment_id=" + response.comments.data[j].id + "\">Ver comentário</a>";
+                                                    
+                                                    c++;
+                                                }
+                                                cn2++;
+                                            }
+                                        }
+
                                     }
                                     hide = "nao";
 
@@ -136,66 +159,65 @@
                         }
 
                     }
-                    localStorage.setItem('posts', posts2);                    
-                    return string;
+                    return string2;
                 }
-                
-                function getInfo2(token,posts3,b){
-                   var cn2 = 0;
+
+                function getInfo2(token, posts3, b) {
+                    var cn2 = 0;
                     FB.api(
                             "/" + arrayid[0] + '_' + posts3[b] + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
-                    
+
                     function doSomething2(response) {
                         /*if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
-                           // if (cn2 < 1 ) {
-                            //console.log("/" + response.id + '?fields=from,id,message,comments.after('+ response.comments.paging.cursors.after + ')&access_token=' + token);               
-                            FB.api("/" + response.id + '?fields=from,id,message,comments.limit(25).after('+ response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
-                            
+                         // if (cn2 < 1 ) {
+                         //console.log("/" + response.id + '?fields=from,id,message,comments.after('+ response.comments.paging.cursors.after + ')&access_token=' + token);               
+                         FB.api("/" + response.id + '?fields=from,id,message,comments.limit(25).after('+ response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
+                         
+                         var l2 = response.comments.data.length;
+                         var j = 0;
+                         for (j; j < l2; j++) {
+                         var data_hora = response.comments.data[j].created_time.split('T', 2);
+                         var data = data_hora[0].split('-', 3);
+                         var hora = data_hora[1].split(':', 3);
+                         var id_com = response.id.split('_',2);
+                         
+                         string2[c] = data[2] + data[1] + data[0] + hora[0] + hora[1] + hora[2] + "id_;_" + id_com[1] + "_;_autor_;_" + response.from.name
+                         + "_;_comentario_;_" + response.comments.data[j].from.name + "_;_"
+                         + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + response.id + "\">Ver publicação</a>"
+                         + "_;_descricao_;_" + response.message + "_;_desccom_;_" + response.comments.data[j].message
+                         + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "/?comment_id=" + response.comments.data[j].id + "\">Ver comentário</a>";                         
+                         //console.log(string2[c]);                            
+                         c++;
+                         
+                         }
+                         cn2++; 
+                         } */
+
+                        if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined") {
+                            //console.log(response); 
+
+                            FB.api("/" + response.id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
+
                             var l2 = response.comments.data.length;
                             var j = 0;
                             for (j; j < l2; j++) {
-                                 var data_hora = response.comments.data[j].created_time.split('T', 2);
-                                            var data = data_hora[0].split('-', 3);
-                                            var hora = data_hora[1].split(':', 3);
-                                            var id_com = response.id.split('_',2);
-                                            
-                                            string2[c] = data[2] + data[1] + data[0] + hora[0] + hora[1] + hora[2] + "id_;_" + id_com[1] + "_;_autor_;_" + response.from.name
-                                                    + "_;_comentario_;_" + response.comments.data[j].from.name + "_;_"
-                                                    + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + response.id + "\">Ver publicação</a>"
-                                                    + "_;_descricao_;_" + response.message + "_;_desccom_;_" + response.comments.data[j].message
-                                                    + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "/?comment_id=" + response.comments.data[j].id + "\">Ver comentário</a>";                         
-                                            //console.log(string2[c]);                            
-                                            c++;
-                                            
-                            }
-                        cn2++; 
-                        } */
-        
-                       if(cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined"){
-                           //console.log(response); 
-                           
-                           FB.api("/" + response.id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
-                            
-                            var l2 = response.comments.data.length;
-                            var j = 0;
-                            for (j; j < l2; j++) {
-                                 var data_hora = response.comments.data[j].created_time.split('T', 2);
-                                            var data = data_hora[0].split('-', 3);
-                                            var hora = data_hora[1].split(':', 3);
-                                            var id_com = response.id.split('_',2);
-                                            
-                                            string2[c] = data[2] + data[1] + data[0] + hora[0] + hora[1] + hora[2] + "id_;_" + id_com[1] + "_;_autor_;_" + response.from.name
-                                                    + "_;_comentario_;_" + response.comments.data[j].from.name + "_;_"
-                                                    + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + response.id + "\">Ver publicação</a>"
-                                                    + "_;_descricao_;_" + response.message + "_;_desccom_;_" + response.comments.data[j].message
-                                                    + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "/?comment_id=" + response.comments.data[j].id + "\">Ver comentário</a>";                         
-                                            console.log(string2[c]);                            
-                                            c++;        
+                                var data_hora = response.comments.data[j].created_time.split('T', 2);
+                                var data = data_hora[0].split('-', 3);
+                                var hora = data_hora[1].split(':', 3);
+                                var id_com = response.id.split('_', 2);
+
+                                string2[c] = data[2] + data[1] + data[0] + hora[0] + hora[1] + hora[2] + "id_;_" + id_com[1] + "_;_autor_;_" + response.from.name
+                                        + "_;_comentario_;_" + response.comments.data[j].from.name + "_;_"
+                                        + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + response.id + "\">Ver publicação</a>"
+                                        + "_;_descricao_;_" + response.message + "_;_desccom_;_" + response.comments.data[j].message
+                                        + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "/?comment_id=" + response.comments.data[j].id + "\">Ver comentário</a>";
+                                console.log(string2[c]);
+                                c++;
                             }
                             cn2++;
                         }
-                }
-                return string2;
+                    }
+                    return string2;
                 }
 
 
@@ -210,10 +232,10 @@
                         var res = [];
                         string_total = getInfo1(token);
                         //for (b; b < posts2.length; b++){
-                        string_total2 = getInfo2(token, localStorage.getItem('posts'), b);
-                      //}
-                        
-                        console.log(string_total2);
+                        //string_total2 = getInfo2(token, localStorage.getItem('posts'), b);
+                        //}
+
+                        console.log(string_total);
                         res = string_total.concat(string_total2);
                         var str = [];
                         var str2 = "";
@@ -346,7 +368,7 @@
                         if (hide !== "sim") {
 
                             localStorage.setItem("str_pronta", str2);
-                           // console.log(str2);
+                            // console.log(str2);
                         }
                     } else {
                         var nada = "";
