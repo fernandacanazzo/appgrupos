@@ -149,13 +149,13 @@
                    var cn2 = 0; 
                    console.log(b);
                     FB.api(
-                            "/" + arrayid[0] + '_' + posts2[b] + '?fields=from,id,message,comments.limit(250)&access_token=' + token, doSomething2);
+                            "/" + arrayid[0] + '_' + posts2[b] + '?fields=from,id,message,comments.limit(25)&access_token=' + token, doSomething2);
                     
                     function doSomething2(response) {
                         if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
                            // if (cn2 < 1 ) {
                             //console.log("/" + response.id + '?fields=from,id,message,comments.after('+ response.comments.paging.cursors.after + ')&access_token=' + token);               
-                            FB.api("/" + response.id + '?fields=from,id,message,comments.limit(250).after('+ response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
+                            FB.api("/" + response.id + '?fields=from,id,message,comments.limit(25).after('+ response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
                             
                             var l2 = response.comments.data.length;
                             var j = 0;
@@ -178,7 +178,7 @@
                         } 
                        if(typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined"){
                            //console.log(response); 
-                           FB.api("/" + response.id + '?fields=from,id,message,comments.limit(250)&access_token=' + token, doSomething2);
+                           FB.api("/" + response.id + '?fields=from,id,message,comments.limit(25)&access_token=' + token, doSomething2);
                             
                             var l2 = response.comments.data.length;
                             var j = 0;
