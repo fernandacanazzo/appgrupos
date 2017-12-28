@@ -147,9 +147,10 @@
                 
                 function getInfo2(token, b){
                    var cn2 = 0; 
+                   console.log(b);
                     FB.api(
                             "/" + arrayid[0] + '_' + posts2[b] + '?fields=from,id,message,comments.limit(250)&access_token=' + token, doSomething2);
-                 
+                    
                     function doSomething2(response) {
                         if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
                            // if (cn2 < 1 ) {
