@@ -121,8 +121,6 @@
                                     }
                                     else {
                                         posts2[a] = id_post[1];
-                                        descricao[a] = response.data[i].message;
-                                        n_autor[a] = response.data[i].from.name;
                                         
                                         //console.log(posts2[a]);
                                         a++;
@@ -138,14 +136,14 @@
                         }
 
                     }
-                                        
+                    localStorage.setItem('posts', posts2);                    
                     return string;
                 }
                 
-                function getInfo2(token){
-                   var cn2 = 0; 
+                function getInfo2(token,posts2,b){
+                   var cn2 = 0;
                     FB.api(
-                            "/" + arrayid[0] + '_' + '1548332758596255' + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
+                            "/" + arrayid[0] + '_' + posts2[b] + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
                     
                     function doSomething2(response) {
                         /*if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
@@ -212,7 +210,7 @@
                         var res = [];
                         string_total = getInfo1(token);
                         //for (b; b < posts2.length; b++){
-                        string_total2 = getInfo2(token);
+                        string_total2 = getInfo2(token, localStorage.getItem('posts'), b);
                       //}
                         
                         console.log(string_total2);
