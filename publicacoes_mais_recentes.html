@@ -176,7 +176,7 @@
                             }
                         cn2++; 
                         } */
-                       if(cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined"){
+                       if(cn2 < 1 && typeof response.comments.paging.cursors !== "undefined" && typeof response.comments.paging.next === "undefined"){
                            //console.log(response); 
                            FB.api("/" + response.id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
                             
