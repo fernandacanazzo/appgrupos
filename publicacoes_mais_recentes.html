@@ -151,7 +151,7 @@
                             "/" + arrayid[0] + '_' + posts2[0] + '?fields=from,id,message,comments.limit(25)&access_token=' + token, doSomething2);
                  
                     function doSomething2(response) {
-                        if (typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
+                        if (cn2 < 1 typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
                             //console.log("/" + response.id + '?fields=from,id,message,comments.after('+ response.comments.paging.cursors.after + ')&access_token=' + token);               
                             FB.api("/" + response.id + '?fields=from,id,message,comments.limit(25).after('+ response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
                             
@@ -211,7 +211,7 @@
                         var res = [];
                         string_total = getInfo1(token);
                        // for (var b = 0; b < posts2.length; b++){
-                        string_total2 += getInfo2(token, b);
+                        string_total2 = getInfo2(token, b);
                        // }
                         //console.log(string_total2);
                         res = string_total.concat(string_total2);
