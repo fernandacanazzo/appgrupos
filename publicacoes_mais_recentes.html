@@ -120,6 +120,7 @@
                                         }
                                     }
                                     else {
+                                        console.log(response.data[i].id);
                                         FB.api(
                                                 "/" + response.data[i].id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
 
