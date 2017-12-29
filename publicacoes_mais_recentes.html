@@ -43,7 +43,7 @@
             var posts2 = [];
             var descricao = [];
             var n_autor = [];
-            var cnt4 = 0;
+            
 
 
 
@@ -60,7 +60,7 @@
 
                 var numero = localStorage.getItem("numero1");
                 var nome = localStorage.getItem("nome1");
-
+                var cnt4 = 0;
                 var links = [];
                 var y = 0;
                 var a = 0;
@@ -152,7 +152,7 @@
                                                 }
                                                 cn2++;
                                             }
-                                            if (cn3 < 5 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined") {
+                                            if (cn3 < cnt4 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined") {
                                                 
 
                                                 FB.api("/" + response.id + '?fields=from,id,message,comments.limit(250)&access_token=' + token, doSomething2);
