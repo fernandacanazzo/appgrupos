@@ -60,7 +60,7 @@
                  
                 var numero = localStorage.getItem("numero1");
                 var nome = localStorage.getItem("nome1");
-                var cnt4 = 0;
+                
                 var links = [];
                 var y = 0;
                 var a = 0;
@@ -84,6 +84,7 @@
                             "/" + arrayid[0] + url + token, doSomething);
                     function doSomething(response) {
                         if (cn < 2 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
+                            var cnt4 = 0;
                             console.log(response.paging.next);
                             FB.api(response.paging.next, doSomething);
                             var l = response.data.length;
