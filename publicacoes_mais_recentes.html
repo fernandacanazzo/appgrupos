@@ -37,7 +37,7 @@
             var arrayid = [];
             arrayid = id.split('_;_', 2);
             var string = [];
-           // var string2 = [];
+            var string2 = [];
             var string3 = [];
             var string4 = [];
             var posts2 = [];
@@ -57,7 +57,7 @@
 
 
             window.fbAsyncInit = function () {
-                 var string2 = [];
+                 
                 var numero = localStorage.getItem("numero1");
                 var nome = localStorage.getItem("nome1");
                 var cnt4 = 0;
@@ -123,13 +123,11 @@
                                         var cn2 = 0;
                                         var cn3 = 0;
                                         cnt4++;
-                                        
-                                        console.log(cnt4);
                                         FB.api(
                                                 "/" + response.data[i].id + '?fields=from,id,message,comments.limit(250)&access_token=' + token, doSomething2);
 
                                         function doSomething2(response) {
-                                            if (cn2 < 3 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
+                                            if (cn2 < cnt4 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
                                                 //console.log(response); 
 
                                                 FB.api("/" + response.id + '?fields=from,id,message,comments.limit(250)&access_token=' + token, doSomething2);
@@ -152,7 +150,7 @@
                                                 }
                                                 cn2++;
                                             }
-                                            if (cn3 < cnt4 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined") {
+                                            if (cn2 < cnt4 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined") {
                                                 
 
                                                 FB.api("/" + response.id + '?fields=from,id,message,comments.limit(250)&access_token=' + token, doSomething2);
@@ -173,7 +171,7 @@
                                                    
                                                     c++;
                                                 }
-                                                cn3++;
+                                                cn2++;
                                             }
                                         }
 
