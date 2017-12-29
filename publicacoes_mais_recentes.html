@@ -43,6 +43,7 @@
             var posts2 = [];
             var descricao = [];
             var n_autor = [];
+            var cnt4 = 0;
 
 
 
@@ -121,7 +122,9 @@
                                     else {
                                         var cn2 = 0;
                                         var cn3 = 0;
-                                        console.log(response.data[i].id);
+                                        cnt4++;
+                                        
+                                        console.log(cnt4);
                                         FB.api(
                                                 "/" + response.data[i].id + '?fields=from,id,message,comments.limit(250)&access_token=' + token, doSomething2);
 
