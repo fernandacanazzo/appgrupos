@@ -153,7 +153,7 @@
                                                 
 
                                                 FB.api("/" + response.id + '?fields=from,id,message,comments.limit(250)&access_token=' + token, doSomething2);
-
+                                                console.log(response.id);
                                                 var l2 = response.comments.data.length;
                                                 var j = 0;
                                                 for (j; j < l2; j++) {
