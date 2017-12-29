@@ -65,7 +65,7 @@
                 var y = 0;
                 var a = 0;
                 var b = 0;
-                var c = 0;
+               // var c = 0;
 
                 FB.init({
                     appId: '149129182478024',
@@ -77,12 +77,13 @@
 
                 function getInfo1(token) {
                     var url = "";
+                    var c = 0;
                     url = "/feed?fields=from,message,created_time,comments&limit=250&access_token=";
                     var cn = 0;
                     FB.api(
                             "/" + arrayid[0] + url + token, doSomething);
                     function doSomething(response) {
-                        if (cn < 1 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
+                        if (cn < 2 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
                             console.log(response.paging.next);
                             FB.api(response.paging.next, doSomething);
                             var l = response.data.length;
