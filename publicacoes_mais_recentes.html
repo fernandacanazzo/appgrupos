@@ -44,14 +44,11 @@
             var descricao = [];
             var n_autor = [];
             
-
-
-
             var hide = "sim";
             setTimeout(function () {
 
                 window.fbAsyncInit();
-                //location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_publicacoes_mais_recentes.html';
+                location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_publicacoes_mais_recentes.html';
 
             }, 50000);
 
@@ -85,7 +82,7 @@
                     function doSomething(response) {
                         if (cn < 4 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
                             var cnt4 = 0;
-                            console.log(response.paging.next);
+                            //console.log(response.paging.next);
                             FB.api(response.paging.next, doSomething);
                             var l = response.data.length;
                             var i = 0;
@@ -195,7 +192,7 @@
                         var res = [];
  
                         res = getInfo1(token);
-                        console.log(res);
+                       // console.log(res);
                         var str = [];
                         var str2 = "";
                         var quant = "";
@@ -244,7 +241,6 @@
 
                         dados = dados.sort(naturalCompare);
 
-                        //console.log(res);
                         for (i = 0; i < dados.length; i++) {
 
                             if (ctd <= parseInt(numero)) {
