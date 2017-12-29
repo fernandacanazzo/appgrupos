@@ -187,7 +187,7 @@
                         }
 
                     }
-                    return string2;
+                    return string.concat(string2);
                 }
 
                 /* function getInfo2(token, posts3, b) {
@@ -255,16 +255,11 @@
                     if (response.status === 'connected') {
                         accessToken = response.authResponse.accessToken;
                         var token = accessToken.toString();
-                        var string_total = [];
-                        var string_total2 = [];
+                        //var string_total = [];
                         var res = [];
-                        string_total = getInfo1(token);
-                        //for (b; b < posts2.length; b++){
-                        //string_total2 = getInfo2(token, localStorage.getItem('posts'), b);
-                        //}
-
-                        console.log(string_total);
-                        res = string_total.concat(string_total2);
+ 
+                        res = getInfo1(token);
+                        console.log(res);
                         var str = [];
                         var str2 = "";
                         var quant = "";
