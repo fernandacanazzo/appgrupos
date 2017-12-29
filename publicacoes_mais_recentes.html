@@ -82,7 +82,7 @@
                     FB.api(
                             "/" + arrayid[0] + url + token, doSomething);
                     function doSomething(response) {
-                        if (cn < 2 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
+                        if (cn < 1 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
                             console.log(response.paging.next);
                             FB.api(response.paging.next, doSomething);
                             var l = response.data.length;
