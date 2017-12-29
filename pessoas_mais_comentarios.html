@@ -64,9 +64,10 @@
                             var i = 0;
 
                             for (i; i < l; i++) {
-                                if (typeof response.data[i].comments.paging.next === "undefined") {
+                                
                                     var j = 0;
                                     if (response.data[i].comments) {
+                                        if (typeof response.data[i].comments.paging.next === "undefined") {
                                         var id_post = response.data[i].id.split('_', 2);
 
                                         for (j; j < response.data[i].comments.data.length; j++) {
