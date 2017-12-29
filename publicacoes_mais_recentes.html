@@ -123,13 +123,13 @@
                                         var cn3 = 0;
                                         console.log(response.data[i].id);
                                         FB.api(
-                                                "/" + response.data[i].id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
+                                                "/" + response.data[i].id + '?fields=from,id,message,comments.limit(25)&access_token=' + token, doSomething2);
 
                                         function doSomething2(response) {
                                             if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined") {
                                                 //console.log(response); 
 
-                                                FB.api("/" + response.id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
+                                                FB.api("/" + response.id + '?fields=from,id,message,comments.limit(25)&access_token=' + token, doSomething2);
 
                                                 var l2 = response.comments.data.length;
                                                 var j = 0;
@@ -152,7 +152,7 @@
                                             if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined") {
                                                 
 
-                                                FB.api("/" + response.id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
+                                                FB.api("/" + response.id + '?fields=from,id,message,comments.limit(25)&access_token=' + token, doSomething2);
 
                                                 var l2 = response.comments.data.length;
                                                 var j = 0;
