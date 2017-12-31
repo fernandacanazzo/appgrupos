@@ -102,7 +102,7 @@
                                 if (response.data[i].comments) {
                                     var nome_autor = response.data[i].from.name;
                                     var id_post = response.data[i].id.split('_', 2);
-                                    var data_hora_post = response.data[i].created_time.split('T', 2);
+                                    var data_hora_post = response.data[i].updated_time.split('T', 2);
                                     var data_post = data_hora_post[0].split('-', 3);
                                     if (response.data[i].message) {
                                         comment = response.data[i].message;
