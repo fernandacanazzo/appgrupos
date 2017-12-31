@@ -86,7 +86,7 @@
                     }
                     var data_ini = ano_ini + "-" + mes_ini + "-" + dia_ini;
                     var data_fim = ano_fim + "-" + mes_fim + "-" + dia_fim;
-                     url = "/feed?fields=from,message,updated_time,comments&limit=50&since=" + data_ini + "&until=" + data_fim + "&access_token=";
+                     url = "/feed?fields=from,message,updated_time,comments&limit=250&since=" + data_ini + "&until=" + data_fim + "&access_token=";
                     var cn = 0;
                     FB.api(
                             "/" + arrayid[0] + url + token, doSomething);
