@@ -229,9 +229,9 @@
 
 
                             <div class="col-md-5">
-                                <div class="panel panel-primary" id="panel4" style="margin-top:-15px;margin-left:-25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:257px; width: 100%; background-color: #fbfbfb">
-                                    <div class="panel-body text-center" id="div4" style="height:212px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-star" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Quantidade de publicações por dia e suas reações<span style="font-size: small;" title="Publicação mais recente é aquela que recebeu algum comentário por último" class=" text-primary glyphicon glyphicon-info-sign"></span></a> 
+                                <div class="panel panel-primary" id="panel4" style="margin-top:-15px;margin-left:-25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:302px; width: 100%; background-color: #fbfbfb">
+                                    <div class="panel-body text-center" id="div4" style="height:257px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
+                                        <span class="glyphicon glyphicon-star" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Quantidade de publicações por dia e suas reações <span style="font-size: small;" title="Publicação mais recente é aquela que recebeu algum comentário por último" class=" text-primary glyphicon glyphicon-info-sign"></span></a> 
                                         <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%" id="form4">
                                             <input type="text" id="numero4" class="form-control text-center" placeholder="Número de publicações" aria-describedby="basic-addon55">
                                             <span class="input-group-addon" title="Máximo 1000 publicações" id="basic-addon44"><span class=" glyphicon glyphicon-question-sign" style="font-size:small"></span>
@@ -528,17 +528,32 @@
             }
 
             function clickar4() {
-                if (document.getElementById("col4").style.display === "none") {
-                    document.getElementById("col4").style.display = "inline-block";
-                    document.getElementById("ler4").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
-                    document.getElementById("panel4").style.height = "306px";
-                    document.getElementById("div44").style.height = "200px";
-                    document.getElementById("p4").style.display = "none";
+                if (document.getElementById('basic-addon44').style.display !== "none") {
+                    if (document.getElementById("col4").style.display === "none") {
+                        document.getElementById("col4").style.display = "inline-block";
+                        document.getElementById("ler4").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("panel4").style.height = "336px";
+                        document.getElementById("div44").style.height = "123px";
+                        document.getElementById("p4").style.display = "none";
+                    } else {
+                        document.getElementById("ler4").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("col4").style.display = "none";
+                        document.getElementById("panel4").style.height = "302px";
+                        document.getElementById("div44").style.height = "44px";
+                    }
                 } else {
-                    document.getElementById("ler4").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
-                    document.getElementById("col4").style.display = "none";
-                    document.getElementById("panel4").style.height = "157px";
-                    document.getElementById("div44").style.height = "44px";
+                    if (document.getElementById("col4").style.display === "none") {
+                        document.getElementById("col4").style.display = "inline-block";
+                        document.getElementById("ler4").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("panel4").style.height = "336px";
+                        document.getElementById("div44").style.height = "123px";
+                        document.getElementById("p4").style.display = "none";
+                    } else {
+                        document.getElementById("ler4").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("col4").style.display = "none";
+                        document.getElementById("panel4").style.height = "302px";
+                        document.getElementById("div44").style.height = "44px";
+                    }
                 }
             }
 
