@@ -7,6 +7,8 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/wordcloud.js"></script>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/shop-homepage.css" rel="stylesheet">
         <script src="https://d3js.org/d3.v3.min.js"></script>
@@ -28,6 +30,11 @@
             }
             .bld {
                 font-weight: bold;
+            }
+            #cloud_c2 {
+                min-width: 310px;
+                max-width: 800px;
+                margin: 0 auto
             }
         </style>
 
@@ -83,7 +90,7 @@
             <div class="row">
                 <div class="col-md-10 col-lg-offset-1">
                     <div class= "panel text-center" id="cloud_01" style="display:none; height: 100%; background-color: #fdfdfd">
-                        <div class="panel-heading" style="background-color:#333333">
+                        <div class="panel-heading" style="background-color:#333333; display:none">
                             <div class="panel-title" id="subtitulo" style="font-size:large;color:white"></div>
                         </div>
 
@@ -92,6 +99,7 @@
 
 
                             <div id ="cloud_c"></div>
+                             <div id ="cloud_c2"></div>
                         </div>
                     </div>
                 </div>
@@ -107,6 +115,7 @@
             var datas2 = localStorage.getItem("datas");
             datas = datas2.split(';', 6);
             var teste2 = [];
+            var teste3 = [];
             var mult = 1.0;
             if (parseInt(quant) !== 1){
             document.getElementById('titulo_res').innerHTML = quant + " publicações mais recentes" + " entre " +
@@ -130,6 +139,47 @@
             document.getElementById('titulo_aviso').innerHTML = "Não foram encontradas publicações comentadas por <b>" + nome + '</b>';
         
             }
+            
+            var lines = frequency_list.split(/[,\.]+/g),
+                    data = Highcharts.reduce(lines, function (arr, word) {
+                        var obj = Highcharts.find(arr, function (obj) {
+                            return obj.name === word;
+                        });
+                        if (obj) {
+                            obj.weight += 1;
+                        } else {
+                            obj = {
+                                name: word,
+                                weight: 1
+                            };
+                            arr.push(obj);
+                        }
+                        return arr;
+                    }, []);
+
+            data_sorted = data.sort(function (a, b) {
+                return b.weight - a.weight;
+            });
+            if (Object.keys(data_sorted).length < 50) {
+                for (var l = 0; l < Object.keys(data_sorted).length; l++) {
+                    teste3[l] = data_sorted[l];
+
+                }
+            } else {
+                for (var l = 0; l < 50; l++) {
+                    teste3[l] = data_sorted[l];
+                }
+            }
+
+            Highcharts.chart('cloud_c2', {
+                series: [{
+                        type: 'wordcloud',
+                        data: teste3,
+                        name: 'Quantidade'
+                    }],
+                title: {
+                    text: 'Palavras mais usadas'}
+            });
                 
             json_autores = JSON.parse(frequency_list);
             

@@ -296,12 +296,14 @@
                             return n !== "" && n !== "a" && n !== "e" && n !== "o";
                         });
 
-
+                        var text = '';
                         for (var n1 = 0; n1 < palavras.length; n1++) {
                             palavras[n1] = palavras[n1].replace(/\b[a-z]\b/gm, '');
                             palavras[n1] = palavras[n1].replace(/\b[a-z][^e]\b/gm, '');
                             palavras[n1] = palavras[n1].replace(/\b(\w)\1+\b/gm, '');
-
+                            if(palavras[n1] !== ""){
+                            text += palavras[n1] + ',';
+                        }
                             if (p_com.indexOf(palavras[n1].toLowerCase()) === -1 && palavras[n1] !== "") {
                                 p_com[cont2] = palavras[n1].toLowerCase();
 
@@ -323,7 +325,7 @@
                         freq_autores = freq_autores.replace(/,$/, '');
                         freq_autores += "]";
 
-                        localStorage.setItem("freq_autores", freq_autores);
+                        localStorage.setItem("freq_autores", text);
 
 
                         if (hide !== "sim") {
