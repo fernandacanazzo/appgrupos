@@ -7,10 +7,13 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/wordcloud.js"></script>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/shop-homepage.css" rel="stylesheet">
         <script src="https://d3js.org/d3.v3.min.js"></script>
         <script src="d3.layout.cloud.js"></script>
+
 
         <title>App</title>
         <style>
@@ -28,6 +31,12 @@
             }
             .bld {
                 font-weight: bold;
+            }
+
+            #cloud_c2 {
+                min-width: 310px;
+                max-width: 800px;
+                margin: 0 auto
             }
         </style>
 
@@ -91,7 +100,8 @@
 
 
 
-                            <div id ="cloud_c"></div>
+                            <div id ="cloud_c" style="display:none"></div>
+                            <div id ="cloud_c2" ></div>
                         </div>
                     </div>
                 </div>
@@ -130,13 +140,41 @@
                 document.getElementById('titulo_aviso').innerHTML = "Não foram encontradas publicações com a palavra <b>" + palavra + '</b>';
 
             }
+
+            var lines = frequency_list.split(/[,\. ]+/g),
+                    data = Highcharts.reduce(lines, function (arr, word) {
+                        var obj = Highcharts.find(arr, function (obj) {
+                            return obj.name === word;
+                        });
+                        if (obj) {
+                            obj.weight += 1;
+                        } else {
+                            obj = {
+                                name: word,
+                                weight: 1
+                            };
+                            arr.push(obj);
+                        }
+                        return arr;
+                    }, []);
+
+            Highcharts.chart('cloud_c2', {
+                series: [{
+                        type: 'wordcloud',
+                        data: data,
+                        name: 'Occurrences'
+                    }],
+                title: {
+                    text: 'Wordcloud of Lorem Ipsum'
+                }
+            });
             json_autores = JSON.parse(frequency_list);
 
             var cont = 6.0;
             var cont2 = 1.0;
             var m1 = 0;
 
-            
+
             var json_autores_sorted = {};
             json_autores_sorted = json_autores.sort(function (a, b) {
                 return b.size - a.size;
