@@ -116,6 +116,8 @@
             var str_pronta = localStorage.getItem("str_pronta");
             var frequency_list = localStorage.getItem("freq_autores2");
             var teste2 = [];
+            var teste3 = [];
+
             var mult = 1.0;
 
             if (parseInt(quant) !== 0) {
@@ -158,15 +160,26 @@
                         return arr;
                     }, []);
 
+            data_sorted = data.sort(function (a, b) {
+                return b.weight - a.weight;
+            });
+            if (Object.keys(data_sorted).length < 50) {
+                for (var l = 0; l < Object.keys(data_sorted).length; l++) {
+                    teste3[l] = data_sorted[l];
+
+                }
+            } else {
+                for (var l = 0; l < 50; l++) {
+                    teste3[l] = data_sorted[l];
+                }
+            }
+
             Highcharts.chart('cloud_c2', {
                 series: [{
                         type: 'wordcloud',
-                        data: data,
+                        data: teste3,
                         name: 'Occurrences'
                     }],
-                title: {
-                    text: 'Wordcloud of Lorem Ipsum'
-                }
             });
             json_autores = JSON.parse(frequency_list);
 
