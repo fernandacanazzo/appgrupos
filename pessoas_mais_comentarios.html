@@ -163,7 +163,8 @@
                         }
 
                         for (var n1 = 0; n1 < autores.length; n1++) {
-                            text += autores[n1] + ',';
+                            var split_str = autores[n1].split('_;_', 2);
+                            text += split_str[0] + ',';
                             if (p_com.indexOf(autores[n1]) === -1) {
                                 p_com[cont2] = autores[n1];
                                 var regExp = new RegExp(autores[n1], "g");

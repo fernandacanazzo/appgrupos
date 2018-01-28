@@ -86,7 +86,7 @@
             var frequency_list = localStorage.getItem("freq_comentario");
             //document.getElementById('resp2').innerHTML = frequency_list;
 
-            var lines = frequency_list.split(/[,\. ]+/g),
+            var lines = frequency_list.split(/[,\.]+/g),
                     data = Highcharts.reduce(lines, function (arr, word) {
                         var obj = Highcharts.find(arr, function (obj) {
                             return obj.name === word;
