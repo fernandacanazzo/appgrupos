@@ -188,7 +188,9 @@
                             palavras[n1] = palavras[n1].replace(/\b(\w)\1+\b/gm, '');
                             var rgx = new RegExp("\\b" + palavra.toLowerCase() + "\\b", "g");
                             palavras[n1] = palavras[n1].replace(rgx, '');
+                            if(palavras[n1] !== ""){
                             text += palavras[n1] + ',';
+                        }
                             if (p_com.indexOf(palavras[n1].toLowerCase()) === -1 && palavras[n1] !== "") {
                                 p_com[cont2] = palavras[n1].toLowerCase();
                                 var regExp = new RegExp("\\b" + palavras[n1].toLowerCase() + "\\b", "g");

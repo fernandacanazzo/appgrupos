@@ -17,7 +17,7 @@
         <title>App</title>
         <style>
             .fixed-panel {
-                
+
                 overflow-y: auto;
             }
 
@@ -85,7 +85,7 @@
                             <h3 style="margin-left: 10px; " class="text-primary" id="titulo_res"></h3>
 
                             <table class="table table-striped" style="margin-top:20px;" data-toggle="tooltip" id="texto"><tbody id="resp"></tbody></table>  
-                            
+
                         </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                         document.getElementById('titulo_res').innerHTML = "Publicação* mais recente comentada por " + nome + '<p style="font-size: small;margin-top:6px">*Número de publicações encontradas menor que o limite especificado</p>';
                     }
                 }
-                
+
 
                 document.getElementById('resp').innerHTML = str_pronta;
             } else {
@@ -182,8 +182,7 @@
                         name: 'Quantidade'
                     }],
                 title: {
-                    text: 'As ' + Object.keys(teste3).length + ' pessoas que mais comentaram'
-                }
+                    text: 'As ' + Object.keys(teste3).length + ' palavras mais usadas'}
             });
             json_autores = JSON.parse(frequency_list);
 
@@ -218,10 +217,10 @@
                     mult = cont;
 
                 }
-            if ((parseInt(teste2[Object.keys(teste2)[0]].size) === 1 )){
+                if ((parseInt(teste2[Object.keys(teste2)[0]].size) === 1)) {
                     mult = 20;
-            }
-            if ((parseInt(teste2[Object.keys(teste2)[0]].size) > 1) && (parseInt(teste2[Object.keys(teste2)[0]].size) <= 5))
+                }
+                if ((parseInt(teste2[Object.keys(teste2)[0]].size) > 1) && (parseInt(teste2[Object.keys(teste2)[0]].size) <= 5))
                     mult = 10;
             }
             for (var k = 100; k < 1001; k = k + 50) {
@@ -246,28 +245,28 @@
             }
             //console.log(json_autores_sorted);
 
-            if(contador>0 && contador<10){
-            var width = 700;
-            var height = 300;
-        }
-        if(contador>=10 && contador<20){
-            var width = 900;
-            var height = 400;
-        }
-        if(contador>=20 && contador<30){
-            var width = 1100;
-            var height = 500;
-        }
-        if(contador>=40 && contador<50){
-            var width = 1250;
-            var height = 600;
-        }
-        if(contador===50){
-            var width = 1400;
-            var height = 700;
-        }
-            
-            
+            if (contador > 0 && contador < 10) {
+                var width = 700;
+                var height = 300;
+            }
+            if (contador >= 10 && contador < 20) {
+                var width = 900;
+                var height = 400;
+            }
+            if (contador >= 20 && contador < 30) {
+                var width = 1100;
+                var height = 500;
+            }
+            if (contador >= 40 && contador < 50) {
+                var width = 1250;
+                var height = 600;
+            }
+            if (contador === 50) {
+                var width = 1400;
+                var height = 700;
+            }
+
+
 
 
             var color = d3.scale.linear()
