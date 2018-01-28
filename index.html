@@ -150,6 +150,7 @@
                     } else {
                         document.getElementById('face').style.display = "block";
                         document.getElementById('logar').style.display = "block";
+                        document.getElementById('aviso_login').style.display = "block";
                         document.getElementById('status').innerHTML = '<p class="text-danger"><span class="glyphicon glyphicon-remove-sign" style="margin-right: 6px;"></span>Você não está conectado(a)</p>';
                     }
                     //return token;
@@ -231,6 +232,7 @@
                         <div class="panel-body">
                             <h4 id="status"></h4>
                             <div class="text-primary" id="logar" style="display:none">Para utilizar a aplicação, é necessário se conectar com o Facebook</div>
+                            <div class="text-primary" id="aviso_login" style="display: none; margin-top:5px;font-size:small"><b>Após o login, favor atualizar esta página para verificar se ele foi realizado com sucesso</b></div>
                             <div class="fb-login-button" id="face" data-max-rows="1" data-size="large" style="display:none; margin-top: 8px" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
                         </div>
                     </div>
