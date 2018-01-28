@@ -92,7 +92,7 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class= "panel text-center" id="cloud_01" style="display:none; height: 100%; background-color: #fdfdfd">
-                        <div class="panel-heading" style="background-color:#333333">
+                        <div class="panel-heading" style=" display: none; background-color:#333333">
                             <div class="panel-title" id="subtitulo" style="font-size:large;color:white"></div>
                         </div>
 
@@ -178,8 +178,11 @@
                 series: [{
                         type: 'wordcloud',
                         data: teste3,
-                        name: 'Occurrences'
+                        name: 'Quantidade'
                     }],
+                title: {
+        text: 'As ' + Object.keys(data_sorted).length + 'palavras mais usadas'
+    }
             });
             json_autores = JSON.parse(frequency_list);
 
@@ -203,7 +206,7 @@
                 }
             }
             var contador = Object.keys(teste2).length;
-            document.getElementById('subtitulo').innerHTML = 'As ' + Object.keys(teste2).length + ' palavras mais usadas';
+            //document.getElementById('subtitulo').innerHTML = 'As ' + Object.keys(teste2).length + ' palavras mais usadas';
 
             console.log(json_autores_sorted);
             for (var j = 0; j < 101; j = j + 20) {
