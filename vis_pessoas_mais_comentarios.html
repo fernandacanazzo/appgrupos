@@ -7,6 +7,8 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/wordcloud.js"></script>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/shop-homepage.css" rel="stylesheet">
         <script src="https://d3js.org/d3.v3.min.js"></script>
@@ -15,7 +17,7 @@
         <title>App</title>
         <style>
             .fixed-panel {
-                
+
                 overflow-y: auto;
             }
 
@@ -28,6 +30,11 @@
             }
             .bld {
                 font-weight: bold;
+            }
+            #cloud_c2 {
+                min-width: 310px;
+                max-width: 800px;
+                margin: 0 auto
             }
         </style>
 
@@ -49,11 +56,11 @@
                 <div class="col-md-1">                          
                     <button class="btn btn-xs btn-default text-left" id="voltar" style="display:block; position: fixed; margin-top:10px;font-size:x-large;border-bottom-style:none; height:42px; width:42px;border-radius: 50%;" type="button" onclick="location.href = 'https://fernandacanazzo.github.io/appgrupos/menu.html';"><span class="glyphicon glyphicon-arrow-left" style="color:#333333"></span></button>
                 </div></div>
-            
+
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class= "panel text-center" id="cloud_01" style="max-height: 550px;  overflow-y: auto; background-color: #fdfdfd">
-                        <div class="panel-heading fixed-panel" style="background-color:#333333">
+                        <div class="panel-heading fixed-panel" style="background-color:#333333; display:none">
                             <div class="panel-title" id="subtitulo" style="font-size:large;color:white"></div>
                         </div>
 
@@ -61,7 +68,8 @@
 
 
 
-                            <div id ="cloud_c"></div>
+                            <div id ="cloud_c" style="display:none"></div>
+                            <div id ="cloud_c2" ></div>
                         </div>
                     </div>
                 </div>
@@ -72,11 +80,53 @@
         <script>
             //var numero = localStorage.getItem("numero");
             var teste2 = [];
+            var teste3 = [];
             var mult = 1.0;
 
             var frequency_list = localStorage.getItem("freq_comentario");
-            console.log(frequency_list);
             //document.getElementById('resp2').innerHTML = frequency_list;
+
+            var lines = frequency_list.split(/[,\. ]+/g),
+                    data = Highcharts.reduce(lines, function (arr, word) {
+                        var obj = Highcharts.find(arr, function (obj) {
+                            return obj.name === word;
+                        });
+                        if (obj) {
+                            obj.weight += 1;
+                        } else {
+                            obj = {
+                                name: word,
+                                weight: 1
+                            };
+                            arr.push(obj);
+                        }
+                        return arr;
+                    }, []);
+
+            data_sorted = data.sort(function (a, b) {
+                return b.weight - a.weight;
+            });
+            if (Object.keys(data_sorted).length < 50) {
+                for (var l = 0; l < Object.keys(data_sorted).length; l++) {
+                    teste3[l] = data_sorted[l];
+
+                }
+            } else {
+                for (var l = 0; l < 50; l++) {
+                    teste3[l] = data_sorted[l];
+                }
+            }
+
+            Highcharts.chart('cloud_c2', {
+                series: [{
+                        type: 'wordcloud',
+                        data: teste3,
+                        name: 'Quantidade'
+                    }],
+                title: {
+                    text: 'As ' + Object.keys(teste3).length + ' pessoas que mais comentaram'
+                }
+            });
             json_autores = JSON.parse(frequency_list);
 
             var cont = 6.0;
@@ -110,17 +160,17 @@
                     mult = cont;
 
                 }
-            if ((parseInt(teste2[Object.keys(teste2)[0]].size) === 1 )){
+                if ((parseInt(teste2[Object.keys(teste2)[0]].size) === 1)) {
                     mult = 20;
-            }
-            if ((parseInt(teste2[Object.keys(teste2)[0]].size) > 1) && (parseInt(teste2[Object.keys(teste2)[0]].size) <= 5))
+                }
+                if ((parseInt(teste2[Object.keys(teste2)[0]].size) > 1) && (parseInt(teste2[Object.keys(teste2)[0]].size) <= 5))
                     mult = 10;
-                
+
                 if ((parseInt(teste2[Object.keys(teste2)[0]].size) > 5) && (parseInt(teste2[Object.keys(teste2)[0]].size) <= 10))
                     mult = 5;
-            
+
             }
-            
+
             for (var k = 100; k < 1001; k = k + 50) {
 
                 if ((parseInt(teste2[Object.keys(teste2)[0]].size) > k) && (parseInt(teste2[Object.keys(teste2)[0]].size) <= k + 50)) {
@@ -143,14 +193,14 @@
             }
             console.log(cont);
 
-            if(contador>0 && contador<10){
-            var width = 1200;
-            var height = 400;
-        }
-        if(contador===10){
-            var width = 1500;
-            var height = 500;
-        }
+            if (contador > 0 && contador < 10) {
+                var width = 1200;
+                var height = 400;
+            }
+            if (contador === 10) {
+                var width = 1500;
+                var height = 500;
+            }
 
 
             var color = d3.scale.linear()
@@ -200,7 +250,7 @@
                             d3.select(this).style("fill", color(i));
                         })
                         .on("click", function (d) {
-                        window.open(d.link, '_blank');
+                            window.open(d.link, '_blank');
                         })
                         .append("title")
                         .text(function (d) {

@@ -144,6 +144,7 @@
                         var ctd = 1;
                         var descricao = "";
                         var p_com = [];
+                        var text = '';
 
                         var freq_comentario = "[";
                         for (i = 0; i < res.length; i++) {
@@ -162,6 +163,7 @@
                         }
 
                         for (var n1 = 0; n1 < autores.length; n1++) {
+                            text += autores[n1] + ',';
                             if (p_com.indexOf(autores[n1]) === -1) {
                                 p_com[cont2] = autores[n1];
                                 var regExp = new RegExp(autores[n1], "g");
@@ -184,7 +186,7 @@
                         freq_comentario = freq_comentario.replace(/,$/, '');
                         freq_comentario += "]";
                         //console.log(freq_comentario);
-                        localStorage.setItem("freq_comentario", freq_comentario);
+                        localStorage.setItem("freq_comentario", text);
 
                     } else {
                         var nada = "";
