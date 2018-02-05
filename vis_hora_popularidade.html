@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/wordcloud.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/shop-homepage.css" rel="stylesheet">
+        <script src="https://d3js.org/d3.v3.min.js"></script>
+        <title>App</title>
+        <style>.fixed-panel {
+
+                overflow-y: auto;
+            }
+            .bar{
+                fill: #03396c;
+                shape-rendering: crispEdges;
+
+
+
+            }
+
+            .axis path,
+            .axis line {
+                fill: none;
+                stroke: #000;
+                shape-rendering: crispEdges;
+            }
+
+            .x.axis path {
+                display: none;
+            }
+
+        </style>
+
+    </head>
+    <body style="background-color: #f7f7f7">
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" style="margin-top: 4px;"><b>Aplicação para grupos</b></a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a style="margin-top: 4px;" href="https://fernandacanazzo.github.io/appgrupos/index.html"><span class="glyphicon glyphicon-search " style=" font-size:small;margin-right: 6px;"></span>Pesquisar grupo</a></li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1">                          
+                    <button class="btn btn-xs btn-default text-left"  style="position: fixed; margin-top:10px;font-size:x-large;border-bottom-style:none; height:42px; width:42px;border-radius: 50%;" type="button" onclick="location.href = 'https://fernandacanazzo.github.io/appgrupos/menu.html';"><span class="glyphicon glyphicon-arrow-left" style="color:#333333"></span></button>
+                </div></div>
+            <div class="row">
+                <div class="col-md-11 col-md-offset-1">
+
+                    <div class= "panel panel-primary text-left" id="graf_04" style="height: 100%; width: 100%; background-color: #fefefe">
+                        <div class="panel-body fixed-panel" id="graf_c">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            var frequency_list = localStorage.getItem("dados_posts4");
+            data = JSON.parse(frequency_list);
+            var chart = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'graf_04',
+                    defaultSeriesType: 'scatter'
+                },
+                xAxis: {
+
+                },
+                plotOptions: {
+                    scatter: {
+                        marker: {
+                            radius: 4,
+                            states: {
+                                hover: {
+                                    enabled: true,
+                                    lineColor: 'rgb(100,100,100)'
+                                }
+                            }
+                        },
+                        states: {
+                            hover: {
+                                marker: {
+                                    enabled: false
+                                }
+                            }
+                        }
+                    }
+                },
+                series: [{
+                        name: 'Publicações',
+                        tooltip: {
+                            headerFormat: '<b>{point.name}</b><br>',
+                            pointFormat: '<br/>Descrição: {point.name}<br/> Popularidade: {point.y} <br> Horário da postagem: {point.x}'
+                        },
+                        data: data
+                      
+                    }]
+            });
+        </script>
+    </body>
+</html>
+
+

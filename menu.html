@@ -232,9 +232,9 @@ Podem ser retornadas até 1000 publicações" class=" text-primary glyphicon gly
                             <div class="col-md-5">
                                 <div class="panel panel-primary" id="panel4" style="margin-top:-15px;margin-left:-25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:302px; width: 100%; background-color: #fbfbfb">
                                     <div class="panel-body text-center" id="div4" style="height:257px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-star" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Quantidade de publicações por dia e suas reações <span style="font-size: small;" title="Publicação mais recente é aquela que recebeu algum comentário por último" class=" text-primary glyphicon glyphicon-info-sign"></span></a> 
+                                        <span class="glyphicon glyphicon-time" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Horário e popularidade das publicações mais recentes <span style="font-size: small;" title="Publicação mais recente é aquela que recebeu algum comentário por último" class=" text-primary glyphicon glyphicon-info-sign"></span></a> 
                                         <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%" id="form4">
-                                            <input type="text" id="numero4" class="form-control text-center" placeholder="Número de publicações" aria-describedby="basic-addon55">
+                                            <input type="text" id="numero4" class="form-control text-center" placeholder="Número de publicações" aria-describedby="basic-addon44">
                                             <span class="input-group-addon" title="Máximo 1000 publicações" id="basic-addon44"><span class=" glyphicon glyphicon-question-sign" style="font-size:small"></span>
 
                                             </span> 
@@ -248,7 +248,7 @@ Podem ser retornadas até 1000 publicações" class=" text-primary glyphicon gly
                                     <div class="panel-body text-left" id="div44" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
                                         <a href="#panel4" id="ler4" class="text-left text-primary" onclick="clickar4();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p4"><br>&nbsp</p>
 
-                                        <p id="col4" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações em um gráfico de barras:<br>&#9679 Quantidade de publicações por dia<br>&#9679 Quantidade de reações que essas publicações possuem</p>
+                                        <p id="col4" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações em um gráfico de dispersão:<br>&#9679 Horário em que as publicações foram feitas<br>&#9679 Popularidade: (reações + comentários) / membros do grupo</p>
                                     </div>
 
                                 </div>
@@ -413,7 +413,7 @@ Podem ser retornadas até 1000 publicações" class=" text-primary glyphicon gly
                     document.getElementById("div4").style.height = "257px";
                 } else {
                     localStorage.setItem("numero4", numero4);
-                    location.href = 'https://fernandacanazzo.github.io/appgrupos/quantidade_publicacoes.html';
+                    location.href = 'https://fernandacanazzo.github.io/appgrupos/hora_popularidade.html';
                 }
             }
 
