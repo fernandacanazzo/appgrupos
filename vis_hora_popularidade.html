@@ -76,7 +76,7 @@
             data = JSON.parse(frequency_list);
             var chart = new Highcharts.Chart({
                 chart: {
-                    renderTo: 'graf_c',
+                    renderTo: 'container',
                     defaultSeriesType: 'scatter'
                 },
                 xAxis: {
@@ -106,7 +106,7 @@
                         name: 'Publicações',
                         tooltip: {
                             headerFormat: '<b>{point.name}</b><br>',
-                            pointFormat: '<br/>Descrição: {point.name}<br/> Popularidade: {point.y} <br> Horário da postagem: {point.x}'
+                            pointFormat: '<br/>Descrição: {point.desc}<br/> Popularidade: {point.y} <br> Horário da postagem: {point.x}'
                         },
                         data: data
                       
