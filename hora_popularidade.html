@@ -126,7 +126,7 @@
                         var str = "";
                         var qtd = 0;
                         var total = 0;
-                        var dados_posts4 = "";
+                        var dados_posts4 = "[";
                         var ctd = 1;
                         function naturalCompare(b, a) {
                             var ax = [], bx = [];
@@ -176,7 +176,7 @@
 
 
                         dados_posts4 = dados_posts4.replace(/,$/, '');
-                        //dados_posts4 += "]";
+                        dados_posts4 += "]";
 
                         localStorage.setItem("dados_posts4", dados_posts4);
                         console.log(json);
