@@ -73,14 +73,14 @@
 
         <script>
             var frequency_list = localStorage.getItem("dados_posts4");
-            data = JSON.parse(frequency_list);
+          //  data = JSON.parse(frequency_list);
             var chart = new Highcharts.Chart({
                 chart: {
                     renderTo: 'graf_c',
                     defaultSeriesType: 'scatter'
                 },
                 xAxis: {
-                    minTickInterval: 1
+                 
                 },
                 plotOptions: {
                     scatter: {
@@ -108,7 +108,7 @@
                             headerFormat: '<b>{point.name}</b><br>',
                             pointFormat: '<br/>Descrição: {point.desc}<br/> Popularidade: {point.y} <br> Horário da postagem: {point.x}'
                         },
-                        data: data
+                        data: frequency_list
                     }]
             });
         </script>
