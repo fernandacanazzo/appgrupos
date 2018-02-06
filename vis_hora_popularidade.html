@@ -86,7 +86,7 @@
                  
                 },
                 plotOptions: {
-                    turboThreshold: 0,
+                    
                     scatter: {
                         marker: {
                             radius: 4,
@@ -113,8 +113,9 @@
                             headerFormat: '<b>{point.name}</b><br>',
                             pointFormat: '<br/>Descrição: {point.x}<br/> Popularidade: {point.y} <br> Horário da postagem: {point.x}'
                         },
-                        data: frequency_list
-                    }],
+                        data: frequency_list,
+                        turboThreshold: 0
+                    }]
                 
             });
         </script>
