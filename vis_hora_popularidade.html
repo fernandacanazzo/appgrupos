@@ -106,14 +106,15 @@
                     }
                 },
                 series: [{
-                        turboThreshold: 0,
+                        
                         name: 'Publicações',
                         tooltip: {
                             headerFormat: '<b>{point.name}</b><br>',
                             pointFormat: '<br/>Descrição: {point.x}<br/> Popularidade: {point.y} <br> Horário da postagem: {point.x}'
                         },
                         data: frequency_list
-                    }]
+                    }],
+                turboThreshold: 0
             });
         </script>
     </body>
