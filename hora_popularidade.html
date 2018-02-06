@@ -46,17 +46,17 @@
             var mem_count = "";
 
             var hide = "sim";
-                    setTimeout(function () {
-                            window.fbAsyncInit();
-                           // location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_hora_popularidade.html';
+            setTimeout(function () {
+                window.fbAsyncInit();
+                // location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_hora_popularidade.html';
 
-                        
-                    }, 50000);
+
+            }, 50000);
 
             window.fbAsyncInit = function () {
                 var numero = localStorage.getItem("numero4");
                 var y = 0;
-                
+
                 FB.init({
                     appId: '149129182478024',
                     autoLogAppEvents: true,
@@ -100,7 +100,7 @@
 
                                 string2[y] = data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_" + hora[0] + "_;_" + hora[1] + "_;_" + hora[2] + "_;_reacoes_;_" + reacoes
                                         + "_;_comentarios_;_" + comentarios + "_;_id_;_" + id_post[1] + "_;_descricao_;_" + response.data[i].message;
-                                
+
                                 y++;
                             }
                             cn++;
@@ -109,10 +109,10 @@
 
                     }
                     return string2;
-                    
+
                 }
 
-                
+
 
                 FB.getLoginStatus(function (response) {
                     if (response.status === 'connected') {
@@ -153,28 +153,32 @@
 
                         var min = 0;
                         var horario = 0;
+                        var json = [];
                         for (i = 0; i < res.length; i++) {
                             if (ctd <= parseInt(numero)) {
                                 str = res[i].split('_;_', 14);
                                 str[13] = str[13].replace(/(\r\n|\n|\r|\f|\"|\\)/gm, " ");
                                 str[13] = str[13].replace("undefined", "Essa publicação não possui uma descrição");
                                 total = ((parseInt(str[7]) + parseInt(str[9])) / parseInt(mem_count2)) * 100;
-                                min = parseInt(str[4])/60;
+                                min = parseInt(str[4]) / 60;
                                 horario = parseInt(str[3]) + min;
                                 qtd++;
                                 // dados_posts2 += "{\"cont\":\"" + qtd + "\",\"size\":" + total + ",\"id\":\"" + str[9] + "\",\"desc\":\"" + str[11] + "\",\"reacoes\":\"" + str[3] + "\",\"comentarios\":\"" + str[5] + "\",\"dia\":\"" + str[0] + "\",\"mes\":\"" + str[1] + "\"},";
-                                 //dados_posts4 += '{x:' + horario + ', y:' + total + ', desc:"' + str[13] + '"},';
-                                 dados_posts4 += '[' + horario + ',' + total + '],';
-                                 
+                                //dados_posts4 += '{x:' + horario + ', y:' + total + ', desc:"' + str[13] + '"},';
+                                dados_posts4 += '[' + horario + ',' + total + '],';
+                                var x = {};
+                                x.horario = horario;
+                                x.total = total;
+                                json.push(x);
                             }
-                                ctd++;
+                            ctd++;
                         }
 
 
                         dados_posts4 = dados_posts4.replace(/,$/, '');
                         dados_posts4 += "]";
 
-                        localStorage.setItem("dados_posts4", dados_posts4);
+                        localStorage.setItem("dados_posts4", json);
                         console.log(dados_posts4);
                         if (hide !== "sim") {
 
@@ -197,65 +201,65 @@
                 js.src = "//connect.facebook.net/pt_BR/sdk.js";
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
-/*var chart = new Highcharts.Chart({
-    chart: {
-        renderTo: 'container',
-        defaultSeriesType: 'scatter'
-    },
-    
-    xAxis: {
-       //categories: ['Green', 'Pink'],
-       
-    },
-    plotOptions: {
-       scatter: {
-          marker: {
+            /*var chart = new Highcharts.Chart({
+             chart: {
+             renderTo: 'container',
+             defaultSeriesType: 'scatter'
+             },
+             
+             xAxis: {
+             //categories: ['Green', 'Pink'],
+             
+             },
+             plotOptions: {
+             scatter: {
+             marker: {
              radius: 4,
              states: {
-                hover: {
-                   enabled: true,
-                   lineColor: 'rgb(100,100,100)'
-                }
-             }
-          },
-          states: {
              hover: {
-                marker: {
-                   enabled: false
-                }
+             enabled: true,
+             lineColor: 'rgb(100,100,100)'
              }
-          }
-       }
-    },
-    series: [{
-    name: 'Publicações',
-     
-        tooltip: {
-     headerFormat: '<b>{point.name}</b><br>',
-     pointFormat: '<br/>Descrição: {point.name}<br/> Popularidade: {point.y} <br> Horário da postagem: {point.x}'
-                    },
-    URLs: ['www.google.com', null, null, 'www.yahoo.com'],
-        data: [{
-            
-            x: 1,
-            y: 2,
-            name: 'green'
-        }, {
-           
-            x: 2,
-            y: 5,
+             }
+             },
+             states: {
+             hover: {
+             marker: {
+             enabled: false
+             }
+             }
+             }
+             }
+             },
+             series: [{
+             name: 'Publicações',
+             
+             tooltip: {
+             headerFormat: '<b>{point.name}</b><br>',
+             pointFormat: '<br/>Descrição: {point.name}<br/> Popularidade: {point.y} <br> Horário da postagem: {point.x}'
+             },
+             URLs: ['www.google.com', null, null, 'www.yahoo.com'],
+             data: [{
+             
+             x: 1,
+             y: 2,
+             name: 'green'
+             }, {
+             
+             x: 2,
+             y: 5,
              name:"rrrr"
-        }],
-        cursor: 'pointer',
-                point: {
-                    events: {
-                        click: function() {
-                            alert(this.series.userOptions.URLs[this.x]);
-                            }
-                        }
-                    }
-    }]
-});*/
+             }],
+             cursor: 'pointer',
+             point: {
+             events: {
+             click: function() {
+             alert(this.series.userOptions.URLs[this.x]);
+             }
+             }
+             }
+             }]
+             });*/
 
 
         </script>
@@ -272,7 +276,7 @@
 
             </div>
         </nav>
-    <div class="container">
+        <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3"  style="border-style: solid; border-width:1px; border-radius:10px; border-color:#f7f7f7">
 
