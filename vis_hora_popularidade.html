@@ -126,6 +126,7 @@
     $(document).ready(function () {
   
     var newString = localStorage.getItem("dados_posts4");
+    console.log(newString);
     var json = newString.replace(/(['"])?([a-zA-Z0-9]+)(['"])?:/g, '"$2":');
     var goodJson = "[" + json + "]";
     
