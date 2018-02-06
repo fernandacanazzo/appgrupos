@@ -72,23 +72,20 @@
 
 
         <script>
-            var frequency_list = localStorage.getItem("dados_posts4");
+          /*  var frequency_list = localStorage.getItem("dados_posts4");
             var json = frequency_list.replace(/(['"])?([a-zA-Z0-9]+)(['"])?:/g, '"$2":');
-          var goodJson = "[" + json + "]";
-         // data = JSON.stringify(frequency_list);
-         // console.log(data);
+            var goodJson = "[" + json + "]";
+            
             var chart = new Highcharts.Chart({
                 chart: {
                     renderTo: 'graf_c',
                     defaultSeriesType: 'scatter'
-                    
-                   
+
+
                 },
                 xAxis: {
-                 
                 },
                 plotOptions: {
-                    
                     scatter: {
                         marker: {
                             radius: 4,
@@ -109,7 +106,6 @@
                     }
                 },
                 series: [{
-                        
                         name: 'Publicações',
                         tooltip: {
                             //headerFormat: '<b>{point.name}</b><br>',
@@ -117,8 +113,83 @@
                         },
                         data: goodJson
                     }]
-                
+
             });
+            $.each(JSON.parse(goodJson), function (i, item) {
+
+                options.series.push({
+                    name: item.name,
+                    data: item.data
+                });
+            });*/
+    
+    $(document).ready(function () {
+  
+    var newString = localStorage.getItem("dados_posts4");
+    var json = newString.replace(/(['"])?([a-zA-Z0-9]+)(['"])?:/g, '"$2":');
+    var goodJson = "[" + json + "]";
+    
+    var options = {
+        title: {
+            text: 'Datos ingresados'
+        },
+
+        subtitle: {
+            text: 'Localstorage'
+        },
+
+        yAxis: {
+            title: {
+                text: 'Datos ingresados'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                }
+              
+            }
+        },
+         chart: {
+            renderTo: 'graf_04',
+            type: 'scatter'
+        },
+        series: [],
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+    };
+    
+    $.each(JSON.parse(json), function(i, item) {
+     
+         options.series.push({
+            x: item.x,
+            y: item.y
+        });
+    });
+     
+   
+    var chart = new Highcharts.Chart(options);
+});
         </script>
     </body>
 </html>
