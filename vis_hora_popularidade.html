@@ -72,8 +72,9 @@
 
 
         <script>
-            var frequency_list = [];
-            frequency_list = localStorage.getItem("dados_posts4");
+            var frequency_list = localStorage.getItem("dados_posts4");
+            var json = frequency_list.replace(/(['"])?([a-zA-Z0-9]+)(['"])?:/g, '"$2":');
+           // var goodJson = "[" + json + "]";
          // data = JSON.stringify(frequency_list);
          // console.log(data);
             var chart = new Highcharts.Chart({
@@ -114,7 +115,7 @@
                             //headerFormat: '<b>{point.name}</b><br>',
                             //pointFormat: '<br/>Descrição: {point.x}<br/> Popularidade: {point.y} <br> Horário da postagem: {point.x}'
                         },
-                        data: frequency_list
+                        data: json
                     }]
                 
             });
