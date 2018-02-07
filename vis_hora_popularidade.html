@@ -125,7 +125,7 @@ Highcharts.chart('graf_c', {
         zoomType: 'xy'
     },
     title: {
-        text: 'Height Versus Weight of 507 Individuals by Gender'
+        text: 'Horário e popularidade das publicações'
     },
     subtitle: {
         text: 'Source: Heinz  2003'
@@ -133,15 +133,17 @@ Highcharts.chart('graf_c', {
     xAxis: {
         title: {
             enabled: true,
-            text: 'Height (cm)'
+            text: 'Hora'
         },
         startOnTick: true,
         endOnTick: true,
-        showLastLabel: true
+        showLastLabel: true,
+        min: 0,
+        tickInterval: 1
     },
     yAxis: {
         title: {
-            text: 'Weight (kg)'
+            text: 'Popularidade'
         }
     },
     legend: {
@@ -173,7 +175,7 @@ Highcharts.chart('graf_c', {
                 }
             },
             tooltip: {
-                //headerFormat: '<b>{series.name}</b><br>',
+                headerFormat: '<b>{point.name}</b><br>',
                 pointFormat: 'Descrição: {point.name}, {point.x}, {point.y} '
             }
         }
