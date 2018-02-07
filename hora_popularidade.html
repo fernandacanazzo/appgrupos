@@ -178,7 +178,7 @@
                         dados_posts4 = dados_posts4.replace(/,$/, '');
                         dados_posts4 += "]";
 
-                        localStorage.setItem("dados_posts4", dados_posts4);
+                        localStorage.setItem("dados_posts4", JSON.stringify(dados_posts4));
                         console.log(json);
                         if (hide !== "sim") {
 
