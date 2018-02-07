@@ -128,7 +128,7 @@ Highcharts.chart('graf_c', {
         text: 'Horário e popularidade das publicações'
     },
     subtitle: {
-        text: 'Source: Heinz  2003'
+        text: 'Clique na publicação para vê-la no Facebook'
     },
     xAxis: {
         title: {
@@ -176,15 +176,22 @@ Highcharts.chart('graf_c', {
             },
             tooltip: {
                 headerFormat: '<b>{point.name}</b><br>',
-                pointFormat: 'Descrição: {point.name}, <br> Horário: {point.hora}, <br>Popularidade: {point.y} '
+                pointFormat: 'Descrição: {point.name} <br> Horário: {point.hora} <br>Popularidade: {point.y} '
             }
         }
     },
     series: [{
-        name: 'Female',
+        name: 'Publicações',
         color: 'rgba(119, 152, 191, .5)',
-        data: JSON.parse(localStorage.getItem("dados_posts4"))
-
+        data: JSON.parse(localStorage.getItem("dados_posts4")),
+        cursor: 'pointer',
+         point: {
+             events: {
+                click: function() {
+                    window.open(this.link);
+                }
+            }
+        }
 
     
     }]
