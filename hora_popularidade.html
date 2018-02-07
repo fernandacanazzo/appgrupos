@@ -154,6 +154,7 @@
                         var min = 0;
                         var horario = 0;
                         var json = [];
+                        var json2 = [];
                         for (i = 0; i < res.length; i++) {
                             if (ctd <= parseInt(numero)) {
                                 str = res[i].split('_;_', 14);
@@ -166,10 +167,11 @@
                                 // dados_posts2 += "{\"cont\":\"" + qtd + "\",\"size\":" + total + ",\"id\":\"" + str[9] + "\",\"desc\":\"" + str[11] + "\",\"reacoes\":\"" + str[3] + "\",\"comentarios\":\"" + str[5] + "\",\"dia\":\"" + str[0] + "\",\"mes\":\"" + str[1] + "\"},";
                                 //dados_posts4 += '{x:' + horario + ', y:' + total + '},';
                                 dados_posts4 += '[' + horario + ',' + total + '],';
+                                json2.push(horario, total);
                                 var x = {};
                                 x.horario = horario;
                                 x.total = total;
-                                json.push(x);
+                                json.push(json2);
                             }
                             ctd++;
                         }
