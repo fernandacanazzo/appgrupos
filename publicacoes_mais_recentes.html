@@ -232,8 +232,8 @@
                         }
 
                         for (i = 0; i < res.length; i++) {
-
-                            if ((res[i].toLowerCase()).indexOf("comentario_;_" + (nome.toLowerCase())) !== -1) {
+                            var arr = res[i].split('_;_', 15);
+                            if ((res[i].toLowerCase()).indexOf(arr[5].toLowerCase()) !== -1) {
                                 dados[k] = res[i];
                                 k++;
                             }
