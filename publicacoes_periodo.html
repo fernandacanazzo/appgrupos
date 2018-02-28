@@ -44,7 +44,7 @@
                 var mes_fim = datas2[4];
                 var ano_fim = datas2[5];
                 var nome = localStorage.getItem("nome2");
-              
+
 
                 var y = 0;
                 var c = 0;
@@ -85,7 +85,7 @@
                     }
                     var data_ini = ano_ini + "-" + mes_ini + "-" + dia_ini;
                     var data_fim = ano_fim + "-" + mes_fim + "-" + dia_fim;
-                     url = "/feed?fields=from,message,updated_time,comments&limit=250&since=" + data_ini + "&until=" + data_fim + "&access_token=";
+                    url = "/feed?fields=from,message,updated_time,comments&limit=250&since=" + data_ini + "&until=" + data_fim + "&access_token=";
                     var cn = 0;
                     FB.api(
                             "/" + arrayid[0] + url + token, doSomething);
@@ -136,8 +136,8 @@
                                         function doSomething2(response) {
                                             if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
 
-                                                FB.api("/" + response.id + '?fields=from,id,message,comments.limit(250).after('+response.comments.paging.cursors.after+')&access_token=' + token, doSomething2);
-                                   
+                                                FB.api("/" + response.id + '?fields=from,id,message,comments.limit(250).after(' + response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
+
                                                 var l2 = response.comments.data.length;
                                                 var j = 0;
                                                 for (j; j < l2; j++) {
@@ -156,10 +156,10 @@
                                                 cn2++;
                                             }
                                             if (cn2 < cnt4 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined") {
-                                                
+
 
                                                 FB.api("/" + response.id + '?fields=from,id,message,comments.limit(250)&access_token=' + token, doSomething2);
-                                               // console.log(response.id);
+                                                // console.log(response.id);
                                                 var l2 = response.comments.data.length;
                                                 var j = 0;
                                                 for (j; j < l2; j++) {
@@ -173,7 +173,7 @@
                                                             + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + response.id + "\">Ver publicação</a>"
                                                             + "_;_descricao_;_" + response.message + "_;_desccom_;_" + response.comments.data[j].message
                                                             + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "/?comment_id=" + response.comments.data[j].id + "\">Ver comentário</a>";
-                                                   
+
                                                     c++;
                                                 }
                                                 cn2++;
@@ -239,8 +239,8 @@
                             return ax.length - bx.length;
                         }
                         for (i = 0; i < res.length; i++) {
-
-                            if ((res[i].toLowerCase()).indexOf("comentario_;_" + (nome.toLowerCase())) !== -1) {
+                            var arr = res[i].split('_;_', 15);
+                            if ((res[i].toLowerCase()).indexOf(arr[5].toLowerCase()) !== -1) {
                                 dados[k] = res[i];
                                 k++;
                             }
@@ -301,9 +301,9 @@
                             palavras[n1] = palavras[n1].replace(/\b[a-z]\b/gm, '');
                             palavras[n1] = palavras[n1].replace(/\b[a-z][^e]\b/gm, '');
                             palavras[n1] = palavras[n1].replace(/\b(\w)\1+\b/gm, '');
-                            if(palavras[n1] !== ""){
-                            text += palavras[n1] + ',';
-                        }
+                            if (palavras[n1] !== "") {
+                                text += palavras[n1] + ',';
+                            }
                             if (p_com.indexOf(palavras[n1].toLowerCase()) === -1 && palavras[n1] !== "") {
                                 p_com[cont2] = palavras[n1].toLowerCase();
 
