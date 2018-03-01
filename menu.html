@@ -86,8 +86,8 @@
                                 </div>
                             </div>
                             <div class="col-md-5">
-                                <div class="panel panel-primary" id="panel2" style="border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe; margin-left:-25px;height:412px; width: 100%; background-color: #fbfbfb">
-                                    <div class="panel-body text-center" id="div2" style="height: 367px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
+                                <div class="panel panel-primary" id="panel2" style="border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe; height:100%; width: 100%; background-color: #fbfbfb">
+                                    <div class="panel-body text-center" id="div2" style="height: 100%; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
                                         <span class="glyphicon glyphicon-comment" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Publicações mais recentes comentadas por alguém num período <span style="font-size: small;" title="Publicação mais recente é aquela que recebeu algum comentário por último
                                                                                                                                                                                                         Podem ser retornadas até 1000 publicações" class=" text-primary glyphicon glyphicon-info-sign"></span></a> 
                                         <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%">
@@ -170,14 +170,17 @@
 
                                         <button class="btn btn-lg btn-primary" id="bt_principal2" style="margin-top:10px; margin-left:auto; margin-right: auto; font-size: larger" type="submit" onclick="rf02();">Ver</button>
 
+                                        <div> <a href="#panel2" id="ler2" class="text-left text-primary" onclick="clickar2();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p2"><br>&nbsp</p>
+                                        <p id="col2" class="text-left" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações mais recentes que foram comentadas por alguém dentro de um determinado período:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas dos comentários<br>&#9679 Nuvem de palavras dos comentários</p>
 
+                                        </div>
                                     </div>
-                                    <div class="panel-body text-left" id="div22" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
+                                    <!--<div class="panel-body text-left" id="div22" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
                                         <a href="#panel2" id="ler2" class="text-left text-primary" onclick="clickar2();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p2"><br>&nbsp</p>
 
                                         <p id="col2" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações mais recentes que foram comentadas por alguém dentro de um determinado período:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas dos comentários<br>&#9679 Nuvem de palavras dos comentários</p>
 
-                                    </div>
+                                    </div>-->
 
                                 </div>
                             </div>
@@ -510,14 +513,14 @@
                 if (document.getElementById("col2").style.display === "none") {
                     document.getElementById("col2").style.display = "inline-block";
                     document.getElementById("ler2").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
-                    document.getElementById("panel2").style.height = "520px";
-                    document.getElementById("div22").style.height = "152px";
+                    //document.getElementById("panel2").style.height = "520px";
+                   // document.getElementById("div22").style.height = "152px";
                     document.getElementById("p2").style.display = "none";
                 } else {
                     document.getElementById("ler2").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
                     document.getElementById("col2").style.display = "none";
-                    document.getElementById("panel2").style.height = "412px";
-                    document.getElementById("div22").style.height = "44px";
+                    //document.getElementById("panel2").style.height = "412px";
+                    //document.getElementById("div22").style.height = "44px";
                 }
             }
 
