@@ -39,19 +39,27 @@
 
     <body style="background-color: #f7f7f7">
 
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" style="margin-top: 4px;"><b>Aplicação para grupos</b></a>
-                </div>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a style="margin-top: 4px;" href="https://fernandacanazzo.github.io/appgrupos/index.html"><span class="glyphicon glyphicon-search " style=" font-size:small;margin-right: 6px;"></span>Pesquisar grupo</a></li>
-                    <li><a style="margin-top: 4px;" href="https://fernandacanazzo.github.io/appgrupos/menu.html"><span class="glyphicon glyphicon-arrow-left " style=" font-size:small;margin-right: 6px;"></span><b>Voltar ao menu</b></a></li>
+         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand" href="#" style="margin-top: 4px;"><b>Aplicação para grupos</b></a></div>
 
-                </ul>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-nav">
+      <ul class="nav navbar-nav navbar-right">
+       <li><a style="margin-top: 4px;" href="https://fernandacanazzo.github.io/appgrupos/menu.html"><span class="glyphicon glyphicon-left-arrow" style=" font-size:small;margin-right: 6px;"></span>Voltar ao menu</a></li>
+       <li><a style="margin-top: 4px;" href="https://fernandacanazzo.github.io/appgrupos/index.html"><span class="glyphicon glyphicon-search " style=" font-size:small;margin-right: 6px;"></span>Pesquisar grupo</a></li>
+       <li><a id="link_grp" style="margin-top: 4px;" href="#" target="_blank"><span class="glyphicon glyphicon-eye-open" style=" font-size:small;margin-right: 6px;"></span>Ver grupo no Facebook</a></li>
 
-            </div>
-        </nav>
+          </ul>
+
+    </div><!-- collapse navbar-collapse -->
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
         <div class="container-fluid">
             <div class="row">
 <div class="col-md-6 col-md-offset-3">
@@ -103,6 +111,10 @@
         </div>
 
         <script>
+             var id_grupo = localStorage.getItem("id_grupo");
+            var array = [];
+            array = id_grupo.split('_;_', 2);
+            document.getElementById('link_grp').href = "https://www.facebook.com/groups/" + array[0];
             var nome = localStorage.getItem("nome2");
             var quant = localStorage.getItem("quant");
             var str_pronta = localStorage.getItem("str_pronta");
