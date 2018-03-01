@@ -53,7 +53,7 @@
                                         <span class="glyphicon glyphicon-comment" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Publicações mais recentes comentadas por alguém <span style="font-size: small" title="Publicação mais recente é aquela que recebeu algum comentário por último" class=" text-primary glyphicon glyphicon-info-sign"></span></a>
                                         <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%">
                                             <input type="text" id="nome1" class="form-control text-center" placeholder="Nome" >
-                                            
+
                                         </div>
                                         <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%" id="form1">
                                             <input type="text" id="numero1" class="form-control text-center" placeholder="Número de publicações" aria-describedby="basic-addon11">
@@ -81,10 +81,10 @@
                                 <div class="panel panel-primary" id="panel2" style="border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe; margin-left:-25px;height:412px; width: 100%; background-color: #fbfbfb">
                                     <div class="panel-body text-center" id="div2" style="height: 367px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
                                         <span class="glyphicon glyphicon-comment" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Publicações mais recentes comentadas por alguém num período <span style="font-size: small;" title="Publicação mais recente é aquela que recebeu algum comentário por último
-Podem ser retornadas até 1000 publicações" class=" text-primary glyphicon glyphicon-info-sign"></span></a> 
+                                                                                                                                                                                                        Podem ser retornadas até 1000 publicações" class=" text-primary glyphicon glyphicon-info-sign"></span></a> 
                                         <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%">
                                             <input type="text" id="nome2" class="form-control text-center" placeholder="Nome">
-                                           
+
                                         </div>
 
                                         <div class="row">
@@ -182,7 +182,7 @@ Podem ser retornadas até 1000 publicações" class=" text-primary glyphicon gly
                                 <div class="panel panel-primary" id="panel3" style="margin-top:-15px;margin-right:25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:302px; width: 100%; background-color: #fbfbfb">
                                     <div class="panel-body text-center" id="div3" style="height:257px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
                                         <span class="glyphicon glyphicon-search" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" >Publicações mais recentes com uma palavra específica <span style="font-size: small;" title="Publicação mais recente é aquela que recebeu algum comentário por último 
-                                         Podem ser retornadas até 1000 publicações" class=" text-primary glyphicon glyphicon-info-sign"></span></a> 
+                                                                                                                                                                                                        Podem ser retornadas até 1000 publicações" class=" text-primary glyphicon glyphicon-info-sign"></span></a> 
 
                                         <input type="text" id="palavra" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%" class="form-control text-center" placeholder="Palavra">
                                         <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%" id="form3">
@@ -347,6 +347,15 @@ Podem ser retornadas até 1000 publicações" class=" text-primary glyphicon gly
 
 
         <script type="text/javascript">
+
+            $(".more_info").click(function () {
+                var $title = $(this).find(".title");
+                if (!$title.length) {
+                    $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
+                } else {
+                    $title.remove();
+                }
+            });
             var id_grupo = localStorage.getItem("id_grupo");
             var array = [];
             function rf01() {
@@ -397,7 +406,7 @@ Podem ser retornadas até 1000 publicações" class=" text-primary glyphicon gly
                     location.href = 'https://fernandacanazzo.github.io/appgrupos/palavras_publicacoes.html';
                 }
             }
-            
+
             function rf04() {
                 var numero4 = $("#numero4").val();
                 if (parseInt(numero4) >= 1000) {
