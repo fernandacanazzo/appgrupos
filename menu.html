@@ -170,7 +170,7 @@
 
                                         <button class="btn btn-lg btn-primary" id="bt_principal2" style="margin-top:10px; margin-left:auto; margin-right: auto; font-size: larger" type="submit" onclick="rf02();">Ver</button>
                                         
-                                        <div class="text-left" style="margin-top:7%; margin-left:2%"> <a href="#panel2" id="ler2" class="text-left text-primary" onclick="clickar2();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p2"><br>&nbsp</p>
+                                        <div class="text-left" style="margin-top:7%; margin-left:2%"> <a href="#panel2" id="ler2" class="text-left text-primary" onclick="clickar2();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a>
                                         <p id="col2" class="text-left" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações mais recentes que foram comentadas por alguém dentro de um determinado período:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas dos comentários<br>&#9679 Nuvem de palavras dos comentários</p>
 
                                         </div>
@@ -189,8 +189,8 @@
                         </div>
                         <div class="row">
 
-                            <div class="col-md-5  col-md-offset-1">
-                                <div class="panel panel-primary" id="panel3" style="margin-top:-15px;margin-right:25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:302px; width: 100%; background-color: #fbfbfb">
+                            <div class="col-md-5 col-md-offset-1">
+                                <div class="panel panel-primary" id="panel3" style="margin-right:25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:100%; width: 100%; background-color: #fbfbfb">
                                     <div class="panel-body text-center" id="div3" style="height:257px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
                                         <span class="glyphicon glyphicon-search" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" >Publicações mais recentes com uma palavra específica <span style="font-size: small;" title="Publicação mais recente é aquela que recebeu algum comentário por último 
                                                                                                                                                                                                         Podem ser retornadas até 1000 publicações" class=" text-primary glyphicon glyphicon-info-sign"></span></a> 
@@ -208,15 +208,20 @@
 
 
                                         <button class="btn btn-lg btn-primary" id="bt_principal3" style="margin-top:10px; margin-left:auto; margin-right: auto; font-size: larger" type="submit" onclick="rf03();">Ver</button>
+                                        <div class="text-left">
+                                            <a href="#panel3" id="ler3" class="text-left text-primary" onclick="clickar3();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p3"><br>&nbsp</p>
 
+                                        <p id="col3" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações mais recentes que contêm uma determinada palavra:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas<br>&#9679 Nuvem de palavras das descrições</p>
+
+                                        </div>
 
                                     </div>
-                                    <div class="panel-body text-left" id="div33" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
+                                    <!--<div class="panel-body text-left" id="div33" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
                                         <a href="#panel3" id="ler3" class="text-left text-primary" onclick="clickar3();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p3"><br>&nbsp</p>
 
                                         <p id="col3" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações mais recentes que contêm uma determinada palavra:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas<br>&#9679 Nuvem de palavras das descrições</p>
 
-                                    </div>
+                                    </div>-->
 
                                 </div>
                             </div>
@@ -419,8 +424,8 @@
                     document.getElementById('span3').style.display = "inline";
                     document.getElementById('aviso3').style.display = "inline";
                     document.getElementById('basic-addon33').style.display = "none";
-                    document.getElementById("panel3").style.height = "340px";
-                    document.getElementById("div3").style.height = "295px";
+                    //document.getElementById("panel3").style.height = "340px";
+                    //document.getElementById("div3").style.height = "295px";
                 } else {
                     localStorage.setItem("numero3", numero3);
                     localStorage.setItem("palavra", palavra);
@@ -436,8 +441,8 @@
                     document.getElementById('span4').style.display = "inline";
                     document.getElementById('aviso4').style.display = "inline";
                     document.getElementById('basic-addon44').style.display = "none";
-                    document.getElementById("panel4").style.height = "302px";
-                    document.getElementById("div4").style.height = "257px";
+                    //document.getElementById("panel4").style.height = "302px";
+                    //document.getElementById("div4").style.height = "257px";
                 } else {
                     localStorage.setItem("numero4", numero4);
                     location.href = 'https://fernandacanazzo.github.io/appgrupos/hora_popularidade.html';
@@ -452,8 +457,8 @@
                     document.getElementById('span5').style.display = "inline";
                     document.getElementById('aviso5').style.display = "inline";
                     document.getElementById('basic-addon55').style.display = "none";
-                    document.getElementById("panel5").style.height = "300px";
-                    document.getElementById("div5").style.height = "255px";
+                    //document.getElementById("panel5").style.height = "300px";
+                    //document.getElementById("div5").style.height = "255px";
                 } else {
                     localStorage.setItem("numero5", numero5);
                     location.href = 'https://fernandacanazzo.github.io/appgrupos/popularidade.html';
