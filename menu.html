@@ -191,7 +191,7 @@
 
                             <div class="col-md-5 col-md-offset-1">
                                 <div class="panel panel-primary" id="panel3" style="margin-right:25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:100%; width: 100%; background-color: #fbfbfb">
-                                    <div class="panel-body text-center" id="div3" style="height:257px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
+                                    <div class="panel-body text-center" id="div3" style="border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
                                         <span class="glyphicon glyphicon-search" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" >Publicações mais recentes com uma palavra específica <span style="font-size: small;" title="Publicação mais recente é aquela que recebeu algum comentário por último 
                                                                                                                                                                                                         Podem ser retornadas até 1000 publicações" class=" text-primary glyphicon glyphicon-info-sign"></span></a> 
 
@@ -209,7 +209,7 @@
 
                                         <button class="btn btn-lg btn-primary" id="bt_principal3" style="margin-top:10px; margin-left:auto; margin-right: auto; font-size: larger" type="submit" onclick="rf03();">Ver</button>
                                         <div class="text-left">
-                                            <a href="#panel3" id="ler3" class="text-left text-primary" onclick="clickar3();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p3"><br>&nbsp</p>
+                                            <a href="#panel3" id="ler3" class="text-left text-primary" onclick="clickar3();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a>
 
                                         <p id="col3" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações mais recentes que contêm uma determinada palavra:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas<br>&#9679 Nuvem de palavras das descrições</p>
 
@@ -258,11 +258,16 @@
                                         <button class="btn btn-lg btn-primary" id="bt_principal4" style="margin-top:10px; margin-left:auto; margin-right: auto; font-size: larger" type="submit" onclick="rf04();">Ver</button>
 
                                     </div>
-                                    <div class="panel-body text-left" id="div44" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
-                                        <a href="#panel4" id="ler4" class="text-left text-primary" onclick="clickar4();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p4"><br>&nbsp</p>
+                                    <div class="text-left">
+                                    <a href="#panel4" id="ler4" class="text-left text-primary" onclick="clickar4();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a>
 
                                         <p id="col4" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações em um gráfico de dispersão:<br>&#9679 Horário em que as publicações foram feitas<br>&#9679 Popularidade: (reações + comentários) / membros do grupo</p>
                                     </div>
+                                    <!--<div class="panel-body text-left" id="div44" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
+                                        <a href="#panel4" id="ler4" class="text-left text-primary" onclick="clickar4();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p4"><br>&nbsp</p>
+
+                                        <p id="col4" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações em um gráfico de dispersão:<br>&#9679 Horário em que as publicações foram feitas<br>&#9679 Popularidade: (reações + comentários) / membros do grupo</p>
+                                    </div>-->
 
                                 </div>
                             </div>
@@ -534,27 +539,27 @@
                     if (document.getElementById("col3").style.display === "none") {
                         document.getElementById("col3").style.display = "inline-block";
                         document.getElementById("ler3").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
-                        document.getElementById("panel3").style.height = "410px";
-                        document.getElementById("div33").style.height = "152px";
+                        //document.getElementById("panel3").style.height = "410px";
+                       // document.getElementById("div33").style.height = "152px";
                         document.getElementById("p3").style.display = "none";
                     } else {
                         document.getElementById("ler3").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
                         document.getElementById("col3").style.display = "none";
-                        document.getElementById("panel3").style.height = "302px";
-                        document.getElementById("div33").style.height = "44px";
+                       // document.getElementById("panel3").style.height = "302px";
+                       // document.getElementById("div33").style.height = "44px";
                     }
                 } else {
                     if (document.getElementById("col3").style.display === "none") {
                         document.getElementById("col3").style.display = "inline-block";
                         document.getElementById("ler3").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
-                        document.getElementById("panel3").style.height = "448px";
-                        document.getElementById("div33").style.height = "152px";
+                       // document.getElementById("panel3").style.height = "448px";
+                       // document.getElementById("div33").style.height = "152px";
                         document.getElementById("p3").style.display = "none";
                     } else {
                         document.getElementById("ler3").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
                         document.getElementById("col3").style.display = "none";
-                        document.getElementById("panel3").style.height = "340px";
-                        document.getElementById("div33").style.height = "44px";
+                        //document.getElementById("panel3").style.height = "340px";
+                        //document.getElementById("div33").style.height = "44px";
                     }
 
                 }
@@ -565,27 +570,27 @@
                     if (document.getElementById("col4").style.display === "none") {
                         document.getElementById("col4").style.display = "inline-block";
                         document.getElementById("ler4").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
-                        document.getElementById("panel4").style.height = "376px";
-                        document.getElementById("div44").style.height = "118px";
+                       // document.getElementById("panel4").style.height = "376px";
+                       // document.getElementById("div44").style.height = "118px";
                         document.getElementById("p4").style.display = "none";
                     } else {
                         document.getElementById("ler4").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
                         document.getElementById("col4").style.display = "none";
-                        document.getElementById("panel4").style.height = "302px";
-                        document.getElementById("div44").style.height = "44px";
+                       // document.getElementById("panel4").style.height = "302px";
+                       // document.getElementById("div44").style.height = "44px";
                     }
                 } else {
                     if (document.getElementById("col4").style.display === "none") {
                         document.getElementById("col4").style.display = "inline-block";
                         document.getElementById("ler4").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
-                        document.getElementById("panel4").style.height = "376px";
-                        document.getElementById("div44").style.height = "118px";
+                       // document.getElementById("panel4").style.height = "376px";
+                        //document.getElementById("div44").style.height = "118px";
                         document.getElementById("p4").style.display = "none";
                     } else {
                         document.getElementById("ler4").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
                         document.getElementById("col4").style.display = "none";
-                        document.getElementById("panel4").style.height = "302px";
-                        document.getElementById("div44").style.height = "44px";
+                       // document.getElementById("panel4").style.height = "302px";
+                       // document.getElementById("div44").style.height = "44px";
                     }
                 }
             }
