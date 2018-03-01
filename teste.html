@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -7,18 +7,380 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/shop-homepage.css" rel="stylesheet">
 
-</head>
-<body>
-<div class="container">
-  <div class="row">
-  <div class="col">col</div>
-  <div class="col">col</div>
-  <div class="col">col</div>
-  <div class="col">col</div>
-</div>
-</div>
+        <title>App</title>
+        <style>
+
+            .table-responsive {
+                max-height:300px;
+            }
+
+
+        </style>
+
+    </head>
+    <body style="background-color: #f7f7f7">
+
+ <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand" href="#" style="margin-top: 4px;"><b>Aplicação para grupos</b></a></div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-nav">
+      <ul class="nav navbar-nav navbar-right">
+       <li><a style="margin-top: 4px;" href="https://fernandacanazzo.github.io/appgrupos/index.html"><span class="glyphicon glyphicon-search " style=" font-size:small;margin-right: 6px;"></span>Pesquisar grupo</a></li>
+       <li><a id="link_grp" style="margin-top: 4px;" href="#" target="_blank"><span class="glyphicon glyphicon-eye-open" style=" font-size:small;margin-right: 6px;"></span>Ver grupo no Facebook</a></li>
+
+          </ul>
+
+    </div><!-- collapse navbar-collapse -->
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+        <div class="container">
+             <div class="row">
+        <div class="col-xs-6 col-sm-3">
+          .col-xs-6 .col-sm-3
+          <br>
+          Resize your viewport or check it out on your phone for an example.
+        </div>
+        <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+
+        <!-- Add the extra clearfix for only the required viewport -->
+        <div class="clearfix visible-xs"></div>
+
+        <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+        <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+      </div>
+        </div>
+
+
+        <script type="text/javascript">
+            $(".input-group-addon").click(function () {
+                var $title = $(this).find(".title");
+                if (!$title.length) {
+                    $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
+                } else {
+                    $title.remove();
+                }
+            });
+            
+             $(".text-primary glyphicon glyphicon-info-sign").click(function () {
+                var $title = $(this).find(".title");
+                if (!$title.length) {
+                    $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
+                } else {
+                    $title.remove();
+                }
+            });
+            var id_grupo = localStorage.getItem("id_grupo");
+            var array = [];
+            array = id_grupo.split('_;_', 2);
+            document.getElementById('link_grp').href = "https://www.facebook.com/groups/" + array[0];
+            function rf01() {
+                var numero1 = $("#numero1").val();
+                var nome1 = $("#nome1").val();
+                if (parseInt(numero1) >= 1000) {
+                    document.getElementById('form1').className = "form-group has-error has-feedback";
+                    document.getElementById('numero1').className = "form-control text-center is-invalid";
+                    document.getElementById('span1').style.display = "inline";
+                    document.getElementById('aviso1').style.display = "inline";
+                    document.getElementById('basic-addon11').style.display = "none";
+
+                } else {
+                    localStorage.setItem("numero1", numero1);
+                    localStorage.setItem("nome1", nome1);
+                    location.href = 'https://fernandacanazzo.github.io/appgrupos/publicacoes_mais_recentes.html';
+                }
+            }
+
+            function rf02() {
+                var nome2 = $("#nome2").val();
+                localStorage.setItem("nome2", nome2);
+                var dia_ini = $("#dia_ini").find("option:selected").val();
+                var mes_ini = $("#mes_ini").find("option:selected").val();
+                var ano_ini = $("#ano_ini").find("option:selected").val();
+                var dia_fim = $("#dia_fim").find("option:selected").val();
+                var mes_fim = $("#mes_fim").find("option:selected").val();
+                var ano_fim = $("#ano_fim").find("option:selected").val();
+                var datas = dia_ini + ";" + mes_ini + ";" + ano_ini + ";" + dia_fim + ";" + mes_fim + ";" + ano_fim;
+                localStorage.setItem("datas", datas);
+                location.href = 'https://fernandacanazzo.github.io/appgrupos/publicacoes_periodo.html';
+            }
+
+            function rf03() {
+                var palavra = $("#palavra").val();
+                var numero3 = $("#numero3").val();
+                if (parseInt(numero3) >= 1000) {
+                    document.getElementById('form3').className = "form-group has-error has-feedback";
+                    document.getElementById('numero3').className = "form-control text-center is-invalid";
+                    document.getElementById('span3').style.display = "inline";
+                    document.getElementById('aviso3').style.display = "inline";
+                    document.getElementById('basic-addon33').style.display = "none";
+                    document.getElementById("panel3").style.height = "340px";
+                    document.getElementById("div3").style.height = "295px";
+                } else {
+                    localStorage.setItem("numero3", numero3);
+                    localStorage.setItem("palavra", palavra);
+                    location.href = 'https://fernandacanazzo.github.io/appgrupos/palavras_publicacoes.html';
+                }
+            }
+
+            function rf04() {
+                var numero4 = $("#numero4").val();
+                if (parseInt(numero4) >= 1000) {
+                    document.getElementById('form4').className = "form-group has-error has-feedback";
+                    document.getElementById('numero4').className = "form-control text-center is-invalid";
+                    document.getElementById('span4').style.display = "inline";
+                    document.getElementById('aviso4').style.display = "inline";
+                    document.getElementById('basic-addon44').style.display = "none";
+                    document.getElementById("panel4").style.height = "302px";
+                    document.getElementById("div4").style.height = "257px";
+                } else {
+                    localStorage.setItem("numero4", numero4);
+                    location.href = 'https://fernandacanazzo.github.io/appgrupos/hora_popularidade.html';
+                }
+            }
+
+            function rf05() {
+                var numero5 = $("#numero5").val();
+                if (parseInt(numero5) >= 1000) {
+                    document.getElementById('form5').className = "form-group has-error has-feedback";
+                    document.getElementById('numero5').className = "form-control text-center is-invalid";
+                    document.getElementById('span5').style.display = "inline";
+                    document.getElementById('aviso5').style.display = "inline";
+                    document.getElementById('basic-addon55').style.display = "none";
+                    document.getElementById("panel5").style.height = "300px";
+                    document.getElementById("div5").style.height = "255px";
+                } else {
+                    localStorage.setItem("numero5", numero5);
+                    location.href = 'https://fernandacanazzo.github.io/appgrupos/popularidade.html';
+                }
+            }
+
+            function rf06() {
+                var numero6 = $("#numero6").val();
+                if (parseInt(numero6) >= 1000) {
+                    document.getElementById('form6').className = "form-group has-error has-feedback";
+                    document.getElementById('numero6').className = "form-control text-center is-invalid";
+                    document.getElementById('span6').style.display = "inline";
+                    document.getElementById('aviso6').style.display = "inline";
+                    document.getElementById('basic-addon66').style.display = "none";
+                    document.getElementById("panel6").style.height = "300px";
+                    document.getElementById("div6").style.height = "255px";
+                } else {
+                    localStorage.setItem("numero6", numero6);
+                    location.href = 'https://fernandacanazzo.github.io/appgrupos/reacoes.html';
+                }
+            }
+
+            function rf07() {
+                var numero7 = $("#numero7").val();
+                if (parseInt(numero7) >= 1000) {
+                    document.getElementById('form7').className = "form-group has-error has-feedback";
+                    document.getElementById('numero7').className = "form-control text-center is-invalid";
+                    document.getElementById('span7').style.display = "inline";
+                    document.getElementById('aviso7').style.display = "inline";
+                    document.getElementById('basic-addon77').style.display = "none";
+                    document.getElementById("panel7").style.height = "300px";
+                    document.getElementById("div7").style.height = "255px";
+                } else {
+                    localStorage.setItem("numero7", numero7);
+                    location.href = 'https://fernandacanazzo.github.io/appgrupos/pessoas_mais_comentarios.html';
+                }
+            }
+
+            
+            document.getElementById('nome').innerHTML = "O que você quer visualizar no grupo <b>" + array[1] + "</b>?";
+            function clickar1() {
+                if (document.getElementById("col1").style.display === "none") {
+                    document.getElementById("col1").style.display = "inline-block";
+                    document.getElementById("ler1").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                   // document.getElementById("panel1").style.height = "150%";
+                    //document.getElementById("div11").style.height = "152px";
+                    document.getElementById("p1").style.display = "none";
+                } else {
+                    document.getElementById("ler1").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large;margin-right: 6px"></span>';
+                    document.getElementById("col1").style.display = "none";
+                    //document.getElementById("panel1").style.height = "100%";
+                   // document.getElementById("div11").style.height = "44px";
+                }
+            }
+
+            function clickar2() {
+                if (document.getElementById("col2").style.display === "none") {
+                    document.getElementById("col2").style.display = "inline-block";
+                    document.getElementById("ler2").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                    document.getElementById("panel2").style.height = "520px";
+                    document.getElementById("div22").style.height = "152px";
+                    document.getElementById("p2").style.display = "none";
+                } else {
+                    document.getElementById("ler2").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                    document.getElementById("col2").style.display = "none";
+                    document.getElementById("panel2").style.height = "412px";
+                    document.getElementById("div22").style.height = "44px";
+                }
+            }
+
+            function clickar3() {
+                if (document.getElementById('basic-addon33').style.display !== "none") {
+                    if (document.getElementById("col3").style.display === "none") {
+                        document.getElementById("col3").style.display = "inline-block";
+                        document.getElementById("ler3").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("panel3").style.height = "410px";
+                        document.getElementById("div33").style.height = "152px";
+                        document.getElementById("p3").style.display = "none";
+                    } else {
+                        document.getElementById("ler3").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("col3").style.display = "none";
+                        document.getElementById("panel3").style.height = "302px";
+                        document.getElementById("div33").style.height = "44px";
+                    }
+                } else {
+                    if (document.getElementById("col3").style.display === "none") {
+                        document.getElementById("col3").style.display = "inline-block";
+                        document.getElementById("ler3").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("panel3").style.height = "448px";
+                        document.getElementById("div33").style.height = "152px";
+                        document.getElementById("p3").style.display = "none";
+                    } else {
+                        document.getElementById("ler3").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("col3").style.display = "none";
+                        document.getElementById("panel3").style.height = "340px";
+                        document.getElementById("div33").style.height = "44px";
+                    }
+
+                }
+            }
+
+            function clickar4() {
+                if (document.getElementById('basic-addon44').style.display !== "none") {
+                    if (document.getElementById("col4").style.display === "none") {
+                        document.getElementById("col4").style.display = "inline-block";
+                        document.getElementById("ler4").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("panel4").style.height = "376px";
+                        document.getElementById("div44").style.height = "118px";
+                        document.getElementById("p4").style.display = "none";
+                    } else {
+                        document.getElementById("ler4").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("col4").style.display = "none";
+                        document.getElementById("panel4").style.height = "302px";
+                        document.getElementById("div44").style.height = "44px";
+                    }
+                } else {
+                    if (document.getElementById("col4").style.display === "none") {
+                        document.getElementById("col4").style.display = "inline-block";
+                        document.getElementById("ler4").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("panel4").style.height = "376px";
+                        document.getElementById("div44").style.height = "118px";
+                        document.getElementById("p4").style.display = "none";
+                    } else {
+                        document.getElementById("ler4").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("col4").style.display = "none";
+                        document.getElementById("panel4").style.height = "302px";
+                        document.getElementById("div44").style.height = "44px";
+                    }
+                }
+            }
+
+            function clickar5() {
+                if (document.getElementById('basic-addon55').style.display !== "none") {
+                    if (document.getElementById("col5").style.display === "none") {
+                        document.getElementById("col5").style.display = "inline-block";
+                        document.getElementById("ler5").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("panel5").style.height = "347px";
+                        document.getElementById("div55").style.height = "134px";
+                        document.getElementById("p5").style.display = "none";
+                    } else {
+                        document.getElementById("ler5").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("col5").style.display = "none";
+                        document.getElementById("panel5").style.height = "257px";
+                        document.getElementById("div55").style.height = "44px";
+                    }
+                } else {
+                    if (document.getElementById("col5").style.display === "none") {
+                        document.getElementById("col5").style.display = "inline-block";
+                        document.getElementById("ler5").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("panel5").style.height = "390px";
+                        document.getElementById("div55").style.height = "134px";
+                        document.getElementById("p5").style.display = "none";
+                    } else {
+                        document.getElementById("ler5").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("col5").style.display = "none";
+                        document.getElementById("panel5").style.height = "300px";
+                        document.getElementById("div55").style.height = "44px";
+                    }
+                }
+            }
+
+            function clickar6() {
+                if (document.getElementById('basic-addon66').style.display !== "none") {
+                    if (document.getElementById("col6").style.display === "none") {
+                        document.getElementById("col6").style.display = "inline-block";
+                        document.getElementById("ler6").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("panel6").style.height = "311px";
+                        document.getElementById("div66").style.height = "98px";
+                        document.getElementById("p6").style.display = "none";
+                    } else {
+                        document.getElementById("ler6").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("col6").style.display = "none";
+                        document.getElementById("panel6").style.height = "257px";
+                        document.getElementById("div66").style.height = "44px";
+                    }
+                } else {
+                    if (document.getElementById("col6").style.display === "none") {
+                        document.getElementById("col6").style.display = "inline-block";
+                        document.getElementById("ler6").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("panel6").style.height = "354px";
+                        document.getElementById("div66").style.height = "98px";
+                        document.getElementById("p6").style.display = "none";
+                    } else {
+                        document.getElementById("ler6").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("col6").style.display = "none";
+                        document.getElementById("panel6").style.height = "300px";
+                        document.getElementById("div66").style.height = "44px";
+                    }
+                }
+            }
+
+            function clickar7() {
+                if (document.getElementById('basic-addon77').style.display !== "none") {
+                    if (document.getElementById("col7").style.display === "none") {
+                        document.getElementById("col7").style.display = "inline-block";
+                        document.getElementById("ler7").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("panel7").style.height = "295px";
+                        document.getElementById("div77").style.height = "82px";
+                        document.getElementById("p7").style.display = "none";
+                    } else {
+                        document.getElementById("ler7").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("col7").style.display = "none";
+                        document.getElementById("panel7").style.height = "257px";
+                        document.getElementById("div77").style.height = "44px";
+                    }
+                } else {
+                    if (document.getElementById("col7").style.display === "none") {
+                        document.getElementById("col7").style.display = "inline-block";
+                        document.getElementById("ler7").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("panel7").style.height = "338px";
+                        document.getElementById("div77").style.height = "82px";
+                        document.getElementById("p7").style.display = "none";
+                    } else {
+                        document.getElementById("ler7").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("col7").style.display = "none";
+                        document.getElementById("panel7").style.height = "300px";
+                        document.getElementById("div77").style.height = "44px";
+                    }
+                }
+            }
+
+        </script>
     </body>
-    </html>
+</html>
+
+
