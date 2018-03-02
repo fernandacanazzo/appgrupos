@@ -113,7 +113,7 @@
         </div>
 
         <script>
-                        var id_grupo = localStorage.getItem("id_grupo");
+            var id_grupo = localStorage.getItem("id_grupo");
             var array = [];
             array = id_grupo.split('_;_', 2);
             document.getElementById('link_grp').href = "https://www.facebook.com/groups/" + array[0];
@@ -144,7 +144,6 @@
                 document.getElementById('resp').innerHTML = str_pronta;
             } else {
                 document.getElementById('panel_aviso').style.display = "block";
-                document.getElementById('voltar').style.display = "none";
 
                 document.getElementById('titulo_aviso').innerHTML = "Não foram encontradas publicações com a palavra <b>" + palavra + '</b>';
 
