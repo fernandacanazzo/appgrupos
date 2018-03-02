@@ -56,7 +56,7 @@
                             <div class="col-md-5 col-md-offset-1">
                                 <div class="panel panel-primary " id="panel1" style="margin-right:25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe; width: 100%; background-color: #fbfbfb">
                                     <div class="panel-body text-center" id="div1" style="border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-comment" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Publicações mais recentes comentadas por alguém <span style="font-size: small" title="Publicação mais recente é aquela que recebeu algum comentário por último" class=" text-primary glyphicon glyphicon-info-sign"></span></a>
+                                        <span class="glyphicon glyphicon-comment" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Publicações mais recentes comentadas por alguém <span style="font-size: small" title="Publicação mais recente é aquela que recebeu algum comentário por último" id="info1" class=" text-primary glyphicon glyphicon-info-sign"></span></a>
                                         <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%">
                                             <input type="text" id="nome1" class="form-control text-center" placeholder="Nome" >
 
@@ -392,7 +392,7 @@
                 }
             });
 
-            $(".text-primary glyphicon glyphicon-info-sign").click(function () {
+            $("#info1").click(function () {
                 var $title = $(this).find(".title");
                 if (!$title.length) {
                     $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
