@@ -157,10 +157,12 @@
                                 str[11] = str[11].replace(/(\r\n|\n|\r|\f|\"|\\)/gm, " ");
                                 str[11] = str[11].replace("undefined", "Essa publicação não possui uma descrição");
                                 total = ((parseInt(str[3]) + parseInt(str[5])) / parseInt(mem_count2)) * 100;
+                                if(total !== 0){
                                 qtd++;
                                  dados_posts2 += "{\"cont\":\"" + qtd + "\",\"size\":" + total + ",\"id\":\"" + str[9] + "\",\"desc\":\"" + str[11] + "\",\"reacoes\":\"" + str[3] + "\",\"comentarios\":\"" + str[5] + "\",\"dia\":\"" + str[0] + "\",\"mes\":\"" + str[1] + "\"},";
                                 
                                 ctd++;
+                                }
                         }
 
 
