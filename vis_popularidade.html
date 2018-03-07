@@ -85,9 +85,11 @@
              var frequency_list = localStorage.getItem("dados_posts2");
             data = JSON.parse(frequency_list);
             var teste = [];
-           
-            document.getElementById('titulo').innerHTML =  localStorage.getItem("numero5") + ' publicações mais populares';
-            
+            if(parseInt(localStorage.getItem("qtd")) < parseInt(localStorage.getItem("numero5"))
+            document.getElementById('titulo').innerHTML =  localStorage.getItem("qtd") + ' publicações mais populares' + '<p class="text-primary" style="font-size:small"> *o restante das publicações não obteve reações nem comentários </p>';
+            else
+            document.getElementById('titulo').innerHTML =  localStorage.getItem("qtd") + ' publicações mais populares';
+   
             console.log(data);
             var data_sorted = {};
             data_sorted = data.sort(function (a, b) {
