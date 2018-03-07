@@ -48,7 +48,7 @@
             setTimeout(function () {
 
                 window.fbAsyncInit();
-                //location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_publicacoes_mais_recentes.html';
+                location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_publicacoes_mais_recentes.html';
 
             }, 30000);
 
@@ -233,9 +233,7 @@
 
                         for (i = 0; i < res.length; i++) {
                             var arr = res[i].split('_;_', 15);
-                            if ((res[i].toLowerCase()).indexOf(arr[5].toLowerCase()) !== -1) {
-                                console.log(arr[5].toLowerCase());
-                                console.log(res[i].toLowerCase());
+                            if ((arr[5].toLowerCase().indexOf(nome.toLowerCase()) !== -1) {
                                 dados[k] = res[i];
                                 k++;
                             }
