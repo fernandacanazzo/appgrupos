@@ -24,6 +24,7 @@
             arrayid = id.split('_;_', 2);
             var string = [];
             var string2 = [];
+            document.getElementById('link_grp').href = "https://www.facebook.com/groups/" + arrayid[0];
 
             var hide = "sim";
 
@@ -51,7 +52,7 @@
 
                 function getInfo1(token) {
                     var url = "";
-                    url = "/feed?fields=comments&limit=250&access_token=";
+                    url = "/feed?fields=from&limit=250&access_token=";
                     var cn = 0;
                     FB.api(
                             "/" + arrayid[0] + url + token, doSomething);
