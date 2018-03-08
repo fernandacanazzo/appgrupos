@@ -373,6 +373,37 @@
 
                                 </div>
                             </div>
+                            <div class="col-md-5">
+                                <div class="panel panel-primary" id="panel8" style="margin-right:25px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:100%; width: 100%; background-color: #fbfbfb">
+                                    <div class="panel-body text-center" id="div8" style="height:100%; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
+                                        <span class="glyphicon glyphicon-comment" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" >Pessoas que criaram o maior número de publicações mais recentes<!-- <span style="font-size: small;" id="info7" title="Publicação mais recente é aquela que recebeu algum comentário por último" class="text-primary glyphicon glyphicon-info-sign"></span>--></a> 
+                                        <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%" id="form8">
+                                            <input type="text" id="numero8" class="form-control text-center" placeholder="Número de publicações" aria-describedby="basic-addon88">
+                                            <span class="input-group-addon" title="Máximo 1000 publicações" id="basic-addon88"><span class="glyphicon glyphicon-question-sign" style="font-size:small"></span>
+
+                                            </span> 
+                                            <span class="glyphicon glyphicon-remove form-control-feedback" id="span8" style="display:none"></span>
+                                            <div class="invalid-feedback text-danger" style="font-size:small; margin-top: 5px; display:none" id="aviso8">Máximo 1000 publicações</div>
+
+                                        </div>
+
+                                        <button class="btn btn-lg btn-primary" id="bt_principal8" style="margin-top:10px; margin-left:auto; margin-right: auto; font-size: larger" type="submit" onclick="rf08();">Ver</button>
+                                        <div class="text-left" style="margin-top:7%; margin-left:2%">
+                                            <a href="#panel8"  id="ler8" class="text-left text-primary" onclick="clickar8();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a>
+
+                                            <p id="col8" style="color:#333333; display:none; font-size:small; margin-left:8px"><b>Publicação mais recente é aquela que recebeu algum comentário por último</b><br>Essa opção mostra uma nuvem com até 50 pessoas que criaram o maior número de publicações mais recentes<br><br></p>
+                                        </div>                               
+
+                                    </div>
+                                    <!--<div class="panel-body text-left" id="div77" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
+                                        <a href="#panel7"  id="ler7" class="text-left text-primary" onclick="clickar7();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p7"><br>&nbsp</p>
+
+                                        <p id="col7" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra uma nuvem com até 50 pessoas que mais comentaram em publicações mais recentes<br><br></p>
+
+                                    </div>-->
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -390,63 +421,7 @@
                 }
             });
 
-            $("#info1").click(function () {
-                var $title = $(this).find(".title");
-                if (!$title.length) {
-                    $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
-                } else {
-                    $title.remove();
-                }
-            });
-            
-            $("#info2").click(function () {
-                var $title = $(this).find(".title");
-                if (!$title.length) {
-                    $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
-                } else {
-                    $title.remove();
-                }
-            });
-            $("#info3").click(function () {
-                var $title = $(this).find(".title");
-                if (!$title.length) {
-                    $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
-                } else {
-                    $title.remove();
-                }
-            });
-            $("#info4").click(function () {
-                var $title = $(this).find(".title");
-                if (!$title.length) {
-                    $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
-                } else {
-                    $title.remove();
-                }
-            });
-            $("#info5").click(function () {
-                var $title = $(this).find(".title");
-                if (!$title.length) {
-                    $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
-                } else {
-                    $title.remove();
-                }
-            });
-            $("#info6").click(function () {
-                var $title = $(this).find(".title");
-                if (!$title.length) {
-                    $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
-                } else {
-                    $title.remove();
-                }
-            });
-            $("#info7").click(function () {
-                var $title = $(this).find(".title");
-                if (!$title.length) {
-                    $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
-                } else {
-                    $title.remove();
-                }
-            });
+           
             var id_grupo = localStorage.getItem("id_grupo");
             var array = [];
             array = id_grupo.split('_;_', 2);
@@ -561,6 +536,22 @@
                 } else {
                     localStorage.setItem("numero7", numero7);
                     location.href = 'https://fernandacanazzo.github.io/appgrupos/pessoas_mais_comentarios.html';
+                }
+            }
+            
+                function rf08() {
+                var numero8 = $("#numero8").val();
+                if (parseInt(numero8) >= 1000) {
+                    document.getElementById('form8').className = "form-group has-error has-feedback";
+                    document.getElementById('numero8').className = "form-control text-center is-invalid";
+                    document.getElementById('span8').style.display = "inline";
+                    document.getElementById('aviso8').style.display = "inline";
+                    document.getElementById('basic-addon8').style.display = "none";
+                   // document.getElementById("panel7").style.height = "300px";
+                   // document.getElementById("div7").style.height = "255px";
+                } else {
+                    localStorage.setItem("numero8", numero8);
+                    location.href = 'https://fernandacanazzo.github.io/appgrupos/pessoas_mais_publicacoes.html';
                 }
             }
 
