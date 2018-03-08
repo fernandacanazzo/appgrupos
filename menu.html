@@ -737,6 +737,36 @@
                     }
                 }
             }
+            
+           function clickar8() {
+                if (document.getElementById('basic-addon88').style.display !== "none") {
+                    if (document.getElementById("col8").style.display === "none") {
+                        document.getElementById("col8").style.display = "inline-block";
+                        document.getElementById("ler8").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                       // document.getElementById("panel7").style.height = "295px";
+                        //document.getElementById("div77").style.height = "82px";
+                        document.getElementById("p8").style.display = "none";
+                    } else {
+                        document.getElementById("ler8").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("col8").style.display = "none";
+                       // document.getElementById("pnel7").style.height = "257px";
+                      //  document.getElementById("div77").style.height = "44px";
+                    }
+                } else {
+                    if (document.getElementById("col8").style.display === "none") {
+                        document.getElementById("col8").style.display = "inline-block";
+                        document.getElementById("ler8").innerHTML = '<span class="glyphicon glyphicon-minus" style="font-size: large; margin-right: 6px;"></span>';
+                       // document.getElementById("panel7").style.height = "338px";
+                       // document.getElementById("div77").style.height = "82px";
+                        document.getElementById("p8").style.display = "none";
+                    } else {
+                        document.getElementById("ler8").innerHTML = '<span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span>';
+                        document.getElementById("col8").style.display = "none";
+                        //document.getElementById("panel7").style.height = "300px";
+                        //document.getElementById("div77").style.height = "44px";
+                    }
+                }
+            }
 
         </script>
     </body>
