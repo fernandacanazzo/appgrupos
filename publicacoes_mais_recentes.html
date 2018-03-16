@@ -232,7 +232,7 @@
                             return ax.length - bx.length;
                         }
 
-                        for (i = 0; i < res.length; i++) {
+                        /*for (i = 0; i < res.length; i++) {
                             var contador =0;
                             var arr = res[i].split('_;_', 15);
                             var arr2 = arr[5].split(" ");
@@ -245,7 +245,15 @@
                                 k++;
                                 }
                             }
+                        }*/
+                        for (i = 0; i < res.length; i++) {
+                            var arr = res[i].split('_;_', 15);
+                            if ((arr[5].toLowerCase()).indexOf((nome.toLowerCase())) !== -1) {
+                                dados[k] = res[i];
+                                k++;
+                            }
                         }
+                        
 
                         dados = dados.sort(naturalCompare);
 
