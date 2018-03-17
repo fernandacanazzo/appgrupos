@@ -86,9 +86,9 @@
             data = JSON.parse(frequency_list);
             var teste = [];
             if(parseInt(localStorage.getItem("qtd")) < parseInt(localStorage.getItem("numero5")))
-            document.getElementById('titulo').innerHTML =  localStorage.getItem("qtd") + ' publicações mais populares' + '<p class="text-primary" style="font-size:small"> *o restante das publicações não obteve reações nem comentários </p>';
+            document.getElementById('titulo').innerHTML =  localStorage.getItem("numero5") + ' publicações mais populares' + '<p class="text-primary" style="font-size:small"> *o restante das publicações não obteve reações nem comentários </p>';
             else
-            document.getElementById('titulo').innerHTML =  localStorage.getItem("qtd") + ' publicações mais populares';
+            document.getElementById('titulo').innerHTML =  localStorage.getItem("numero5") + ' publicações mais populares';
    
             console.log(data);
             var data_sorted = {};
