@@ -251,7 +251,7 @@
                             var arr2 = arr[5].split(" ");
                             console.log(arr2);
                             for(var contador = 0; contador < arr2.length; contador++){
-                            if (arr2[contador].toLowerCase() === nome.toLowerCase) {
+                            if ((arr2[contador].toLowerCase()).localeCompare(nome.toLowerCase()) === 0) {
                                 dados[k] = res[i];
                                 k++;
                                 console.log(arr2[contador]);
