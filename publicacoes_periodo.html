@@ -240,9 +240,17 @@
                         }
                         for (i = 0; i < res.length; i++) {
                             var arr = res[i].split('_;_', 15);
-                            if ((arr[5].toLowerCase()).indexOf((nome.toLowerCase())) !== -1) {
-                                dados[k] = res[i];
-                                k++;
+                            var arr2 = arr[5].split(" ");
+                            /*if ((arr[5].toLowerCase()).indexOf((nome.toLowerCase())) !== -1) {
+                             dados[k] = res[i];
+                             k++;
+                             }*/
+                            for (var contador = 0; contador < arr2.length; contador++) {
+                                if ((arr2[contador].toLowerCase()).localeCompare(nome.toLowerCase()) === 0) {
+                                    dados[k] = res[i];
+                                    k++;
+                                    console.log(arr2[contador]);
+                                }
                             }
                         }
 
