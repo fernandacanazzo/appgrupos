@@ -48,7 +48,7 @@
             setTimeout(function () {
 
                 window.fbAsyncInit();
-            // location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_publicacoes_mais_recentes.html';
+             location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_publicacoes_mais_recentes.html';
 
             }, 20000);
 
@@ -75,12 +75,12 @@
                 function getInfo1(token) {
                     var url = "";
                     
-                    url = "/feed?fields=from,message,created_time,comments&limit=250&access_token=";
+                    url = "/feed?fields=from,message,created_time,comments&limit=100&access_token=";
                     var cn = 0;
                     FB.api(
                             "/" + arrayid[0] + url + token, doSomething);
                     function doSomething(response) {
-                        if (cn < 4 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
+                        if (cn < 10 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
                             var cnt4 = 0;
                             //console.log(response.paging.next);
                             FB.api(response.paging.next, doSomething);
