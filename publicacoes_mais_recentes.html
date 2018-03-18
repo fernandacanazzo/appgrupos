@@ -123,7 +123,7 @@
                                         var cn3 = 0;
                                         cnt4++;
                                         FB.api(
-                                                "/" + response.data[i].id + '?fields=from,id,message,comments.limit(250)&access_token=' + token, doSomething2);
+                                                "/" + response.data[i].id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
 
                                         function doSomething2(response) {
                                             if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
@@ -252,9 +252,11 @@
                             console.log(arr2);
                             for(var contador = 0; contador < arr2.length; contador++){
                             if ((arr2[contador].toLowerCase()).localeCompare(nome.toLowerCase()) === 0) {
+                                if(dados.indexOf(res[i].toString()) === -1){
                                 dados[k] = res[i];
                                 k++;
                                 console.log(arr2[contador]);
+                                }
                             }
                         }
                         }
