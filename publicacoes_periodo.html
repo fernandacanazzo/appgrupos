@@ -85,12 +85,12 @@
                     }
                     var data_ini = ano_ini + "-" + mes_ini + "-" + dia_ini;
                     var data_fim = ano_fim + "-" + mes_fim + "-" + dia_fim;
-                    url = "/feed?fields=from,message,updated_time,comments&limit=250&since=" + data_ini + "&until=" + data_fim + "&access_token=";
+                    url = "/feed?fields=from,message,updated_time,comments&limit=100&since=" + data_ini + "&until=" + data_fim + "&access_token=";
                     var cn = 0;
                     FB.api(
                             "/" + arrayid[0] + url + token, doSomething);
                     function doSomething(response) {
-                        if (cn < 4 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
+                        if (cn < 10 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
                             var cnt4 = 0;
                             FB.api(response.paging.next, doSomething);
                             var l = response.data.length;
@@ -131,12 +131,12 @@
                                         var cn3 = 0;
                                         cnt4++;
                                         FB.api(
-                                                "/" + response.data[i].id + '?fields=from,id,message,comments.limit(250)&access_token=' + token, doSomething2);
+                                                "/" + response.data[i].id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
 
                                         function doSomething2(response) {
                                             if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
 
-                                                FB.api("/" + response.id + '?fields=from,id,message,comments.limit(250).after(' + response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
+                                                FB.api("/" + response.id + '?fields=from,id,message,comments.limit(100).after(' + response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
 
                                                 var l2 = response.comments.data.length;
                                                 var j = 0;
@@ -158,7 +158,7 @@
                                             if (cn2 < cnt4 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined") {
 
 
-                                                FB.api("/" + response.id + '?fields=from,id,message,comments.limit(250)&access_token=' + token, doSomething2);
+                                                FB.api("/" + response.id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
                                                 // console.log(response.id);
                                                 var l2 = response.comments.data.length;
                                                 var j = 0;
