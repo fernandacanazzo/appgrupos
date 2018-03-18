@@ -123,12 +123,12 @@
                                         var cn3 = 0;
                                         cnt4++;
                                         FB.api(
-                                                "/" + response.data[i].id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
+                                                "/" + response.data[i].id + '?fields=from,id,message,comments.limit(250)&access_token=' + token, doSomething2);
 
                                         function doSomething2(response) {
                                             if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
 
-                                                FB.api("/" + response.id + '?fields=from,id,message,comments.limit(100).after('+response.comments.paging.cursors.after+')&access_token=' + token, doSomething2);
+                                                FB.api("/" + response.id + '?fields=from,id,message,comments.limit(250).after('+response.comments.paging.cursors.after+')&access_token=' + token, doSomething2);
                                                 //console.log(response.id);
                                                 var l2 = response.comments.data.length;
                                                 var j = 0;
@@ -150,7 +150,7 @@
                                             if (cn2 < cnt4 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined") {
                                                 
 
-                                                FB.api("/" + response.id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
+                                                FB.api("/" + response.id + '?fields=from,id,message,comments.limit(250)&access_token=' + token, doSomething2);
                                                // console.log(response.id);
                                                 var l2 = response.comments.data.length;
                                                 var j = 0;
