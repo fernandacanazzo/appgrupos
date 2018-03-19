@@ -102,6 +102,8 @@
                                     var nome_autor = response.data[i].from.name;
                                     var id_post = response.data[i].id.split('_', 2);
                                     var data_hora_post = response.data[i].updated_time.split('T', 2);
+                                    var data0 = data_hora_post[0].split('-', 3);
+                                    var hora0 = data_hora_post[1].split(':', 3);
                                     var data_post = data_hora_post[0].split('-', 3);
                                     if (response.data[i].message) {
                                         comment = response.data[i].message;
@@ -117,7 +119,7 @@
                                             var data = data_hora[0].split('-', 3);
                                             var hora = data_hora[1].split(':', 3);
 
-                                            string[y] = data[2] + data[1] + data[0] + hora[0] + hora[1] + hora[2] + "id_;_" + id_post[1] + "_;_autor_;_" + response.data[i].from.name
+                                            string[y] = data0[2] + data0[1] + data0[0] + hora0[0] + hora0[1] + hora0[2] + "id_;_" + id_post[1] + "_;_autor_;_" + response.data[i].from.name
                                                     + "_;_comentario_;_" + response.data[i].comments.data[j].from.name + "_;_"
                                                     + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_post[1] + "\">Ver publicação</a>"
                                                     + "_;_descricao_;_" + comment + "_;_desccom_;_" + response.data[i].comments.data[j].message
@@ -131,7 +133,7 @@
                                         var cn3 = 0;
                                         cnt4++;
                                         FB.api(
-                                                "/" + response.data[i].id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
+                                                "/" + response.data[i].id + '?fields=from,id,message,updated_time,comments.limit(100)&access_token=' + token, doSomething2);
 
                                         function doSomething2(response) {
                                             if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
@@ -145,8 +147,11 @@
                                                     var data = data_hora[0].split('-', 3);
                                                     var hora = data_hora[1].split(':', 3);
                                                     var id_com = response.id.split('_', 2);
+                                                    var data_hora_post = response.updated_time.split('T', 2);
+                                    var data0 = data_hora_post[0].split('-', 3);
+                                    var hora0 = data_hora_post[1].split(':', 3)
 
-                                                    string2[c] = data[2] + data[1] + data[0] + hora[0] + hora[1] + hora[2] + "id_;_" + id_com[1] + "_;_autor_;_" + response.from.name
+                                                    string2[c] = data0[2] + data0[1] + data0[0] + hora0[0] + hora0[1] + hora0[2] + "id_;_" + id_com[1] + "_;_autor_;_" + response.from.name
                                                             + "_;_comentario_;_" + response.comments.data[j].from.name + "_;_"
                                                             + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + response.id + "\">Ver publicação</a>"
                                                             + "_;_descricao_;_" + response.message + "_;_desccom_;_" + response.comments.data[j].message
@@ -158,7 +163,7 @@
                                             if (cn2 < cnt4 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined") {
 
 
-                                                FB.api("/" + response.id + '?fields=from,id,message,comments.limit(100)&access_token=' + token, doSomething2);
+                                                FB.api("/" + response.id + '?fields=from,id,message,updated_time,comments.limit(100)&access_token=' + token, doSomething2);
                                                 // console.log(response.id);
                                                 var l2 = response.comments.data.length;
                                                 var j = 0;
@@ -167,8 +172,11 @@
                                                     var data = data_hora[0].split('-', 3);
                                                     var hora = data_hora[1].split(':', 3);
                                                     var id_com = response.id.split('_', 2);
+                                                    var data_hora_post = response.updated_time.split('T', 2);
+                                    var data0 = data_hora_post[0].split('-', 3);
+                                    var hora0 = data_hora_post[1].split(':', 3)
 
-                                                    string2[c] = data[2] + data[1] + data[0] + hora[0] + hora[1] + hora[2] + "id_;_" + id_com[1] + "_;_autor_;_" + response.from.name
+                                                    string2[c] = data0[2] + data0[1] + data0[0] + hora0[0] + hora0[1] + hora0[2] + "id_;_" + id_com[1] + "_;_autor_;_" + response.from.name
                                                             + "_;_comentario_;_" + response.comments.data[j].from.name + "_;_"
                                                             + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + response.id + "\">Ver publicação</a>"
                                                             + "_;_descricao_;_" + response.message + "_;_desccom_;_" + response.comments.data[j].message
@@ -247,9 +255,11 @@
                              }*/
                             for (var contador = 0; contador < arr2.length; contador++) {
                                 if ((arr2[contador].toLowerCase()).localeCompare(nome.toLowerCase()) === 0) {
+                                     if(dados.indexOf(res[i].toString()) === -1){
                                     dados[k] = res[i];
                                     k++;
                                     console.log(arr2[contador]);
+                                }
                                 }
                             }
                         }
