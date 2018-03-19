@@ -148,6 +148,13 @@
                         document.getElementById('status').innerHTML = '<p class="text-primary"><span class="glyphicon glyphicon-ok-sign" style="margin-right: 6px;"></span>Você está conectado(a)</p>';
 
                     } else {
+                        
+                             if (response.status === 'not_authorized') {
+                                 window.location.href = 'https://fernandacanazzo.github.io/redirect.html'; 
+                                 
+                         }
+                        
+                        
                         document.getElementById('face').style.display = "block";
                         document.getElementById('logar').style.display = "block";
                         document.getElementById('aviso_login').style.display = "block";
