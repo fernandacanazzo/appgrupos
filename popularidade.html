@@ -79,12 +79,12 @@
 
                 function getInfo2(token) {
                     var url = "";
-                    url = "/feed?fields=reactions.summary(true),comments.summary(true), message, created_time&limit=250&access_token=";
+                    url = "/feed?fields=reactions.summary(true),comments.summary(true), message, created_time&limit=100&access_token=";
                     var cn = 0;
                     FB.api(
                             "/" + arrayid[0] + url + token, doSomething);
                     function doSomething(response) {
-                        if (cn < 4 && typeof response.paging !== "undefined" || typeof response.paging.next !== "undefined") {
+                        if (cn < 100 && typeof response.paging !== "undefined" || typeof response.paging.next !== "undefined") {
                             FB.api(response.paging.next, doSomething);
 
                             var l = response.data.length;
