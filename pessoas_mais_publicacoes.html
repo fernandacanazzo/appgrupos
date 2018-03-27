@@ -69,9 +69,9 @@
 
             setTimeout(function () {
                 window.fbAsyncInit();
-                location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_pessoas_mais_publicacoes.html';
+                //location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_pessoas_mais_publicacoes.html';
 
-            }, 15000);
+            }, 20000);
 
 
 
@@ -111,7 +111,7 @@
 
 
                                 string[y] = "idpost_;_" + id_post[1] + "_;_autor_;_" + response.data[i].from.name + "_;_id_;_" + response.data[i].from.id;
-
+                                console.log(string[y]);
                                 y++;
 
 
