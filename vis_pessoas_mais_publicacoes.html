@@ -99,6 +99,7 @@
             var lines = frequency_list.split(/[,\.]+/g),
                    data = Highcharts.reduce(lines, function (arr, word) {
                         var obj = Highcharts.find(arr, function (obj) {
+                            if(obj.name !== "")
                             return obj.name === word;
                         });
                         if (obj) {
