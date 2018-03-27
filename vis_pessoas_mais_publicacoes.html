@@ -130,7 +130,7 @@
             Highcharts.chart('cloud_c2', {
                 series: [{
                         type: 'wordcloud',
-                        data: teste3,
+                        data: frequency_list,
                         name: 'Quantidade'
                     }],
                 title: {
@@ -147,13 +147,13 @@
             json_autores_sorted = json_autores.sort(function (a, b) {
                 return b.size - a.size;
             });
-            if (Object.keys(json_autores_sorted).length < 10) {
+            if (Object.keys(json_autores_sorted).length < 50) {
                 for (var l = 0; l < Object.keys(json_autores_sorted).length; l++) {
                     teste2[l] = json_autores_sorted[l];
 
                 }
             } else {
-                for (var l = 0; l < 10; l++) {
+                for (var l = 0; l < 50; l++) {
                     teste2[l] = json_autores_sorted[l];
                 }
             }
