@@ -32,8 +32,7 @@
                 font-weight: bold;
             }
             #cloud_c2 {
-                min-width: 310px;
-                max-width: 800px;
+          
                 margin: 0 auto
             }
         </style>
@@ -112,6 +111,16 @@
                         }
                         return arr;
                     }, []);
+            
+                        Highcharts.chart('cloud_c2', {
+                series: [{
+                        type: 'wordcloud',
+                        data: data,
+                        name: 'Quantidade'
+                    }],
+                title: {
+                    text: 'Pessoas que mais criaram publicações'}
+            });
             console.log(lines);
     console.log(data);
             data_sorted = data.sort(function (a, b) {
@@ -128,15 +137,7 @@
                 }
             }
 
-            Highcharts.chart('cloud_c2', {
-                series: [{
-                        type: 'wordcloud',
-                        data: data,
-                        name: 'Quantidade'
-                    }],
-                title: {
-                    text: 'Pessoas que mais criaram publicações'}
-            });
+
             
             json_autores = JSON.parse(frequency_list);
 
