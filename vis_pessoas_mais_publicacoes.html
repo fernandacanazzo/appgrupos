@@ -112,32 +112,32 @@
                         return arr;
                     }, []);
             
-                        Highcharts.chart('cloud_c2', {
-                series: [{
-                        type: 'wordcloud',
-                        data: data,
-                        name: 'Quantidade'
-                    }],
-                title: {
-                    text: 'Pessoas que mais criaram publicações'}
-            });
+       
             console.log(lines);
     console.log(data);
             data_sorted = data.sort(function (a, b) {
                 return b.weight - a.weight;
             });
-            if (Object.keys(data_sorted).length < 50) {
+            if (Object.keys(data_sorted).length < 5) {
                 for (var l = 0; l < Object.keys(data_sorted).length; l++) {
                     teste3[l] = data_sorted[l];
 
                 }
             } else {
-                for (var l = 0; l < 50; l++) {
+                for (var l = 0; l < 5; l++) {
                     teste3[l] = data_sorted[l];
                 }
             }
 
-
+                 Highcharts.chart('cloud_c2', {
+                series: [{
+                        type: 'wordcloud',
+                        data: teste3,
+                        name: 'Quantidade'
+                    }],
+                title: {
+                    text: 'Pessoas que mais criaram publicações'}
+            });
             
             json_autores = JSON.parse(frequency_list);
 
