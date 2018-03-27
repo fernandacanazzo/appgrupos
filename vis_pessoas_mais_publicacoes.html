@@ -97,8 +97,7 @@
             //document.getElementById('resp2').innerHTML = frequency_list;
 
             var lines = frequency_list.split(/[,\.]+/g),
-                console.log(lines);
-                    data = Highcharts.reduce(lines, function (arr, word) {
+                   data = Highcharts.reduce(lines, function (arr, word) {
                         var obj = Highcharts.find(arr, function (obj) {
                             return obj.name === word;
                         });
@@ -113,6 +112,7 @@
                         }
                         return arr;
                     }, []);
+            console.log(lines);
     console.log(data);
             data_sorted = data.sort(function (a, b) {
                 return b.weight - a.weight;
