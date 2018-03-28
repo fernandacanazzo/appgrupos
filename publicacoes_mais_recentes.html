@@ -281,6 +281,8 @@
                                     var qtd = 1;
                                     posts[cont] = autor[1];
                                     cont++;
+                                    if (autor[11] === 'undefined')
+                                        autor[11] = 'Publicaçao não possui uma descrição';
                                     str2 += '<tr><td>' + '<span class="badge">' + bd.toString() + '</span> <b>Descrição:</b> ' + autor[11] + " " + autor[9];
                                     str2 += '<br><p style="font-size:small"><b> Autor:</b> ' + autor[3] + '</p><b><p>Comentários: </b></p><span class="glyphicon glyphicon-comment" style="margin-right: 6px; font-size: small"></span>' + autor[13] + ' (' + autor[6] + "/" + autor[7] + "/" + autor[8] + ') ' + autor[14] + "</td></tr>";
                                     autores[z] = autor[3];
