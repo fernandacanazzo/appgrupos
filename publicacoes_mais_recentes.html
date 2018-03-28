@@ -48,7 +48,7 @@
             setTimeout(function () {
 
                 window.fbAsyncInit();
-           location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_publicacoes_mais_recentes.html';
+               // location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_publicacoes_mais_recentes.html';
 
             }, 30000);
 
@@ -263,7 +263,7 @@
                                if(dados.indexOf(res[i].toString()) === -1){
                                 dados[k] = res[i];
                                 k++;
-                               // console.log(arr2);
+                                console.log(res[i]);
                                }
                             }
                         }
@@ -354,6 +354,7 @@
                         freq_autores += "]";
 
                         localStorage.setItem("freq_autores", text);
+                        
                         
 
                         if (hide !== "sim") {
