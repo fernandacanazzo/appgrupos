@@ -43,14 +43,19 @@
             var posts2 = [];
             var descricao = [];
             var n_autor = [];
+            var tempo = 50000;
             
             var hide = "sim";
             setTimeout(function () {
-
+                
+                if (localStorage.getItem("numero1") <= 50)
+                    tempo = 15000;
+                if (localStorage.getItem("numero1") > 50 && localStorage.getItem("numero1") =< 100)
+                    tempo = 25000;
                 window.fbAsyncInit();
                 location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_publicacoes_mais_recentes.html';
 
-            }, 50000);
+            }, tempo);
 
 
             window.fbAsyncInit = function () {
