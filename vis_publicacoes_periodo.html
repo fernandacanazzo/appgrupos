@@ -70,7 +70,7 @@
                             <h3 class="text-primary text-center" id="titulo_aviso"></h3>
                             <div style="color:#7c7c7c">Para tentar encontrar publicações, você pode <br>
                                 &#9679 Mudar a data inicial e/ou final<br>
-                                &#9679 Verificar o nome digitado para que esteja igual ao nome da pessoa no Facebook</div>
+                                &#9679 Mudar o nome digitado</div>
                           
  
                         </div>
@@ -125,11 +125,11 @@
             var teste3 = [];
             var mult = 1.0;
             if (parseInt(quant) !== 1){
-            document.getElementById('titulo_res').innerHTML = "Últimas " + quant + " publicações" + " entre " +
+            document.getElementById('titulo_res').innerHTML = "Últimas " + quant + " publicações comentadas" + " entre " +
             datas[0] + "/" + datas[1] + "/" + datas[2] + " e " + datas[3] + "/" + datas[4] + "/" + datas[5] + " comentadas por " + nome;
     
             } else{
-              document.getElementById('titulo_res').innerHTML = "Última publicação entre " +
+              document.getElementById('titulo_res').innerHTML = "Última publicação comentada entre " +
             datas[0] + "/" + datas[1] + "/" + datas[2] + " e " + datas[3] + "/" + datas[4] + "/" + datas[5] + " comentada por " + nome;
       
             }
