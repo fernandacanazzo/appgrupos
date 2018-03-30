@@ -26,6 +26,7 @@
             var string2 = [];
             var string3 = [];
             var string4 = [];
+            var cn = 0;
 
             var hide = "sim";
 
@@ -34,6 +35,7 @@
                        // location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_palavras_publicacoes.html';
                     
                     }, 30000);
+                    
 
 
             window.fbAsyncInit = function () {
@@ -53,7 +55,7 @@
                 function getInfo1(token) {
                     var url = "";
                     url = "/feed?fields=from,message,created_time&limit=50&access_token=";
-                    var cn = 0;
+                    //var cn = 0;
                     FB.api(
                             "/" + arrayid[0] + url + token, doSomething);
                     function doSomething(response) {
@@ -246,7 +248,9 @@
             }(document, 'script', 'facebook-jssdk'));
 
 
-             //window.fbAsyncInit();
+             if(cn === 19)
+                 location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_palavras_publicacoes.html';
+                 
         </script>
 
         <script type="text/javascript"></script>
