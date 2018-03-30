@@ -64,6 +64,11 @@
             document.getElementById('link_grp').href = "https://www.facebook.com/groups/" + arrayid[0];
             var string = [];
             var string2 = [];
+            var tempo = 40000;
+            if (localStorage.getItem("numero1") <= 50)
+                    tempo = 15000;
+                if (localStorage.getItem("numero1") > 50 && localStorage.getItem("numero1") <= 100)
+                    tempo = 25000;
 
             var hide = "sim";
 
@@ -71,7 +76,7 @@
                 window.fbAsyncInit();
               location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_pessoas_mais_comentarios.html';
 
-            }, 30000);
+            }, tempo);
 
 
 
