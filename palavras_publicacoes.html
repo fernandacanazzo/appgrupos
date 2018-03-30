@@ -18,6 +18,7 @@
     </head>
     <body style="background-color: #f7f7f7">
         <script type="text/javascript">
+            window.fbAsyncInit();    
             var id = localStorage.getItem("id_grupo");
             var arrayid = [];
             arrayid = id.split('_;_', 2);
@@ -29,8 +30,8 @@
             var hide = "sim";
 
                     setTimeout(function () {
-                        window.fbAsyncInit();
-                        location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_palavras_publicacoes.html';
+                       // window.fbAsyncInit();
+                       // location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_palavras_publicacoes.html';
                     
                     }, 30000);
 
@@ -74,6 +75,7 @@
                                         + "_;_descricao_;_" + response.data[i].message;
                                 y++;
                                 hide = "nao";
+                                document.getElementById('teste').innerHTML = string[y];
                             }
 
 
@@ -275,6 +277,7 @@
                         <div class="panel-body text-center" style="height:85px;">
 
                             <div id="aviso3" class="text-center" style=" margin-top:18px"><b>Procurando publicações... por favor aguarde alguns segundos</b></div>
+                            <div id = "teste"></div>
                         </div>
 
                         <div class="text-left">
