@@ -47,7 +47,7 @@
             
                     setTimeout(function () {
                             window.fbAsyncInit();
-                            location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_reacoes.html';
+                            //location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_reacoes.html';
 
                         
 
@@ -86,7 +86,9 @@
 
                                 likes = response.data[i].reactions.summary.total_count;
                                 string[y] = "id_" + id_post[1] + "_like_" + likes;
-                                y++;
+                                console.log(string[y]);
+                                y++;    
+                                
 
                                 // }
                             }
