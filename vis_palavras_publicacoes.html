@@ -131,13 +131,13 @@
                 document.getElementById('panel_01').style.display = "block";
                 document.getElementById('cloud_01').style.display = "block";
                 if (parseInt(quant) < parseInt(numero) && parseInt(quant) !== 1) {
-                    document.getElementById('titulo_res').innerHTML = "Últimas " + quant + "* publicações mais recentes com a palavra '" + palavra + "'" + '<p style="font-size: small;margin-top:6px">*Número de publicações encontradas menor que o limite especificado</p>';
+                    document.getElementById('titulo_res').innerHTML = "Últimas " + quant + "* publicações a serem comentadas com a palavra '" + palavra + "'" + '<p style="font-size: small;margin-top:6px">*Número de publicações encontradas menor que o limite especificado</p>';
                 } else {
                     if (parseInt(quant) === parseInt(numero) && parseInt(quant) !== 1) {
-                        document.getElementById('titulo_res').innerHTML = "Últimas " + quant + " publicações mais recentes com a palavra '" + palavra + "'";
+                        document.getElementById('titulo_res').innerHTML = "Últimas " + quant + " publicações a serem comentadas com a palavra '" + palavra + "'";
                     }
                     if (parseInt(quant) === 1) {
-                        document.getElementById('titulo_res').innerHTML = "Última publicação* mais recente com a palavra '" + palavra + "'" + '<p style="font-size: small;margin-top:6px">*Número de publicações encontradas menor que o limite especificado</p>';
+                        document.getElementById('titulo_res').innerHTML = "Última publicação* a ser comentada com a palavra '" + palavra + "'" + '<p style="font-size: small;margin-top:6px">*Número de publicações encontradas menor que o limite especificado</p>';
                     }
                 }
 

@@ -71,7 +71,7 @@
                 window.fbAsyncInit();
               location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_pessoas_mais_comentarios.html';
 
-            }, 18000);
+            }, 30000);
 
 
 
@@ -91,13 +91,13 @@
 
                 function getInfo1(token) {
                     var url = "";
-                    url = "/feed?fields=comments&limit=250&access_token=";
+                    url = "/feed?fields=comments&limit=100&access_token=";
                     var cn = 0;
                     FB.api(
                             "/" + arrayid[0] + url + token, doSomething);
                     function doSomething(response) {
 
-                        if (cn < 4 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
+                        if (cn < 10 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
                             var cnt4 = 0;
                             FB.api(response.paging.next, doSomething);
                             var l = response.data.length;
