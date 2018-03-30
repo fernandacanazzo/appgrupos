@@ -31,8 +31,8 @@
             var hide = "sim";
 
                     setTimeout(function () {
-                       // window.fbAsyncInit();
-                       // location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_palavras_publicacoes.html';
+                      //window.fbAsyncInit();
+                      location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_palavras_publicacoes.html';
                     
                     }, 30000);
                     
@@ -75,7 +75,7 @@
                                         + "_;_"
                                         + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_post[1] + "\">Ver publicação</a>"
                                         + "_;_descricao_;_" + response.data[i].message;
-                                document.getElementById('teste').innerHTML += string[y] + "nro " + cn;
+                                //document.getElementById('teste').innerHTML += string[y] + "nro " + cn;
                                 y++;
                                 hide = "nao";
                                 
@@ -247,9 +247,6 @@
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
 
-
-             if(cn === 19)
-                 location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_palavras_publicacoes.html';
                  
         </script>
 
@@ -282,7 +279,7 @@
                         <div class="panel-body text-center" style="height:85px;">
 
                             <div id="aviso3" class="text-center" style=" margin-top:18px"><b>Procurando publicações... por favor aguarde alguns segundos</b></div>
-                            <div id = "teste"></div>
+                           
                         </div>
 
                         <div class="text-left">
