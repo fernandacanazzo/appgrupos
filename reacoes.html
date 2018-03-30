@@ -84,7 +84,7 @@
                                 //if(y<numero){
                                 var id_post = response.data[i].id.split('_', 2);
 
-                                likes = response.data[i].summary.total_count;
+                                likes = response.data[i].reactions.summary.total_count;
                                 string[y] = "id_" + id_post[1] + "_like_" + likes;
                                 console.log(string[y]);
                                 y++;    
