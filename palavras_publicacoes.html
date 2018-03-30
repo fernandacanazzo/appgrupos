@@ -27,14 +27,18 @@
             var string3 = [];
             var string4 = [];
             var cn = 0;
-
+            var tempo = 40000;
+            if (localStorage.getItem("numero1") <= 50)
+                    tempo = 15000;
+                if (localStorage.getItem("numero1") > 50 && localStorage.getItem("numero1") <= 100)
+                    tempo = 25000;
             var hide = "sim";
 
                     setTimeout(function () {
                       window.fbAsyncInit();
                       location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_palavras_publicacoes.html';
                     
-                    }, 30000);
+                    }, tempo);
                     
 
 
