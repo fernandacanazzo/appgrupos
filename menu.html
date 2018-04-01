@@ -61,7 +61,7 @@
                                             <input type="text" id="nome1" class="form-control text-center" placeholder="Nome" >
 
                                         </div>
-                                        <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%; display:inline" id="form1">
+                                        <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%; display: compact" id="form1">
                                             <input type="text" id="numero1" class="form-control text-center" placeholder="Número de publicações" aria-describedby="basic-addon11">
                                             <span class="input-group-addon" title="Máximo 1000 publicações" id="basic-addon11"><span class=" glyphicon glyphicon-question-sign" style="font-size:small"></span>
 
@@ -505,6 +505,12 @@
                 document.getElementById('form1').style.display = "none"; 
                 document.getElementById('datas_tabela').style.display = "block"; 
              }
+             if(document.getElementById('datas_tabela').style.display === "block")
+                 $( "#optradio" ).prop( "checked", false );
+                document.getElementById('bt_principal2').style.display = "none"; 
+                document.getElementById('bt_principal').style.display = "block"; 
+                document.getElementById('form1').style.display = "compact"; 
+                document.getElementById('datas_tabela').style.display = "none"; 
             });
                  
            
