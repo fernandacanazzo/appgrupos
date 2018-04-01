@@ -498,12 +498,14 @@
                 }
             });
             
+            $('#optradio').click(function() {
              if($('#optradio').is(':checked')) {
                 document.getElementById('bt_principal2').style.display = "block"; 
                 document.getElementById('bt_principal1').style.display = "none"; 
                 document.getElementById('form1').style.display = "none"; 
                 document.getElementById('datas_tabela').style.display = "block"; 
              }
+            });
                  
            
             var id_grupo = localStorage.getItem("id_grupo");
