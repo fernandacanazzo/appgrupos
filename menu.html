@@ -294,7 +294,7 @@
                                             <div class="invalid-feedback text-danger" style="font-size:small; margin-top: 5px; display:none" id="aviso1">Máximo 1000 publicações</div>
 
                                         </div>
-                                        <div class="radio">
+                                        <div class="radio" id ="radio">
   <label><input type="radio" id="optradio">Publicações dentro de um período</label>
 </div>
                                         <div class="row" id="datas_tabela" style="display:none">
@@ -407,7 +407,7 @@
             });
             
             $('#optradio').click(function() {
-                 document.getElementById('optradio').style.margin = "5px"; 
+                 document.getElementById('radio').style.margin = "5px"; 
              if($('#optradio').is(':checked')) {
                 document.getElementById('bt_principal2').style.display = "block"; 
                 document.getElementById('bt_principal').style.display = "none"; 
