@@ -101,7 +101,7 @@
             var lines = frequency_list.split(/[,\.]+/g),
                 data = Highcharts.reduce(lines, function(arr, word) {
                     var obj = Highcharts.find(arr, function(obj) {
-                        return obj.name === word;
+                        return obj.name === word.split(' ')[0];
                     });
 
                     if (obj) {
@@ -110,7 +110,7 @@
                     } else {
 
                         obj = {
-                            name: word,
+                            name: word.split(' ')[0],
                             weight: 1,
                             label: word
                         };
