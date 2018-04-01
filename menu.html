@@ -505,12 +505,14 @@
                 document.getElementById('form1').style.display = "none"; 
                 document.getElementById('datas_tabela').style.display = "block"; 
              }
-             if(document.getElementById('datas_tabela').style.display === "block")
+             
+             if(document.getElementById('datas_tabela').style.display === "block"){
                  $( "#optradio" ).prop( "checked", false );
                 document.getElementById('bt_principal2').style.display = "none"; 
                 document.getElementById('bt_principal').style.display = "block"; 
                 document.getElementById('form1').style.display = "compact"; 
                 document.getElementById('datas_tabela').style.display = "none"; 
+            }
             });
                  
            
