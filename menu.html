@@ -70,32 +70,11 @@
                                             <div class="invalid-feedback text-danger" style="font-size:small; margin-top: 5px; display:none" id="aviso1">Máximo 1000 publicações</div>
 
                                         </div>
-
-                                        <button class="btn btn-lg btn-primary" id="bt_principal" style="margin-top:10px; margin-left:auto; margin-right: auto; font-size: larger" type="submit" onclick="rf01();">Ver</button>
-                                        <div class="text-left" style="margin-top:7%; margin-left:2%"><a href="#panel1" id="ler1" class=" text-primary" onclick="clickar1();"><span class="glyphicon glyphicon-plus" style="font-size: large;margin-right: 6px"></span></a></div>
-                                        <p class="text-left" id="col1" style="color:#333333; display:none; font-size:small; margin-left:8px"><b>Últimas publicações entre as 1000 publicações que foram comentadas mais recentemente</b><br>Essa opção mostra os seguintes dados das últimas publicações que foram comentadas por alguém:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas dos comentários<br>&#9679 Nuvem de palavras dos comentários</p>
-
-                                    </div>
-                                    <!--<div class="panel-body text-left" id="div11" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
-                                        <a href="#panel1" id="ler1" class=" text-primary" onclick="clickar1();"> <span class="glyphicon glyphicon-plus text-primary" style="font-size: large; margin-right: 6px;"></span></a><p id="p1"><br>&nbsp</p>
-
-                                        <p id="col1" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações mais recentes que foram comentadas por alguém:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas dos comentários<br>&#9679 Nuvem de palavras dos comentários</p>
-
-                                    </div>-->
-
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="panel panel-primary" id="panel2" style="border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe; height:100%; width: 100%; background-color: #fbfbfb">
-                                    <div class="panel-body text-center" id="div2" style="height: 100%; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-comment" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Últimas publicações comentadas por alguém num período <!--<span style="font-size: small;" id="info2" title="Publicação mais recente é aquela que recebeu algum comentário por último. Podem ser retornadas até 1000 publicações" class=" text-primary glyphicon glyphicon-info-sign"></span>--></a> 
-                                        <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%">
-                                            <input type="text" id="nome2" class="form-control text-center" placeholder="Nome">
-
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-5 col-xs-6 col-md-offset-1 text-left"  style="margin-top:5px; border-style: solid; border-width:1px; border-radius:10px; border-color:#f7f7f7">
+                                        <div class="radio">
+  <label><input type="radio" name="optradio">Publicações dentro de um período</label>
+</div>
+                                        <div class="row" id="datas_tabela" style="display:none">
+                                            <div class="col-md-5 col-xs-6 col-md-offset-1 text-left" style="margin-top:5px; border-style: solid; border-width:1px; border-radius:10px; border-color:#f7f7f7">
                                                 <form class="form-inline" style="margin-left:10px">
                                                     <label style="margin-top: 10px; color:#919191; font-size:large; margin-left: 21px">Data inicial</label>
                                                     <div class="form-group-sm">
@@ -166,9 +145,107 @@
                                                 </form>
                                             </div>
                                         </div>
+                                        <button class="btn btn-lg btn-primary" id="bt_principal2" style="display:none; margin-top:10px; margin-left:auto; margin-right: auto; font-size: larger" type="submit" onclick="rf02();">Ver</button>
 
-                                        <button class="btn btn-lg btn-primary" id="bt_principal2" style="margin-top:10px; margin-left:auto; margin-right: auto; font-size: larger" type="submit" onclick="rf02();">Ver</button>
 
+                                        <button class="btn btn-lg btn-primary" id="bt_principal" style="margin-top:10px; margin-left:auto; margin-right: auto; font-size: larger" type="submit" onclick="rf01();">Ver</button>
+                                        <div class="text-left" style="margin-top:7%; margin-left:2%"><a href="#panel1" id="ler1" class=" text-primary" onclick="clickar1();"><span class="glyphicon glyphicon-plus" style="font-size: large;margin-right: 6px"></span></a></div>
+                                        <p class="text-left" id="col1" style="color:#333333; display:none; font-size:small; margin-left:8px"><b>Últimas publicações entre as 1000 publicações que foram comentadas mais recentemente</b><br>Essa opção mostra os seguintes dados das últimas publicações que foram comentadas por alguém:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas dos comentários<br>&#9679 Nuvem de palavras dos comentários</p>
+
+                                    </div>
+                                    <!--<div class="panel-body text-left" id="div11" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
+                                        <a href="#panel1" id="ler1" class=" text-primary" onclick="clickar1();"> <span class="glyphicon glyphicon-plus text-primary" style="font-size: large; margin-right: 6px;"></span></a><p id="p1"><br>&nbsp</p>
+
+                                        <p id="col1" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações mais recentes que foram comentadas por alguém:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas dos comentários<br>&#9679 Nuvem de palavras dos comentários</p>
+
+                                    </div>-->
+
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="panel panel-primary" id="panel2" style="border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe; height:100%; width: 100%; background-color: #fbfbfb">
+                                    <div class="panel-body text-center" id="div2" style="height: 100%; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
+                                        <span class="glyphicon glyphicon-comment" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Últimas publicações comentadas por alguém num período <!--<span style="font-size: small;" id="info2" title="Publicação mais recente é aquela que recebeu algum comentário por último. Podem ser retornadas até 1000 publicações" class=" text-primary glyphicon glyphicon-info-sign"></span>--></a> 
+                                        <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%">
+                                            <input type="text" id="nome2" class="form-control text-center" placeholder="Nome">
+
+                                        </div>
+
+                                       <!-- <div class="row" id="datas_tabela">
+                                            <div class="col-md-5 col-xs-6 col-md-offset-1 text-left" style="margin-top:5px; border-style: solid; border-width:1px; border-radius:10px; border-color:#f7f7f7">
+                                                <form class="form-inline" style="margin-left:10px">
+                                                    <label style="margin-top: 10px; color:#919191; font-size:large; margin-left: 21px">Data inicial</label>
+                                                    <div class="form-group-sm">
+                                                        <label for="dia_ini">Dia</label>
+                                                        <select style="margin-left:6px; width:100px" class="form-control" id="dia_ini">
+                                                            <option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option>
+                                                            <option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option>
+                                                            <option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                                                            <option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option>
+                                                            <option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
+                                                            <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option>
+                                                            <option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option>
+                                                            <option value="29">29</option><option value="30">30</option><option value="31">31</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group-sm">
+                                                        <label for="mes_ini">Mês</label>
+                                                        <select  style="margin-left:2px;" class="form-control" id="mes_ini">
+                                                            <option value="01">Janeiro</option><option value="02">Fevereiro</option><option value="03">Março</option><option value="04">Abril</option>
+                                                            <option value="05">Maio</option><option value="06">Junho</option><option value="07">Julho</option><option value="08">Agosto</option>
+                                                            <option value="09">Setembro</option><option value="10">Outubro</option><option value="11">Novembro</option><option value="12">Dezembro</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group-sm">
+                                                        <label for="ano_ini">Ano</label>
+                                                        <select style="margin-left:2px; width:100px" class="form-control" id="ano_ini">
+                                                            <option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option>
+                                                            <option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option>
+                                                            <option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option>
+                                                        </select>
+                                                    </div>
+                                                </form>
+                                                <br>
+                                            </div>     
+                                            <div class="col-md-5 col-xs-6 text-left" style="margin-top:5px; border-style: solid; border-width:1px; border-radius:10px; border-color:#f7f7f7" >
+                                                <form class="form-inline" style="margin-left:10px">
+                                                    <label style="margin-top: 10px; color:#919191; font-size:large; margin-left: 27px">Data final</label>
+                                                    <div class="form-group-sm">
+                                                        <label for="dia_ini">Dia</label>
+                                                        <select style="margin-left:6px; width:100px" class="form-control" id="dia_fim">
+                                                            <option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option>
+                                                            <option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option>
+                                                            <option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                                                            <option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option>
+                                                            <option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
+                                                            <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option>
+                                                            <option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option>
+                                                            <option value="29">29</option><option value="30">30</option><option value="31">31</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group-sm">
+                                                        <label for="mes_ini">Mês</label>
+                                                        <select  style="margin-left:2px;" class="form-control" id="mes_fim">
+                                                            <option value="01">Janeiro</option><option value="02">Fevereiro</option><option value="03">Março</option><option value="04">Abril</option>
+                                                            <option value="05">Maio</option><option value="06">Junho</option><option value="07">Julho</option><option value="08">Agosto</option>
+                                                            <option value="09">Setembro</option><option value="10">Outubro</option><option value="11">Novembro</option><option value="12">Dezembro</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group-sm">
+                                                        <label for="ano_ini">Ano</label>
+                                                        <select style="margin-left:2px; width:100px" class="form-control" id="ano_fim">
+                                                            <option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option>
+                                                            <option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option>
+                                                            <option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option>
+                                                        </select>
+                                                    </div>
+                                                    <br>
+                                                </form>
+                                            </div>
+                                        </div>-->
+
+                                        <!--<button class="btn btn-lg btn-primary" id="bt_principal2" style="margin-top:10px; margin-left:auto; margin-right: auto; font-size: larger" type="submit" onclick="rf02();">Ver</button>
+-->
                                         <div class="text-left" style="margin-top:7%; margin-left:2%"> <a href="#panel2" id="ler2" class="text-left text-primary" onclick="clickar2();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a>
                                             <p id="col2" class="text-left" style="color:#333333; display:none; font-size:small; margin-left:8px"><b>Últimas publicações entre as 1000 publicações que foram comentadas mais recentemente</b><br>Essa opção mostra os seguintes dados das publicações em um período:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas dos comentários<br>&#9679 Nuvem de palavras dos comentários</p>
 
@@ -420,7 +497,14 @@
                     $title.remove();
                 }
             });
-
+            
+             if($('#optradio').is(':checked')) {
+                document.getElementById('bt_principal2').style.display = "block"; 
+                document.getElementById('bt_principal1').style.display = "none"; 
+                document.getElementById('form1').style.display = "none"; 
+                document.getElementById('datas_tabela').style.display = "block"; 
+             }
+                 
            
             var id_grupo = localStorage.getItem("id_grupo");
             var array = [];
