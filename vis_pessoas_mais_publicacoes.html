@@ -94,9 +94,9 @@
             var teste3 = [];
             var mult = 1.0;
 
-            // var frequency_list = localStorage.getItem("freq_autor");
+            var frequency_list = localStorage.getItem("freq_autor").toString();
             //document.getElementById('resp2').innerHTML = frequency_list;
-            var frequency_list = 'lala,lolo,lulu lele,lolo'
+            //var frequency_list = 'lala,lolo,lulu lele,lolo'
             var lines = frequency_list.split(/[,\.]+/g),
                 data = Highcharts.reduce(lines, function(arr, word) {
                     var obj = Highcharts.find(arr, function(obj) {
