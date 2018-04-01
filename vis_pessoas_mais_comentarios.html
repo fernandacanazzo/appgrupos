@@ -102,7 +102,7 @@
             var lines = frequency_list.split(/[,\.]+/g),
                 data = Highcharts.reduce(lines, function(arr, word) {
                     var obj = Highcharts.find(arr, function(obj) {
-                        return obj.name === word.split(' ')[0];
+                        return obj.label === word;
                     });
                     if (obj) {
                         obj.weight += 1;
@@ -137,7 +137,7 @@
                     data: teste3
                 }],
                 tooltip: {
-                    pointFormat: 'Nome completo:<b>{point.label}</b> <br> Quantidade:<b> {point.weight}</b>'
+                    pointFormat: 'Nome completo: <b>{point.label}</b> <br> Quantidade:<b> {point.weight}</b>'
                 },
                 title: {
                     text: 'Pessoas que mais comentaram'
