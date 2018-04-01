@@ -102,7 +102,7 @@
             var lines = frequency_list.split(/[,\.]+/g),
                 data = Highcharts.reduce(lines, function(arr, word) {
                     var obj = Highcharts.find(arr, function(obj) {
-                        return obj.name === word;
+                        return obj.name === word.split(' ')[0];
                     });
                     if (obj) {
                         obj.weight += 1;
@@ -134,8 +134,7 @@
             Highcharts.chart('cloud_c2', {
                 series: [{
                     type: 'wordcloud',
-                    data: teste3,
-                    name: 'Quantidade'
+                    data: teste3
                 }],
                 tooltip: {
                     pointFormat: 'Nome completo:<b>{point.label}</b> <br> Quantidade:<b> {point.weight}</b>'
