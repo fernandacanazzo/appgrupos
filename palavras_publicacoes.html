@@ -36,7 +36,7 @@
 
                     setTimeout(function () {
                       window.fbAsyncInit();
-                      location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_palavras_publicacoes.html';
+                     // location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_palavras_publicacoes.html';
                     
                     }, 40000);
                     
@@ -80,6 +80,7 @@
                                         + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_post[1] + "\">Ver publicação</a>"
                                         + "_;_descricao_;_" + response.data[i].message;
                                 //document.getElementById('teste').innerHTML += string[y] + "nro " + cn;
+                                console.log(string[y]);
                                 y++;
                                 hide = "nao";
                                 
