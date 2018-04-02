@@ -1,439 +1,436 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/shop-homepage.css" rel="stylesheet">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/shop-homepage.css" rel="stylesheet">
 
 
-        <title>App</title>
-        <style>
-            .fixed-panel {
-                max-height: 500px;
-                overflow-y: auto;
-            }
+    <title>App</title>
+    <style>
+        .fixed-panel {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .legend {
+            border: 1px solid #555555;
+            border-radius: 5px 5px 5px 5px;
+            font-size: 0.8em;
+            margin: 10px;
+            padding: 8px;
+        }
+        
+        .bld {
+            font-weight: bold;
+        }
+    </style>
 
-            .legend {
-                border: 1px solid #555555;
-                border-radius: 5px 5px 5px 5px;
-                font-size: 0.8em;
-                margin: 10px;
-                padding: 8px;
-            }
-            .bld {
-                font-weight: bold;
-            }
-        </style>
+</head>
 
-    </head>
-    <body style="background-color: #f7f7f7">
-        <script type="text/javascript">
-            var id = localStorage.getItem("id_grupo");
-            var arrayid = [];
-            arrayid = id.split('_;_', 2);
-            var string = [];
-            var string2 = [];
-            var string3 = [];
-            var string4 = [];
-            var posts2 = [];
-            var descricao = [];
-            var n_autor = [];
-            var tempo = 40000;
-            if (localStorage.getItem("numero1") <= 50)
-                    tempo = 20000;
-                if (localStorage.getItem("numero1") > 50 && localStorage.getItem("numero1") <= 100)
-                    tempo = 25000;
-            
-            var hide = "sim";
-            setTimeout(function () {
-                
-            
-                window.fbAsyncInit();
-                location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_publicacoes_mais_recentes.html';
+<body style="background-color: #f7f7f7">
+    <script type="text/javascript">
+        var id = localStorage.getItem("id_grupo");
+        var arrayid = [];
+        arrayid = id.split('_;_', 2);
+        var string = [];
+        var string2 = [];
+        var string3 = [];
+        var string4 = [];
+        var posts2 = [];
+        var descricao = [];
+        var n_autor = [];
+        var tempo = 35000;
 
-            }, tempo);
+        var hide = "sim";
+        setTimeout(function() {
 
 
-            window.fbAsyncInit = function () {
-                 
-                var numero = localStorage.getItem("numero1");
-                var nome = localStorage.getItem("nome1");
-                
-                var links = [];
-                var y = 0;
-                var a = 0;
-                var b = 0;
-                var c = 0;
+            window.fbAsyncInit();
+            location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_publicacoes_mais_recentes.html';
 
-                FB.init({
-                    appId: '149129182478024',
-                    autoLogAppEvents: true,
-                    xfbml: true,
-                    version: 'v2.10'
-                });
-                FB.AppEvents.logPageView();
+        }, tempo);
 
-                function getInfo1(token) {
-                    var url = "";
-                    
-                    url = "/feed?fields=from,message,updated_time,comments&limit=100&access_token=";
-                    var cn = 0;
-                    FB.api(
-                            "/" + arrayid[0] + url + token, doSomething);
-                    function doSomething(response) {
-                        if (cn < 10 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
-                            var cnt4 = 0;
-                            //console.log(response.paging.next);
-                            FB.api(response.paging.next, doSomething);
-                            var l = response.data.length;
-                            var i = 0;
-                            for (i; i < l; i++) {
 
-                                var comment = "";
-                                if (response.data[i].comments) {
-                                    var nome_autor = response.data[i].from.name;
-                                    var id_post = response.data[i].id.split('_', 2);
-                                    var data_hora_post = response.data[i].updated_time.split('T', 2);
-                                    var data0 = data_hora_post[0].split('-', 3);
-                                    var hora0 = data_hora_post[1].split(':', 3)
-                                    var data_post = data_hora_post[0].split('-', 3);
-                                    if (response.data[i].message) {
-                                        comment = response.data[i].message;
+        window.fbAsyncInit = function() {
 
-                                    } else {
+            var numero = localStorage.getItem("numero1");
+            var nome = localStorage.getItem("nome1");
 
-                                        comment = "Publicação não possui uma descrição.";
-                                    }
-                                    if (typeof response.data[i].comments.paging.next === "undefined") {
-                                        var j = 0;
-                                        for (j; j < response.data[i].comments.data.length; j++) {
-                                            var data_hora = response.data[i].comments.data[j].created_time.split('T', 2);
-                                            var data = data_hora[0].split('-', 3);
-                                            var hora = data_hora[1].split(':', 3);
+            var links = [];
+            var y = 0;
+            var a = 0;
+            var b = 0;
+            var c = 0;
 
-                                            string[y] = data0[2] + data0[1] + data0[0] + hora0[0] + hora0[1] + hora0[2] + "id_;_" + id_post[1] + "_;_autor_;_" + response.data[i].from.name
-                                                    + "_;_comentario_;_" + response.data[i].comments.data[j].from.name + "_;_"
-                                                    + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_post[1] + "\">Ver publicação</a>"
-                                                    + "_;_descricao_;_" + comment + "_;_desccom_;_" + response.data[i].comments.data[j].message
-                                                    + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_post[1] + "/?comment_id=" + response.data[i].comments.data[j].id + "\">Ver comentário</a>";
-                                           // console.log(string[y]);
-                                            y++;
+            FB.init({
+                appId: '149129182478024',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v2.10'
+            });
+            FB.AppEvents.logPageView();
 
-                                        }
-                                    }
-                                    else {
-                                        var cn2 = 0;
-                                        var cn3 = 0;
-                                        cnt4++;
-                                        FB.api(
-                                                "/" + response.data[i].id + '?fields=from,id,message,updated_time,comments.limit(100)&access_token=' + token, doSomething2);
+            function getInfo1(token) {
+                var url = "";
 
-                                        function doSomething2(response) {
-                                            if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
+                url = "/feed?fields=from,message,updated_time,comments&limit=100&access_token=";
+                var cn = 0;
+                FB.api(
+                    "/" + arrayid[0] + url + token, doSomething);
 
-                                                FB.api("/" + response.id + '?fields=from,id,message,updated_time,comments.limit(250).after('+response.comments.paging.cursors.after+')&access_token=' + token, doSomething2);
-                                                //console.log(response.id);
-                                                var l2 = response.comments.data.length;
-                                                var j = 0;
-                                                for (j; j < l2; j++) {
-                                                     var data_hora_post = response.updated_time.split('T', 2);
-                                                     var data0 = data_hora_post[0].split('-', 3);
-                                                    var hora0 = data_hora_post[1].split(':', 3);
-                                                    var data_hora = response.comments.data[j].created_time.split('T', 2);
-                                                    var data = data_hora[0].split('-', 3);
-                                                    var hora = data_hora[1].split(':', 3);
-                                                    var id_com = response.id.split('_', 2);
+                function doSomething(response) {
+                    if (cn < 10 && typeof response.paging !== "undefined" && typeof response.paging.next !== "undefined") {
+                        var cnt4 = 0;
+                        //console.log(response.paging.next);
+                        FB.api(response.paging.next, doSomething);
+                        var l = response.data.length;
+                        var i = 0;
+                        for (i; i < l; i++) {
 
-                                                    string2[c] = data0[2] + data0[1] + data0[0] + hora0[0] + hora0[1] + hora0[2] + "id_;_" + id_com[1] + "_;_autor_;_" + response.from.name
-                                                            + "_;_comentario_;_" + response.comments.data[j].from.name + "_;_"
-                                                            + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "\">Ver publicação</a>"
-                                                            + "_;_descricao_;_" + response.message + "_;_desccom_;_" + response.comments.data[j].message
-                                                            + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "/?comment_id=" + response.comments.data[j].id + "\">Ver comentário</a>";
-                                                    c++;
-                                                }
-                                                cn2++;
-                                            }
-                                            if (cn2 < cnt4 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined") {
-                                                
+                            var comment = "";
+                            if (response.data[i].comments) {
+                                var nome_autor = response.data[i].from.name;
+                                var id_post = response.data[i].id.split('_', 2);
+                                var data_hora_post = response.data[i].updated_time.split('T', 2);
+                                var data0 = data_hora_post[0].split('-', 3);
+                                var hora0 = data_hora_post[1].split(':', 3)
+                                var data_post = data_hora_post[0].split('-', 3);
+                                if (response.data[i].message) {
+                                    comment = response.data[i].message;
 
-                                                FB.api("/" + response.id + '?fields=from,id, updated_time, message,comments.limit(250)&access_token=' + token, doSomething2);
-                                               // console.log(response.id);
-                                                var l2 = response.comments.data.length;
-                                                var j = 0;
-                                                for (j; j < l2; j++) {
-                                                     var data_hora_post = response.updated_time.split('T', 2);
-                                                     var data0 = data_hora_post[0].split('-', 3);
-                                                    var hora0 = data_hora_post[1].split(':', 3);
-                                                    var data_hora = response.comments.data[j].created_time.split('T', 2);
-                                                    var data = data_hora[0].split('-', 3);
-                                                    var hora = data_hora[1].split(':', 3);
-                                                    var id_com = response.id.split('_', 2);
-
-                                                    string2[c] = data0[2] + data0[1] + data0[0] + hora0[0] + hora0[1] + hora0[2] + "id_;_" + id_com[1] + "_;_autor_;_" + response.from.name
-                                                            + "_;_comentario_;_" + response.comments.data[j].from.name + "_;_"
-                                                            + data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "\">Ver publicação</a>"
-                                                            + "_;_descricao_;_" + response.message + "_;_desccom_;_" + response.comments.data[j].message
-                                                            + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "/?comment_id=" + response.comments.data[j].id + "\">Ver comentário</a>";
-                                                   
-                                                    c++;
-                                                }
-                                                cn2++;
-                                            }
-                                        }
-
-                                    }
-                                    hide = "nao";
-
-                                }
-
-                            }
-                            cn++;
-                        }
-
-                    }
-                    return string.concat(string2);
-                }
-
-                FB.getLoginStatus(function (response) {
-                    if (response.status === 'connected') {
-                        accessToken = response.authResponse.accessToken;
-                        var token = accessToken.toString();
-                        //var string_total = [];
-                        var res = [];
- 
-                        res = getInfo1(token);
-                      //console.log(res);
-                        var str = [];
-                        var str2 = "";
-                        var quant = "";
-                        var autores = [];
-                        var bd = 1;
-                        var posts = [];
-                        var z = 0;
-                        var cont = 0;
-                        var cont2 = 0;
-                        var dados = [];
-                        var ctd = 1;
-                        var k = 0;
-                        var comentarios = "";
-                        var p_com = [];
-                        var palavras = [];
-
-                        var freq_autores = "[";
-                        function naturalCompare(b, a) {
-                            var ax = [], bx = [];
-
-                            a.replace(/(\d+)|(\D+)/g, function (_, $1, $2) {
-                                ax.push([$1 || Infinity, $2 || ""])
-                            });
-                            b.replace(/(\d+)|(\D+)/g, function (_, $1, $2) {
-                                bx.push([$1 || Infinity, $2 || ""])
-                            });
-
-                            while (ax.length && bx.length) {
-                                var an = ax.shift();
-                                var bn = bx.shift();
-                                var nn = (an[0] - bn[0]) || an[1].localeCompare(bn[1]);
-                                if (nn)
-                                    return nn;
-                            }
-
-                            return ax.length - bx.length;
-                        }
-
-                        /*for (i = 0; i < res.length; i++) {
-                            var contador =0;
-                            var arr = res[i].split('_;_', 15);
-                            var arr2 = arr[5].split(" ");
-                            for(v = 0; v < arr2.length; v++){
-                            if ((arr2[v].toLowerCase()) === (nome.toLowerCase())) {
-                                contador = 1;
-                            }
-                                if(contador === 1){
-                                dados[k] = res[i];
-                                k++;
-                                }
-                            }
-                        }*/
-                        for (i = 0; i < res.length; i++) {
-                            var arr = res[i].split('_;_', 15);
-                            var arr2 = arr[5].split(" ");
-                           // console.log(arr2);
-                            for(var contador = 0; contador < arr2.length; contador++){
-                            if ((arr2[contador].toLowerCase()).localeCompare(nome.toLowerCase()) === 0) {
-                               if(dados.indexOf(res[i].toString()) === -1){
-                                dados[k] = res[i];
-                                k++;
-                                console.log(res[i]);
-                               }
-                            }
-                        }
-                        }
-                        
-
-                        dados = dados.sort(naturalCompare);
-                        console.log(dados);
-                        for (var h = 0; h < dados.length; h++) {
-
-                            if (ctd <= parseInt(numero)) {
-                                autor = dados[h].split('_;_', 15);
-                                comentarios += autor[13] + " ";
-                                if (posts.indexOf(autor[1].toString()) === -1) {
-                                    var qtd = 1;
-                                    posts[cont] = autor[1];
-                                    cont++;
-                                    if (autor[11] === 'undefined')
-                                        autor[11] = 'Publicaçao não possui uma descrição';
-                                    str2 += '<tr><td>' + '<span class="badge">' + bd.toString() + '</span> <b>Descrição:</b> ' + autor[11] + " " + autor[9];
-                                    str2 += '<br><p style="font-size:small"><b> Autor:</b> ' + autor[3] + '</p><b><p>Comentários: </b></p><span class="glyphicon glyphicon-comment" style="margin-right: 6px; font-size: small"></span>' + autor[13] + ' (' + autor[6] + "/" + autor[7] + "/" + autor[8] + ') ' + autor[14] + "</td></tr>";
-                                    autores[z] = autor[3];
-                                    z++;
-                                    bd++;
-                                    ctd++;
                                 } else {
-                                    qtd++;
-                                    
-                                    str2 = str2.replace(/<\/td><\/tr>$/, '');
-                                    str2 += '<br><span class="glyphicon glyphicon-comment" style="margin-right: 6px; font-size: small"></span>' + autor[13] + ' (' + autor[6] + "/" + autor[7] + "/" + autor[8] + ') ' + autor[14] + "</td></tr>";
-                                   console.log(autor[13]);
+
+                                    comment = "Publicação não possui uma descrição.";
+                                }
+                                if (typeof response.data[i].comments.paging.next === "undefined") {
+                                    var j = 0;
+                                    for (j; j < response.data[i].comments.data.length; j++) {
+                                        var data_hora = response.data[i].comments.data[j].created_time.split('T', 2);
+                                        var data = data_hora[0].split('-', 3);
+                                        var hora = data_hora[1].split(':', 3);
+
+                                        string[y] = data0[2] + data0[1] + data0[0] + hora0[0] + hora0[1] + hora0[2] + "id_;_" + id_post[1] + "_;_autor_;_" + response.data[i].from.name +
+                                            "_;_comentario_;_" + response.data[i].comments.data[j].from.name + "_;_" +
+                                            data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_post[1] + "\">Ver publicação</a>" +
+                                            "_;_descricao_;_" + comment + "_;_desccom_;_" + response.data[i].comments.data[j].message +
+                                            "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_post[1] + "/?comment_id=" + response.data[i].comments.data[j].id + "\">Ver comentário</a>";
+                                        // console.log(string[y]);
+                                        y++;
+
+                                    }
+                                } else {
+                                    var cn2 = 0;
+                                    var cn3 = 0;
+                                    cnt4++;
+                                    FB.api(
+                                        "/" + response.data[i].id + '?fields=from,id,message,updated_time,comments.limit(100)&access_token=' + token, doSomething2);
+
+                                    function doSomething2(response) {
+                                        if (cn2 < 1 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next !== "undefined") {
+
+                                            FB.api("/" + response.id + '?fields=from,id,message,updated_time,comments.limit(250).after(' + response.comments.paging.cursors.after + ')&access_token=' + token, doSomething2);
+                                            //console.log(response.id);
+                                            var l2 = response.comments.data.length;
+                                            var j = 0;
+                                            for (j; j < l2; j++) {
+                                                var data_hora_post = response.updated_time.split('T', 2);
+                                                var data0 = data_hora_post[0].split('-', 3);
+                                                var hora0 = data_hora_post[1].split(':', 3);
+                                                var data_hora = response.comments.data[j].created_time.split('T', 2);
+                                                var data = data_hora[0].split('-', 3);
+                                                var hora = data_hora[1].split(':', 3);
+                                                var id_com = response.id.split('_', 2);
+
+                                                string2[c] = data0[2] + data0[1] + data0[0] + hora0[0] + hora0[1] + hora0[2] + "id_;_" + id_com[1] + "_;_autor_;_" + response.from.name +
+                                                    "_;_comentario_;_" + response.comments.data[j].from.name + "_;_" +
+                                                    data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "\">Ver publicação</a>" +
+                                                    "_;_descricao_;_" + response.message + "_;_desccom_;_" + response.comments.data[j].message +
+                                                    "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "/?comment_id=" + response.comments.data[j].id + "\">Ver comentário</a>";
+                                                c++;
+                                            }
+                                            cn2++;
+                                        }
+                                        if (cn2 < cnt4 && typeof response.comments.paging !== "undefined" && typeof response.comments.paging.next === "undefined") {
+
+
+                                            FB.api("/" + response.id + '?fields=from,id, updated_time, message,comments.limit(250)&access_token=' + token, doSomething2);
+                                            // console.log(response.id);
+                                            var l2 = response.comments.data.length;
+                                            var j = 0;
+                                            for (j; j < l2; j++) {
+                                                var data_hora_post = response.updated_time.split('T', 2);
+                                                var data0 = data_hora_post[0].split('-', 3);
+                                                var hora0 = data_hora_post[1].split(':', 3);
+                                                var data_hora = response.comments.data[j].created_time.split('T', 2);
+                                                var data = data_hora[0].split('-', 3);
+                                                var hora = data_hora[1].split(':', 3);
+                                                var id_com = response.id.split('_', 2);
+
+                                                string2[c] = data0[2] + data0[1] + data0[0] + hora0[0] + hora0[1] + hora0[2] + "id_;_" + id_com[1] + "_;_autor_;_" + response.from.name +
+                                                    "_;_comentario_;_" + response.comments.data[j].from.name + "_;_" +
+                                                    data[2] + "_;_" + data[1] + "_;_" + data[0] + "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "\">Ver publicação</a>" +
+                                                    "_;_descricao_;_" + response.message + "_;_desccom_;_" + response.comments.data[j].message +
+                                                    "_;_<a style=\"font-size:small\" target=\"_blank\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + id_com[1] + "/?comment_id=" + response.comments.data[j].id + "\">Ver comentário</a>";
+
+                                                c++;
+                                            }
+                                            cn2++;
+                                        }
+                                    }
 
                                 }
-                                //ctd++;
+                                hide = "nao";
+
                             }
-   // console.log(str2);
-                           // ctd++;
-                            //}
+
                         }
-                        localStorage.setItem("quant", z);
-                        var stopwords = ["mim", "acerca", "adeus", "agora", "ainda", "alem", "algmas", "algo", "algumas", "alguns", "ali", "alem", "ambas", "ambos", "ano", "anos", "antes", "ao", "aonde", "aos", "apenas", "apoio", "apontar", "apos", "apos", "aquela", "aquelas", "aquele", "aqueles", "aqui", "aquilo", "as", "assim", "atraves", "atras", "ate", "ai", "baixo", "bastante", "bem", "boa", "boas", "bom", "bons", "breve", "cada", "caminho", "catorze", "cedo", "cento", "certamente", "certeza", "cima", "cinco", "coisa", "com", "como", "comprido", "conhecido", "conselho", "contra", "contudo", "corrente", "cuja", "cujas", "cujo", "cujos", "custa", "ca", "da", "daquela", "daquelas", "daquele", "daqueles", "dar", "das", "de", "debaixo", "dela", "delas", "dele", "deles", "demais", "dentro", "depois", "desde", "desligado", "dessa", "dessas", "desse", "desses", "desta", "destas", "deste", "destes", "deve", "devem", "devera", "dez", "dezanove", "dezasseis", "dezassete", "dezoito", "dia", "diante", "direita", "dispoe", "dispoem", "diversa", "diversas", "diversos", "diz", "dizem", "dizer", "do", "dois", "dos", "doze", "duas", "durante", "da", "dao", "duvida", "ela", "elas", "ele", "eles", "em", "embora", "enquanto", "entao", "entre", "entao", "era", "eram", "essa", "essas", "esse", "esses", "esta", "estado", "estamos", "estar", "estara", "estas", "estava", "estavam", "este", "esteja", "estejam", "estejamos", "estes", "esteve", "estive", "estivemos", "estiver", "estivera", "estiveram", "estiverem", "estivermos", "estivesse", "estivessem", "estiveste", "estivestes", "estiveramos", "estivessemos", "estou", "esta", "estas", "estavamos", "estao", "eu", "exemplo", "falta", "fara", "favor", "faz", "fazeis", "fazem", "fazemos", "fazer", "fazes", "fazia", "faco", "fez", "fim", "final", "foi", "fomos", "for", "fora", "foram", "forem", "forma", "formos", "fosse", "fossem", "foste", "fostes", "fui", "foramos", "fossemos", "geral", "grande", "grandes", "grupo", "ha", "haja", "hajam", "hajamos", "havemos", "havia", "hei", "hoje", "hora", "horas", "houve", "houvemos", "houver", "houvera", "houveram", "houverei", "houverem", "houveremos", "houveria", "houveriam", "houvermos", "houvera", "houverao", "houveriamos", "houvesse", "houvessem", "houveramos", "houvessemos", "ha", "hao", "iniciar", "inicio", "ir", "ira", "isso", "ista", "iste", "isto", "ja", "lado", "lhe", "lhes", "ligado", "local", "logo", "longe", "lugar", "la", "maior", "maioria", "maiorias", "mais", "mal", "mas", "me", "mediante", "meio", "menor", "menos", "meses", "mesma", "mesmas", "mesmo", "mesmos", "meu", "meus", "mil", "minha", "minhas", "momento", "muito", "muitos", "maximo", "mes", "na", "nada", "nao", "naquela", "naquelas", "naquele", "naqueles", "nas", "nem", "nenhuma", "nessa", "nessas", "nesse", "nesses", "nesta", "nestas", "neste", "nestes", "no", "noite", "nome", "nos", "nossa", "nossas", "nosso", "nossos", "nova", "novas", "nove", "novo", "novos", "num", "numa", "numas", "nunca", "nuns", "nao", "nivel", "nos", "numero", "obra", "obrigada", "obrigado", "oitava", "oitavo", "oito", "onde", "ontem", "onze", "os", "ou", "outra", "outras", "outro", "outros", "para", "pra", "pro", "parece", "parte", "partir", "paucas", "pegar", "pela", "pelas", "pelo", "pelos", "perante", "perto", "pessoas", "pode", "podem", "poder", "podera", "podia", "pois", "ponto", "pontos", "por", "porque", "porque", "portanto", "posicao", "possivelmente", "posso", "possivel", "pouca", "pouco", "poucos", "povo", "primeira", "primeiras", "primeiro", "primeiros", "promeiro", "propios", "proprio", "propria", "proprias", "proprio", "proprios", "proxima", "proximas", "proximo", "proximos", "puderam", "pode", "poe", "poem", "quais", "qual", "qualquer", "quando", "quanto", "quarta", "quarto", "quatro", "que", "quem", "quer", "quereis", "querem", "queremas", "queres", "quero", "questao", "quieto", "quinta", "quinto", "quinze", "quais", "que", "relacao", "sabe", "sabem", "saber", "se", "segunda", "segundo", "sei", "seis", "seja", "sejam", "sejamos", "sem", "sempre", "sendo", "ser", "serei", "seremos", "seria", "seriam", "sera", "serao", "seriamos", "sete", "seu", "seus", "sexta", "sexto", "sim", "sistema", "sob", "sobre", "sois", "somente", "somos", "sou", "sua", "suas", "sao", "setima", "setimo", "so", "ta", "tal", "talvez", "tambem", "tambem", "tanta", "tantas", "tanto", "tarde", "te", "tem", "temos", "tempo", "tendes", "tenha", "tenham", "tenhamos", "tenho", "tens", "tentar", "tentaram", "tente", "tentei", "ter", "terceira", "terceiro", "terei", "teremos", "teria", "teriam", "tera", "terao", "teriamos", "teu", "teus", "teve", "tinha", "tinham", "tipo", "tive", "tivemos", "tiver", "tivera", "tiveram", "tiverem", "tivermos", "tivesse", "tivessem", "tiveste", "tivestes", "tiveramos", "tivessemos", "toda", "todas", "todo", "todos", "trabalhar", "trabalho", "treze", "tres", "tu", "tua", "tuas", "tudo", "tao", "tem", "tem", "tinhamos", "um", "uma", "umas", "uns", "usa", "usar", "vai", "vais", "valor", "veja", "vem", "vens", "ver", "verdade", "verdadeiro", "vez", "vezes", "viagem", "vindo", "vinte", "voce", "voces", "vos", "vossa", "vossas", "vosso", "vossos", "varios", "vao", "vem", "vos", "zero", "a", "as", "area", "e", "eramos", "es", "ultimo"]
+                        cn++;
+                    }
 
+                }
+                return string.concat(string2);
+            }
 
-                        comentarios = comentarios.replace(/Á|À|Â|Ã|á|à|â|ã/gm, 'a');
-                        comentarios = comentarios.replace(/É|È|Ê|é|è|ê/gm, 'e');
-                        comentarios = comentarios.replace(/Í|Ï|í|ï/gm, 'i');
-                        comentarios = comentarios.replace(/Ó|Ô|Õ|Ö|ó|ô|õ|ö/gm, 'o');
-                        comentarios = comentarios.replace(/Ú|Ù|Ü|ù|ú|ü/gm, 'u');
-                        comentarios = comentarios.replace(/Ç|ç/gm, 'c');
-                        comentarios = comentarios.replace(/Ñ|ñ/gm, 'n');
-                        comentarios = comentarios.replace(/\d|\W/gm, " ");
-                        comentarios = comentarios.toLowerCase();
-                        for (var i2 = 0; i2 < stopwords.length; i2++) {
-                            comentarios = comentarios.replace(new RegExp("\\b" + stopwords[i2] + "\\b", 'g'), '');
-                        }
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    accessToken = response.authResponse.accessToken;
+                    var token = accessToken.toString();
+                    //var string_total = [];
+                    var res = [];
 
+                    res = getInfo1(token);
+                    //console.log(res);
+                    var str = [];
+                    var str2 = "";
+                    var quant = "";
+                    var autores = [];
+                    var bd = 1;
+                    var posts = [];
+                    var z = 0;
+                    var cont = 0;
+                    var cont2 = 0;
+                    var dados = [];
+                    var ctd = 1;
+                    var k = 0;
+                    var comentarios = "";
+                    var p_com = [];
+                    var palavras = [];
 
-                        palavras = comentarios.split(" ");
-                        palavras = palavras.filter(function (n) {
-                            return n !== "" && n !== "a" && n !== "e" && n !== "o";
+                    var freq_autores = "[";
+
+                    function naturalCompare(b, a) {
+                        var ax = [],
+                            bx = [];
+
+                        a.replace(/(\d+)|(\D+)/g, function(_, $1, $2) {
+                            ax.push([$1 || Infinity, $2 || ""])
+                        });
+                        b.replace(/(\d+)|(\D+)/g, function(_, $1, $2) {
+                            bx.push([$1 || Infinity, $2 || ""])
                         });
 
-                         var text = '';
-                        for (var n1 = 0; n1 < palavras.length; n1++) {
-                            palavras[n1] = palavras[n1].replace(/\b[a-z]\b/gm, '');
-                            palavras[n1] = palavras[n1].replace(/\b[a-z][^e]\b/gm, '');
-                            palavras[n1] = palavras[n1].replace(/\b(\w)\1+\b/gm, '');
-                            if(palavras[n1] !== ""){
-                            text += palavras[n1] + ',';
-                        }
-                            if (p_com.indexOf(palavras[n1].toLowerCase()) === -1 && palavras[n1] !== "") {
-                                p_com[cont2] = palavras[n1].toLowerCase();
-
-                                var regExp = new RegExp("\\b" + palavras[n1].toLowerCase() + "\\b", "g");
-                                var count1 = (comentarios.match(regExp) || []).length;
-                                str[cont2] = palavras[n1] + "_;_" + count1;
-                                cont2++;
-                            }
+                        while (ax.length && bx.length) {
+                            var an = ax.shift();
+                            var bn = bx.shift();
+                            var nn = (an[0] - bn[0]) || an[1].localeCompare(bn[1]);
+                            if (nn)
+                                return nn;
                         }
 
-                        for (var j = 0; j < str.length; j++)
-                        {
-                            var arraystr = str[j].split('_;_', 2);
-                            arraystr[0] = arraystr[0].replace(/(\r\n|\n|\r)/gm, "");
-                            if (arraystr[1] === '0')
-                                arraystr[1] = '1';
-                            freq_autores += "{\"text\":\"" + arraystr[0] + "\",\"size\":\"" + parseInt(arraystr[1]) + "\"},";
-                        }
-
-                        freq_autores = freq_autores.replace(/,$/, '');
-                        freq_autores += "]";
-
-                        localStorage.setItem("freq_autores", text);
-                        
-                        
-
-                        if (hide !== "sim") {
-
-                            localStorage.setItem("str_pronta", str2);
-                            //console.log(str2);
-                        }
-                    } else {
-                        var nada = "";
+                        return ax.length - bx.length;
                     }
 
+                    /*for (i = 0; i < res.length; i++) {
+                        var contador =0;
+                        var arr = res[i].split('_;_', 15);
+                        var arr2 = arr[5].split(" ");
+                        for(v = 0; v < arr2.length; v++){
+                        if ((arr2[v].toLowerCase()) === (nome.toLowerCase())) {
+                            contador = 1;
+                        }
+                            if(contador === 1){
+                            dados[k] = res[i];
+                            k++;
+                            }
+                        }
+                    }*/
+                    for (i = 0; i < res.length; i++) {
+                        var arr = res[i].split('_;_', 15);
+                        var arr2 = arr[5].split(" ");
+                        // console.log(arr2);
+                        for (var contador = 0; contador < arr2.length; contador++) {
+                            if ((arr2[contador].toLowerCase()).localeCompare(nome.toLowerCase()) === 0) {
+                                if (dados.indexOf(res[i].toString()) === -1) {
+                                    dados[k] = res[i];
+                                    k++;
+                                    console.log(res[i]);
+                                }
+                            }
+                        }
+                    }
+
+
+                    dados = dados.sort(naturalCompare);
+                    console.log(dados);
+                    for (var h = 0; h < dados.length; h++) {
+
+                        if (ctd <= parseInt(numero)) {
+                            autor = dados[h].split('_;_', 15);
+                            comentarios += autor[13] + " ";
+                            if (posts.indexOf(autor[1].toString()) === -1) {
+                                var qtd = 1;
+                                posts[cont] = autor[1];
+                                cont++;
+                                if (autor[11] === 'undefined')
+                                    autor[11] = 'Publicaçao não possui uma descrição';
+                                str2 += '<tr><td>' + '<span class="badge">' + bd.toString() + '</span> <b>Descrição:</b> ' + autor[11] + " " + autor[9];
+                                str2 += '<br><p style="font-size:small"><b> Autor:</b> ' + autor[3] + '</p><b><p>Comentários: </b></p><span class="glyphicon glyphicon-comment" style="margin-right: 6px; font-size: small"></span>' + autor[13] + ' (' + autor[6] + "/" + autor[7] + "/" + autor[8] + ') ' + autor[14] + "</td></tr>";
+                                autores[z] = autor[3];
+                                z++;
+                                bd++;
+                                ctd++;
+                            } else {
+                                qtd++;
+
+                                str2 = str2.replace(/<\/td><\/tr>$/, '');
+                                str2 += '<br><span class="glyphicon glyphicon-comment" style="margin-right: 6px; font-size: small"></span>' + autor[13] + ' (' + autor[6] + "/" + autor[7] + "/" + autor[8] + ') ' + autor[14] + "</td></tr>";
+                                console.log(autor[13]);
+
+                            }
+                            //ctd++;
+                        }
+                        // console.log(str2);
+                        // ctd++;
+                        //}
+                    }
+                    localStorage.setItem("quant", z);
+                    var stopwords = ["mim", "acerca", "adeus", "agora", "ainda", "alem", "algmas", "algo", "algumas", "alguns", "ali", "alem", "ambas", "ambos", "ano", "anos", "antes", "ao", "aonde", "aos", "apenas", "apoio", "apontar", "apos", "apos", "aquela", "aquelas", "aquele", "aqueles", "aqui", "aquilo", "as", "assim", "atraves", "atras", "ate", "ai", "baixo", "bastante", "bem", "boa", "boas", "bom", "bons", "breve", "cada", "caminho", "catorze", "cedo", "cento", "certamente", "certeza", "cima", "cinco", "coisa", "com", "como", "comprido", "conhecido", "conselho", "contra", "contudo", "corrente", "cuja", "cujas", "cujo", "cujos", "custa", "ca", "da", "daquela", "daquelas", "daquele", "daqueles", "dar", "das", "de", "debaixo", "dela", "delas", "dele", "deles", "demais", "dentro", "depois", "desde", "desligado", "dessa", "dessas", "desse", "desses", "desta", "destas", "deste", "destes", "deve", "devem", "devera", "dez", "dezanove", "dezasseis", "dezassete", "dezoito", "dia", "diante", "direita", "dispoe", "dispoem", "diversa", "diversas", "diversos", "diz", "dizem", "dizer", "do", "dois", "dos", "doze", "duas", "durante", "da", "dao", "duvida", "ela", "elas", "ele", "eles", "em", "embora", "enquanto", "entao", "entre", "entao", "era", "eram", "essa", "essas", "esse", "esses", "esta", "estado", "estamos", "estar", "estara", "estas", "estava", "estavam", "este", "esteja", "estejam", "estejamos", "estes", "esteve", "estive", "estivemos", "estiver", "estivera", "estiveram", "estiverem", "estivermos", "estivesse", "estivessem", "estiveste", "estivestes", "estiveramos", "estivessemos", "estou", "esta", "estas", "estavamos", "estao", "eu", "exemplo", "falta", "fara", "favor", "faz", "fazeis", "fazem", "fazemos", "fazer", "fazes", "fazia", "faco", "fez", "fim", "final", "foi", "fomos", "for", "fora", "foram", "forem", "forma", "formos", "fosse", "fossem", "foste", "fostes", "fui", "foramos", "fossemos", "geral", "grande", "grandes", "grupo", "ha", "haja", "hajam", "hajamos", "havemos", "havia", "hei", "hoje", "hora", "horas", "houve", "houvemos", "houver", "houvera", "houveram", "houverei", "houverem", "houveremos", "houveria", "houveriam", "houvermos", "houvera", "houverao", "houveriamos", "houvesse", "houvessem", "houveramos", "houvessemos", "ha", "hao", "iniciar", "inicio", "ir", "ira", "isso", "ista", "iste", "isto", "ja", "lado", "lhe", "lhes", "ligado", "local", "logo", "longe", "lugar", "la", "maior", "maioria", "maiorias", "mais", "mal", "mas", "me", "mediante", "meio", "menor", "menos", "meses", "mesma", "mesmas", "mesmo", "mesmos", "meu", "meus", "mil", "minha", "minhas", "momento", "muito", "muitos", "maximo", "mes", "na", "nada", "nao", "naquela", "naquelas", "naquele", "naqueles", "nas", "nem", "nenhuma", "nessa", "nessas", "nesse", "nesses", "nesta", "nestas", "neste", "nestes", "no", "noite", "nome", "nos", "nossa", "nossas", "nosso", "nossos", "nova", "novas", "nove", "novo", "novos", "num", "numa", "numas", "nunca", "nuns", "nao", "nivel", "nos", "numero", "obra", "obrigada", "obrigado", "oitava", "oitavo", "oito", "onde", "ontem", "onze", "os", "ou", "outra", "outras", "outro", "outros", "para", "pra", "pro", "parece", "parte", "partir", "paucas", "pegar", "pela", "pelas", "pelo", "pelos", "perante", "perto", "pessoas", "pode", "podem", "poder", "podera", "podia", "pois", "ponto", "pontos", "por", "porque", "porque", "portanto", "posicao", "possivelmente", "posso", "possivel", "pouca", "pouco", "poucos", "povo", "primeira", "primeiras", "primeiro", "primeiros", "promeiro", "propios", "proprio", "propria", "proprias", "proprio", "proprios", "proxima", "proximas", "proximo", "proximos", "puderam", "pode", "poe", "poem", "quais", "qual", "qualquer", "quando", "quanto", "quarta", "quarto", "quatro", "que", "quem", "quer", "quereis", "querem", "queremas", "queres", "quero", "questao", "quieto", "quinta", "quinto", "quinze", "quais", "que", "relacao", "sabe", "sabem", "saber", "se", "segunda", "segundo", "sei", "seis", "seja", "sejam", "sejamos", "sem", "sempre", "sendo", "ser", "serei", "seremos", "seria", "seriam", "sera", "serao", "seriamos", "sete", "seu", "seus", "sexta", "sexto", "sim", "sistema", "sob", "sobre", "sois", "somente", "somos", "sou", "sua", "suas", "sao", "setima", "setimo", "so", "ta", "tal", "talvez", "tambem", "tambem", "tanta", "tantas", "tanto", "tarde", "te", "tem", "temos", "tempo", "tendes", "tenha", "tenham", "tenhamos", "tenho", "tens", "tentar", "tentaram", "tente", "tentei", "ter", "terceira", "terceiro", "terei", "teremos", "teria", "teriam", "tera", "terao", "teriamos", "teu", "teus", "teve", "tinha", "tinham", "tipo", "tive", "tivemos", "tiver", "tivera", "tiveram", "tiverem", "tivermos", "tivesse", "tivessem", "tiveste", "tivestes", "tiveramos", "tivessemos", "toda", "todas", "todo", "todos", "trabalhar", "trabalho", "treze", "tres", "tu", "tua", "tuas", "tudo", "tao", "tem", "tem", "tinhamos", "um", "uma", "umas", "uns", "usa", "usar", "vai", "vais", "valor", "veja", "vem", "vens", "ver", "verdade", "verdadeiro", "vez", "vezes", "viagem", "vindo", "vinte", "voce", "voces", "vos", "vossa", "vossas", "vosso", "vossos", "varios", "vao", "vem", "vos", "zero", "a", "as", "area", "e", "eramos", "es", "ultimo"]
+
+
+                    comentarios = comentarios.replace(/Á|À|Â|Ã|á|à|â|ã/gm, 'a');
+                    comentarios = comentarios.replace(/É|È|Ê|é|è|ê/gm, 'e');
+                    comentarios = comentarios.replace(/Í|Ï|í|ï/gm, 'i');
+                    comentarios = comentarios.replace(/Ó|Ô|Õ|Ö|ó|ô|õ|ö/gm, 'o');
+                    comentarios = comentarios.replace(/Ú|Ù|Ü|ù|ú|ü/gm, 'u');
+                    comentarios = comentarios.replace(/Ç|ç/gm, 'c');
+                    comentarios = comentarios.replace(/Ñ|ñ/gm, 'n');
+                    comentarios = comentarios.replace(/\d|\W/gm, " ");
+                    comentarios = comentarios.toLowerCase();
+                    for (var i2 = 0; i2 < stopwords.length; i2++) {
+                        comentarios = comentarios.replace(new RegExp("\\b" + stopwords[i2] + "\\b", 'g'), '');
+                    }
+
+
+                    palavras = comentarios.split(" ");
+                    palavras = palavras.filter(function(n) {
+                        return n !== "" && n !== "a" && n !== "e" && n !== "o";
+                    });
+
+                    var text = '';
+                    for (var n1 = 0; n1 < palavras.length; n1++) {
+                        palavras[n1] = palavras[n1].replace(/\b[a-z]\b/gm, '');
+                        palavras[n1] = palavras[n1].replace(/\b[a-z][^e]\b/gm, '');
+                        palavras[n1] = palavras[n1].replace(/\b(\w)\1+\b/gm, '');
+                        if (palavras[n1] !== "") {
+                            text += palavras[n1] + ',';
+                        }
+                        if (p_com.indexOf(palavras[n1].toLowerCase()) === -1 && palavras[n1] !== "") {
+                            p_com[cont2] = palavras[n1].toLowerCase();
+
+                            var regExp = new RegExp("\\b" + palavras[n1].toLowerCase() + "\\b", "g");
+                            var count1 = (comentarios.match(regExp) || []).length;
+                            str[cont2] = palavras[n1] + "_;_" + count1;
+                            cont2++;
+                        }
+                    }
+
+                    for (var j = 0; j < str.length; j++) {
+                        var arraystr = str[j].split('_;_', 2);
+                        arraystr[0] = arraystr[0].replace(/(\r\n|\n|\r)/gm, "");
+                        if (arraystr[1] === '0')
+                            arraystr[1] = '1';
+                        freq_autores += "{\"text\":\"" + arraystr[0] + "\",\"size\":\"" + parseInt(arraystr[1]) + "\"},";
+                    }
+
+                    freq_autores = freq_autores.replace(/,$/, '');
+                    freq_autores += "]";
+
+                    localStorage.setItem("freq_autores", text);
+
+
+
+                    if (hide !== "sim") {
+
+                        localStorage.setItem("str_pronta", str2);
+                        //console.log(str2);
+                    }
+                } else {
+                    var nada = "";
                 }
-                );
+
+            });
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
             }
-            ;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/pt_BR/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <a class="navbar-brand" href="#" style="margin-top: 4px;"><b>Aplicação para grupos</b></a></div>
 
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {
-                    return;
-                }
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "//connect.facebook.net/pt_BR/sdk.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="main-nav">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a style="margin-top: 4px;" href="https://fernandacanazzo.github.io/appgrupos/index.html"><span class="glyphicon glyphicon-search " style=" font-size:small;margin-right: 6px;"></span>Pesquisar grupo</a></li>
+                    <li><a id="link_grp" style="margin-top: 4px;" href="#" target="_blank"><span class="glyphicon glyphicon-eye-open" style=" font-size:small;margin-right: 6px;"></span>Ver grupo no Facebook</a></li>
 
-        </script>
- <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container-fluid"> 
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand" href="#" style="margin-top: 4px;"><b>Aplicação para grupos</b></a></div>
+                </ul>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="main-nav">
-      <ul class="nav navbar-nav navbar-right">
-       <li><a style="margin-top: 4px;" href="https://fernandacanazzo.github.io/appgrupos/index.html"><span class="glyphicon glyphicon-search " style=" font-size:small;margin-right: 6px;"></span>Pesquisar grupo</a></li>
-       <li><a id="link_grp" style="margin-top: 4px;" href="#" target="_blank"><span class="glyphicon glyphicon-eye-open" style=" font-size:small;margin-right: 6px;"></span>Ver grupo no Facebook</a></li>
+            </div>
+            <!-- collapse navbar-collapse -->
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3" style="border-style: solid; border-width:1px; border-radius:10px; border-color:#f7f7f7">
 
-          </ul>
+                <div class="panel panel-primary" style="width: 100%;margin-top:50px; ">
+                    <div class="panel-body text-center" style="height:85px;">
 
-    </div><!-- collapse navbar-collapse -->
-    <!-- /.navbar-collapse --> 
-  </div>
-  <!-- /.container-fluid --> 
-</nav>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3"  style="border-style: solid; border-width:1px; border-radius:10px; border-color:#f7f7f7">
+                        <div id="aviso3" class="text-center" style=" margin-top:18px"><b>Procurando publicações... por favor aguarde alguns segundos</b></div>
+                    </div>
 
-                    <div class="panel panel-primary" style="width: 100%;margin-top:50px; ">
-                        <div class="panel-body text-center" style="height:85px;">
-
-                            <div id="aviso3" class="text-center" style=" margin-top:18px"><b>Procurando publicações... por favor aguarde alguns segundos</b></div>
-                        </div>
-
-                        <div class="text-left">
-                            <button class="btn btn-xs btn-default text-left"  style="margin-left:20px; margin-bottom: 20px; font-size:large;border-bottom-style:none; height:32px; width:32px;border-radius: 50%;" type="button" onclick="location.href = 'https://fernandacanazzo.github.io/appgrupos/menu.html';"><span class="glyphicon glyphicon-arrow-left" style="color:#333333"></span></button>
-                        </div>
-                    </div>            
-
+                    <div class="text-left">
+                        <button class="btn btn-xs btn-default text-left" style="margin-left:20px; margin-bottom: 20px; font-size:large;border-bottom-style:none; height:32px; width:32px;border-radius: 50%;" type="button" onclick="location.href = 'https://fernandacanazzo.github.io/appgrupos/menu.html';"><span class="glyphicon glyphicon-arrow-left" style="color:#333333"></span></button>
+                    </div>
                 </div>
 
             </div>
 
         </div>
 
-    </body>
+    </div>
+
+</body>
+
 </html>
-
-
