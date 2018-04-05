@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -12,12 +12,9 @@
 
         <title>App</title>
         <style>
-
             .table-responsive {
                 max-height:300px;
             }
-
-
         </style>
 
     </head>
@@ -58,7 +55,7 @@
                             <div class="col-md-5 col-md-offset-1">
                                 <div class="panel panel-primary" id="panel3" style="margin-right:25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:100%; width: 100%; background-color: #fbfbfb">
                                     <div class="panel-body text-center" id="div3" style="border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-search" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" >Últimas publicações com uma palavra específica<!-- <span style="font-size: small;" id="info3" title="Publicação mais recente é aquela que recebeu algum comentário por último" class=" text-primary glyphicon glyphicon-info-sign"></span>--></a> 
+                                        <span class="glyphicon glyphicon-search" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" >Publicações* com uma palavra específica<!-- <span style="font-size: small;" id="info3" title="Publicação mais recente é aquela que recebeu algum comentário por último" class=" text-primary glyphicon glyphicon-info-sign"></span>--></a> 
 
                                         <input type="text" id="palavra" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%" class="form-control text-center" placeholder="Palavra">
                                         <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%" id="form3">
@@ -76,16 +73,14 @@
                                         <div class="text-left" style="margin-top:7%; margin-left:2%">
                                             <a href="#panel3" id="ler3" class="text-left text-primary" onclick="clickar3();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a>
 
-                                            <p id="col3" style="color:#333333; display:none; font-size:small; margin-left:8px"><b>Últimas publicações entre as 1000 publicações que foram comentadas mais recentemente</b><br>Essa opção mostra os seguintes dados das publicações contêm uma determinada palavra:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas<br>&#9679 Nuvem de palavras das descrições</p>
+                                            <p id="col3" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações contêm uma determinada palavra:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas<br>&#9679 Nuvem de palavras das descrições<br><b>*As publicações são retornadas ordenadas (de forma decrescente) pela data e horário em que foram atualizadas.</b> <br>Caso a publicação tenha recebido comentários, sua data e horário de atualização serão os mesmos do último comentário recebido, caso contrário, sua data e horário de atualização serão os mesmos da criação da publicação.</p>
 
                                         </div>
 
                                     </div>
                                     <!--<div class="panel-body text-left" id="div33" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
                                         <a href="#panel3" id="ler3" class="text-left text-primary" onclick="clickar3();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p3"><br>&nbsp</p>
-
                                         <p id="col3" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações mais recentes que contêm uma determinada palavra:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas<br>&#9679 Nuvem de palavras das descrições</p>
-
                                     </div>-->
 
                                 </div>
@@ -98,10 +93,8 @@
                                     </div>
                                     <div class="panel-body" id="div44" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
                                         <a href="#panel4"  id="ler4" class="text-left text-primary" onclick="clickar4();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p4"><br>&nbsp</p>
-
                                         <p id="col4" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações em um gráfico de barras:<br>&#9679 Quantidade de publicações por dia<br>&#9679 Quantidade de reações que essas publicações possuem</p>
                                     </div>
-
                                 </div>
                             </div>-->
 
@@ -110,7 +103,7 @@
                             <div class="col-md-5">
                                 <div class="panel panel-primary" id="panel4" style="border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:100%; width: 100%; background-color: #fbfbfb">
                                     <div class="panel-body text-center" id="div4" style="height:100%; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-time" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Horário e popularidade das últimas publicações <!--<span style="font-size: small;" id="info4" title="Publicação mais recente é aquela que recebeu algum comentário por último" class=" text-primary glyphicon glyphicon-info-sign"></span>--></a> 
+                                        <span class="glyphicon glyphicon-time" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Horário e popularidade das publicações* <!--<span style="font-size: small;" id="info4" title="Publicação mais recente é aquela que recebeu algum comentário por último" class=" text-primary glyphicon glyphicon-info-sign"></span>--></a> 
                                         <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%" id="form4">
                                             <input type="text" id="numero4" class="form-control text-center" placeholder="Número de publicações" aria-describedby="basic-addon44">
                                             <span class="input-group-addon" title="Máximo 1000 publicações" id="basic-addon44"><span class=" glyphicon glyphicon-question-sign" style="font-size:small"></span>
@@ -126,12 +119,11 @@
                                         <div class="text-left" style="margin-top:7%; margin-left:2%">
                                             <a href="#panel4" id="ler4" class="text-left text-primary" onclick="clickar4();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a>
 
-                                            <p id="col4" style="color:#333333; display:none; font-size:small; margin-left:8px"><b>Últimas publicações entre as 1000 publicações que foram comentadas mais recentemente</b><br>Essa opção mostra os seguintes dados das publicações em um gráfico de dispersão:<br>&#9679 Horário em que as publicações foram feitas<br>&#9679 Popularidade: (reações + comentários) / membros do grupo</p>
+                                            <p id="col4" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações em um gráfico de dispersão:<br>&#9679 Horário em que as publicações foram feitas<br>&#9679 Popularidade: (reações + comentários) / membros do grupo<b>*As publicações são retornadas ordenadas (de forma decrescente) pela data e horário em que foram atualizadas.</b> <br>Caso a publicação tenha recebido comentários, sua data e horário de atualização serão os mesmos do último comentário recebido, caso contrário, sua data e horário de atualização serão os mesmos da criação da publicação.</p>
                                         </div>
                                     </div>
                                     <!--<div class="panel-body text-left" id="div44" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
                                         <a href="#panel4" id="ler4" class="text-left text-primary" onclick="clickar4();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p4"><br>&nbsp</p>
-
                                         <p id="col4" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações em um gráfico de dispersão:<br>&#9679 Horário em que as publicações foram feitas<br>&#9679 Popularidade: (reações + comentários) / membros do grupo</p>
                                     </div>-->
 
@@ -146,7 +138,7 @@
                             <div class="col-md-5 col-md-offset-1">
                                 <div class="panel panel-primary" id="panel5" style="margin-right:25px;border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:100%; width: 100%; background-color: #fbfbfb">
                                     <div class="panel-body text-center" id="div5" style="height:100%; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-star" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Últimas publicações mais populares<!-- <span style="font-size: small;" id="info5" title="Publicação mais recente é aquela que recebeu algum comentário por último" class=" text-primary glyphicon glyphicon-info-sign"></span>--></a> 
+                                        <span class="glyphicon glyphicon-star" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Publicações* mais populares<!-- <span style="font-size: small;" id="info5" title="Publicação mais recente é aquela que recebeu algum comentário por último" class=" text-primary glyphicon glyphicon-info-sign"></span>--></a> 
                                         <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%" id="form5">
                                             <input type="text" id="numero5" class="form-control text-center" placeholder="Número de publicações" aria-describedby="basic-addon55">
                                             <span class="input-group-addon" title="Máximo 1000 publicações" id="basic-addon55"><span class=" glyphicon glyphicon-question-sign" style="font-size:small"></span>
@@ -160,15 +152,13 @@
                                         <div class="text-left" style="margin-top:7%; margin-left:2%">
                                         <a href="#panel5" id="ler5" class="text-left text-primary" onclick="clickar5();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a>
 
-                                        <p id="col5" style="color:#333333; display:none; font-size:small; margin-left:8px"><b>Últimas publicações entre as 1000 publicações que foram comentadas mais recentemente</b><br>Essa opção mostra um gráfico de barras com o seguinte dado das publicações:<br>&#9679N publicações mais populares* <br><br>*Popularidade: (reações + comentários) / membros do grupo</p>
+                                        <p id="col5" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra um gráfico de barras com o seguinte dado das publicações:<br>&#9679N publicações mais populares* <br><br>*Popularidade: (reações + comentários) / membros do grupo<br><b>*As publicações são retornadas ordenadas (de forma decrescente) pela data e horário em que foram atualizadas.</b> <br>Caso a publicação tenha recebido comentários, sua data e horário de atualização serão os mesmos do último comentário recebido, caso contrário, sua data e horário de atualização serão os mesmos da criação da publicação.</p>
                                     </div>    
                                     </div>
                                                                     
                                     <!--<div class="panel-body text-left" id="div55" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
                                         <a href="#panel5" id="ler5" class="text-left text-primary" onclick="clickar5();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p5"><br>&nbsp</p>
-
                                         <p id="col5" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra um gráfico de barras com o seguinte dado das 1000 publicações mais recentes:<br>&#9679N publicações mais populares* <br><br>*Popularidade: (reações + comentários) / membros do grupo</p>
-
                                     </div>-->
 
                                 </div>
@@ -177,7 +167,7 @@
                             <div class="col-md-5">
                                 <div class="panel panel-primary" id="panel6" style="border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:100%; width: 100%; background-color: #fbfbfb">
                                     <div class="panel-body text-center" id="div6" style="height:100%; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-stats" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Reações às últimas publicações <!-- <span style="font-size: small;" id="info6" title="Publicação mais recente é aquela que recebeu algum comentário por último" class=" text-primary glyphicon glyphicon-info-sign"></span>--></a> 
+                                        <span class="glyphicon glyphicon-stats" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;">Reações às publicações <!-- <span style="font-size: small;" id="info6" title="Publicação mais recente é aquela que recebeu algum comentário por último" class=" text-primary glyphicon glyphicon-info-sign"></span>--></a> 
                                         <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%" id="form6">
                                             <input type="text" id="numero6" class="form-control text-center" placeholder="Número de publicações" aria-describedby="basic-addon66">
                                             <span class="input-group-addon" title="Máximo 1000 publicações" id="basic-addon66"><span class=" glyphicon glyphicon-question-sign" style="font-size:small"></span>
@@ -192,15 +182,13 @@
                                         <div class="text-left" style="margin-top:7%; margin-left:2%">
                                         <a href="#panel6"  id="ler6" class="text-left text-primary" onclick="clickar6();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a>
 
-                                        <p id="col6" style="color:#333333; display:none; font-size:small; margin-left:8px"><b>Últimas publicações entre as 1000 publicações que foram comentadas mais recentemente</b><br>Essa opção mostra um gráfico de barras com os seguintes dados das publicações:<br>&#9679 Quantidade de cada tipo de reação às publicações</p>
+                                        <p id="col6" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra um gráfico de barras com os seguintes dados das publicações:<br>&#9679 Quantidade de cada tipo de reação às publicações<br><b>*As publicações são retornadas ordenadas (de forma decrescente) pela data e horário em que foram atualizadas.</b> <br>Caso a publicação tenha recebido comentários, sua data e horário de atualização serão os mesmos do último comentário recebido, caso contrário, sua data e horário de atualização serão os mesmos da criação da publicação.</p>
                                     </div> 
                                     </div>
                                                                        
                                     <!--<div class="panel-body text-left" id="div66" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
                                         <a href="#panel6"  id="ler6" class="text-left text-primary" onclick="clickar6();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p6"><br>&nbsp</p>
-
                                         <p id="col6" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra um gráfico de barras com os seguintes dados das publicações mais recentes:<br>&#9679 Quantidade de cada tipo de reação às publicações</p>
-
                                     </div>-->
 
                                 </div>
@@ -212,7 +200,7 @@
                             <div class="col-md-5 col-md-offset-1">
                                 <div class="panel panel-primary" id="panel7" style="margin-right:25px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:100%; width: 100%; background-color: #fbfbfb">
                                     <div class="panel-body text-center" id="div7" style="height:100%; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-comment" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" >Pessoas que mais comentaram nas últimas publicações<!-- <span style="font-size: small;" id="info7" title="Publicação mais recente é aquela que recebeu algum comentário por último" class="text-primary glyphicon glyphicon-info-sign"></span>--></a> 
+                                        <span class="glyphicon glyphicon-comment" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" >Pessoas que mais comentaram nas publicações<!-- <span style="font-size: small;" id="info7" title="Publicação mais recente é aquela que recebeu algum comentário por último" class="text-primary glyphicon glyphicon-info-sign"></span>--></a> 
                                         <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%" id="form7">
                                             <input type="text" id="numero7" class="form-control text-center" placeholder="Número de publicações" aria-describedby="basic-addon77">
                                             <span class="input-group-addon" title="Máximo 1000 publicações" id="basic-addon77"><span class="glyphicon glyphicon-question-sign" style="font-size:small"></span>
@@ -227,15 +215,13 @@
                                         <div class="text-left" style="margin-top:7%; margin-left:2%">
                                             <a href="#panel7"  id="ler7" class="text-left text-primary" onclick="clickar7();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a>
 
-                                            <p id="col7" style="color:#333333; display:none; font-size:small; margin-left:8px"><b>Últimas publicações entre as 1000 publicações que foram comentadas mais recentemente</b><br>Essa opção mostra uma nuvem com até 50 pessoas que mais comentaram dentro das últimas N publicações<br><br></p>
+                                            <p id="col7" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra uma nuvem com até 50 pessoas que mais comentaram nas publicações.<br> <b>*As publicações são retornadas ordenadas (de forma decrescente) pela data e horário em que foram atualizadas.</b> <br>Caso a publicação tenha recebido comentários, sua data e horário de atualização serão os mesmos do último comentário recebido, caso contrário, sua data e horário de atualização serão os mesmos da criação da publicação.</p>
                                         </div>                               
 
                                     </div>
                                     <!--<div class="panel-body text-left" id="div77" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
                                         <a href="#panel7"  id="ler7" class="text-left text-primary" onclick="clickar7();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p7"><br>&nbsp</p>
-
                                         <p id="col7" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra uma nuvem com até 50 pessoas que mais comentaram em publicações mais recentes<br><br></p>
-
                                     </div>-->
 
                                 </div>
@@ -243,7 +229,7 @@
                             <div class="col-md-5">
                                 <div class="panel panel-primary" id="panel8" style="margin-right:25px; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe; border-bottom-color:#fefefe;height:100%; width: 100%; background-color: #fbfbfb">
                                     <div class="panel-body text-center" id="div8" style="height:100%; border-left-color:#fefefe; border-right-color:#fefefe; border-top-color:#fefefe;">
-                                        <span class="glyphicon glyphicon-comment" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" >Maiores autores nas últimas publicações<!-- <span style="font-size: small;" id="info7" title="Publicação mais recente é aquela que recebeu algum comentário por último" class="text-primary glyphicon glyphicon-info-sign"></span>--></a> 
+                                        <span class="glyphicon glyphicon-comment" style="font-size: x-large; color:#cccccc;margin-right: 12px; margin-top:12px;"></span><a style="color: #333333; font-size: x-large; text-decoration: none;" >Pessoas que mais criaram publicações<!-- <span style="font-size: small;" id="info7" title="Publicação mais recente é aquela que recebeu algum comentário por último" class="text-primary glyphicon glyphicon-info-sign"></span>--></a> 
                                         <div class="input-group" style="margin-left:auto; margin-right: auto; margin-top: 10px; width:70%" id="form8">
                                             <input type="text" id="numero8" class="form-control text-center" placeholder="Número de publicações" aria-describedby="basic-addon88">
                                             <span class="input-group-addon" title="Máximo 1000 publicações" id="basic-addon88"><span class="glyphicon glyphicon-question-sign" style="font-size:small"></span>
@@ -258,15 +244,13 @@
                                         <div class="text-left" style="margin-top:7%; margin-left:2%">
                                             <a href="#panel8"  id="ler8" class="text-left text-primary" onclick="clickar8();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a>
 
-                                            <p id="col8" style="color:#333333; display:none; font-size:small; margin-left:8px"><b>Últimas publicações entre as 1000 publicações que foram comentadas mais recentemente</b><br>Essa opção mostra uma nuvem com até 50 pessoas que mais criaram publicações dentro das últimas N publicações<br><br></p>
+                                            <p id="col8" style="color:#333333; display:none; font-size:small; margin-left:8px"><b>Últimas publicações entre as 1000 publicações que foram comentadas mais recentemente</b><br>Essa opção mostra uma nuvem com até 50 pessoas que mais criaram publicações<br><b>*As publicações são retornadas ordenadas (de forma decrescente) pela data e horário em que foram atualizadas.</b> <br>Caso a publicação tenha recebido comentários, sua data e horário de atualização serão os mesmos do último comentário recebido, caso contrário, sua data e horário de atualização serão os mesmos da criação da publicação.</p>
                                         </div>                               
 
                                     </div>
                                     <!--<div class="panel-body text-left" id="div77" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
                                         <a href="#panel7"  id="ler7" class="text-left text-primary" onclick="clickar7();"> <span class="glyphicon glyphicon-plus" style="font-size: large; margin-right: 6px;"></span></a><p id="p7"><br>&nbsp</p>
-
                                         <p id="col7" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra uma nuvem com até 50 pessoas que mais comentaram em publicações mais recentes<br><br></p>
-
                                     </div>-->
 
                                 </div>
@@ -379,9 +363,7 @@
                                     </div>
                                     <!--<div class="panel-body text-left" id="div11" style="border-top-color:#f6f6f6; border-top-style: solid; border-top-width: 1px; background-color: #f6f6f6; height:44px">
                                         <a href="#panel1" id="ler1" class=" text-primary" onclick="clickar1();"> <span class="glyphicon glyphicon-plus text-primary" style="font-size: large; margin-right: 6px;"></span></a><p id="p1"><br>&nbsp</p>
-
                                         <p id="col1" style="color:#333333; display:none; font-size:small; margin-left:8px">Essa opção mostra os seguintes dados das publicações mais recentes que foram comentadas por alguém:<br>&#9679 Descrições <br>&#9679 Autores <br>&#9679 Datas dos comentários<br>&#9679 Nuvem de palavras dos comentários</p>
-
                                     </div>-->
 
                                 </div>
@@ -440,14 +422,12 @@
                     document.getElementById('span1').style.display = "inline";
                     document.getElementById('aviso1').style.display = "inline";
                     document.getElementById('basic-addon11').style.display = "none";
-
                 } else {
                     localStorage.setItem("numero1", numero1);
                     localStorage.setItem("nome1", nome1);
                     location.href = 'https://fernandacanazzo.github.io/appgrupos/publicacoes_mais_recentes.html';
                 }
             }
-
             function rf02() {
                 var nome2 = $("#nome2").val();
                 localStorage.setItem("nome2", nome2);
@@ -461,7 +441,6 @@
                 localStorage.setItem("datas", datas);
                 location.href = 'https://fernandacanazzo.github.io/appgrupos/publicacoes_periodo.html';
             }
-
             function rf03() {
                 var palavra = $("#palavra").val();
                 var numero3 = $("#numero3").val();
@@ -479,7 +458,6 @@
                     location.href = 'https://fernandacanazzo.github.io/appgrupos/palavras_publicacoes.html';
                 }
             }
-
             function rf04() {
                 var numero4 = $("#numero4").val();
                 if (parseInt(numero4) >= 1000) {
@@ -495,7 +473,6 @@
                     location.href = 'https://fernandacanazzo.github.io/appgrupos/hora_popularidade.html';
                 }
             }
-
             function rf05() {
                 var numero5 = $("#numero5").val();
                 if (parseInt(numero5) >= 1000) {
@@ -511,7 +488,6 @@
                     location.href = 'https://fernandacanazzo.github.io/appgrupos/popularidade.html';
                 }
             }
-
             function rf06() {
                 var numero6 = $("#numero6").val();
                 if (parseInt(numero6) >= 1000) {
@@ -527,7 +503,6 @@
                     location.href = 'https://fernandacanazzo.github.io/appgrupos/reacoes.html';
                 }
             }
-
             function rf07() {
                 var numero7 = $("#numero7").val();
                 if (parseInt(numero7) >= 1000) {
@@ -559,8 +534,6 @@
                     location.href = 'https://fernandacanazzo.github.io/appgrupos/pessoas_mais_publicacoes.html';
                 }
             }
-
-
             document.getElementById('nome').innerHTML = "O que você quer visualizar no grupo <b>" + array[1] + "</b>?";
             function clickar1() {
                 if (document.getElementById("col1").style.display === "none") {
@@ -576,7 +549,6 @@
                     // document.getElementById("div11").style.height = "44px";
                 }
             }
-
             /*function clickar2() {
                 if (document.getElementById("col2").style.display === "none") {
                     document.getElementById("col2").style.display = "inline-block";
@@ -591,7 +563,6 @@
                     //document.getElementById("div22").style.height = "44px";
                 }
             }*/
-
             function clickar3() {
                 if (document.getElementById('basic-addon33').style.display !== "none") {
                     if (document.getElementById("col3").style.display === "none") {
@@ -619,10 +590,8 @@
                         //document.getElementById("panel3").style.height = "340px";
                         //document.getElementById("div33").style.height = "44px";
                     }
-
                 }
             }
-
             function clickar4() {
                 if (document.getElementById('basic-addon44').style.display !== "none") {
                     if (document.getElementById("col4").style.display === "none") {
@@ -652,7 +621,6 @@
                     }
                 }
             }
-
             function clickar5() {
                 if (document.getElementById('basic-addon55').style.display !== "none") {
                     if (document.getElementById("col5").style.display === "none") {
@@ -682,7 +650,6 @@
                     }
                 }
             }
-
             function clickar6() {
                 if (document.getElementById('basic-addon66').style.display !== "none") {
                     if (document.getElementById("col6").style.display === "none") {
@@ -712,7 +679,6 @@
                     }
                 }
             }
-
             function clickar7() {
                 if (document.getElementById('basic-addon77').style.display !== "none") {
                     if (document.getElementById("col7").style.display === "none") {
@@ -772,9 +738,6 @@
                     }
                 }
             }
-
         </script>
     </body>
 </html>
-
-
