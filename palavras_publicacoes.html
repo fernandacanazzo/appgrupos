@@ -26,7 +26,7 @@
         var arrayid = [];
         arrayid = id.split('_;_', 2);
         var string = ["120618220000" + "id_;_" + "1" + "_;_autor_;_" + "Ana" + "_;_" +
-                                "12" + "_;_" + "06" + "_;_" + "18" + "_;_<a style=\"font-size:small\" href=\"" + "https://www.facebook.com/groups/" + arrayid[0] + "/permalink/" + "1" + "\">Ver publicação</a>" +
+                                "12" + "_;_" + "06" + "_;_" + "18" + "_;_<a style=\"font-size:small\" href=\"" + "https://www.facebook.com/groups/" + "1" + "/permalink/" + "1" + "\">Ver publicação</a>" +
                                 "_;_descricao_;_" + "Vendo uma cadeira Matrix Burigotto Cadeira super conservada. Preço negociável. Pagamento a vista. Não entrego. Interessados me chamem no inbox."];
         var string2 = [];
         var string3 = [];
@@ -38,7 +38,7 @@
 
         setTimeout(function() {
             window.fbAsyncInit();
-            location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_palavras_publicacoes.html';
+           // location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_palavras_publicacoes.html';
 
         }, tempo);
 
@@ -164,6 +164,7 @@
                                     str2 += '<tr><td>' + '<span class="badge">' + ctd.toString() + '</span> <b>Descrição:</b> ' + autor[9] + " " + autor[7];
                                     str2 += '<br><p style="font-size:small"><b> Autor:</b> ' + autor[3] + ' (' + autor[4] + "/" + autor[5] + "/" + autor[6] + ')</p> ' + "</td></tr>";
                                     autores[z] = autor[3];
+                                    console.log(str2);
                                     z++;
                                     ctd++;
                                 }
