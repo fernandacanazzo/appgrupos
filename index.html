@@ -82,16 +82,16 @@
                         url = "search?q=\"" + search + "\"&type=group&limit=250&fields=picture,name,privacy,description&access_token=" + token;
                         FB.api(
                                 "/" + url, function (response) {
-                                    var l = response.data.length;
+                                    /*var l = response.data.length;
                                     var i = 0;
                                     y=0;
                                     for (i; i < l; i++) {
                                         if (response.data[i].privacy === "OPEN") {
-                                           /* string[y] = "nome_;_" + response.data[i].name + "_;_id_;_" + response.data[i].id
+                                           string[y] = "nome_;_" + response.data[i].name + "_;_id_;_" + response.data[i].id
                                                     + "_;_descricao_;_" + response.data[i].description + "_;_foto_;_" + response.data[i].picture.data.url;
-                                            y++;*/
+                                            y++;
                                         }
-                                    }
+                                    }*/
                                     hide = "nao";
                                 });
 
