@@ -36,16 +36,16 @@
             var hide = "sim";
             var accessToken;
             var string = ["nome_;_" + "Unifei Vendas" + "_;_id_;_" + "1" + "_;_descricao_;_" + "Grupo de vendas" + "_;_foto_;_" + "https://scontent-gru2-1.xx.fbcdn.net/v/t1.0-9/28279727_1704025166284690_3906521375892836292_n.jpg?_nc_cat=0&oh=1e4fe57dbbce62ded22aaf602bc1a4bf&oe=5BC019DB", 
-                   "nome_;_" + "Unifei Caronas" + "_;_id_;_" + "2" + "_;_descricao_;_" + "Grupo de caronas" + "_;_foto_;_" + "https://scontent-gru2-1.xx.fbcdn.net/v/t1.0-9/10690103_879198238819085_1065261880191793055_n.jpg?_nc_cat=0&oh=7b0451a66e6ff564f4b72a48491bb6af&oe=5BC2862B",
-                   "nome_;_" + "Unifei estágios" + "_;_id_;_" + "3" + "_;_descricao_;_" + "Grupo da estágios" + "_;_foto_;_" + "https://scontent-gru2-1.xx.fbcdn.net/v/t1.0-9/75865_10200370604129702_461844233_n.jpg?_nc_cat=0&oh=4b5a56b6390ddbb33515928b92433fb6&oe=5BABBBC9"];
+                   "nome_;_" + "Unifei Caronas" + "_;_id_;_" + "2" + "_;_descricao_;_" + "Grupo de caronas" + "_;_foto_;_" + "https://scontent-gru2-1.xx.fbcdn.net/v/t1.0-0/c245.0.294.294/s75x225/13631567_677470039067436_3486537230292830574_n.jpg?_nc_cat=0&oh=6a01c29b71c821a18e79b036763a3173&oe=5B789265",
+                   "nome_;_" + "Unifei estágios" + "_;_id_;_" + "3" + "_;_descricao_;_" + "Grupo da estágios" + "_;_foto_;_" + "https://scontent-gru2-1.xx.fbcdn.net/v/t1.0-0/c90.0.285.285/s75x225/75865_10200370604129702_461844233_n.jpg?_nc_cat=0&oh=8e24d89a7db5da3e1ad43e6fe6d290a6&oe=5B782E24"];
                ;
             var string2 = [];
             var y = 0;
              
             function clicarBotao() {
                string = ["nome_;_" + "Unifei Vendas" + "_;_id_;_" + "1" + "_;_descricao_;_" + "Grupo de vendas" + "_;_foto_;_" + "https://scontent-gru2-1.xx.fbcdn.net/v/t1.0-9/28279727_1704025166284690_3906521375892836292_n.jpg?_nc_cat=0&oh=1e4fe57dbbce62ded22aaf602bc1a4bf&oe=5BC019DB", 
-                   "nome_;_" + "Unifei Caronas" + "_;_id_;_" + "2" + "_;_descricao_;_" + "Grupo de caronas" + "_;_foto_;_" + "https://scontent-gru2-1.xx.fbcdn.net/v/t1.0-9/10690103_879198238819085_1065261880191793055_n.jpg?_nc_cat=0&oh=7b0451a66e6ff564f4b72a48491bb6af&oe=5BC2862B",
-                   "nome_;_" + "Unifei estágios" + "_;_id_;_" + "3" + "_;_descricao_;_" + "Grupo da estágios" + "_;_foto_;_" + "https://scontent-gru2-1.xx.fbcdn.net/v/t1.0-9/75865_10200370604129702_461844233_n.jpg?_nc_cat=0&oh=4b5a56b6390ddbb33515928b92433fb6&oe=5BABBBC9"];
+                   "nome_;_" + "Unifei Caronas" + "_;_id_;_" + "2" + "_;_descricao_;_" + "Grupo de caronas" + "_;_foto_;_" + "https://scontent-gru2-1.xx.fbcdn.net/v/t1.0-0/c245.0.294.294/s75x225/13631567_677470039067436_3486537230292830574_n.jpg?_nc_cat=0&oh=6a01c29b71c821a18e79b036763a3173&oe=5B789265",
+                   "nome_;_" + "Unifei estágios" + "_;_id_;_" + "3" + "_;_descricao_;_" + "Grupo da estágios" + "_;_foto_;_" + "https://scontent-gru2-1.xx.fbcdn.net/v/t1.0-0/c90.0.285.285/s75x225/75865_10200370604129702_461844233_n.jpg?_nc_cat=0&oh=8e24d89a7db5da3e1ad43e6fe6d290a6&oe=5B782E24"];
                string2 = []; 
                 if (document.getElementById('painel2').style.display === "block") {
                     document.getElementById('painel2').style.display = "none";
@@ -60,6 +60,7 @@
                         document.getElementById('aviso3').style.display = "none";
                         
                         window.fbAsyncInit();
+                        y=1;
                     }, 15000);
                 }
             }
@@ -118,7 +119,7 @@
                         var cnt = 0;
                        
 
-                        y = 1;
+                        
                         if (y > 0) {
                              
                             document.getElementById('painel2').style.display = "block";
