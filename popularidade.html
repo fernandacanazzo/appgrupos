@@ -74,7 +74,7 @@
             location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_popularidade.html';
 
 
-        }, 35000);
+        }, 30000);
 
         window.fbAsyncInit = function() {
             var numero2 = 50;
@@ -89,14 +89,15 @@
             FB.AppEvents.logPageView();
 
             function getCount(token) {
-                var url = "";
+               /* var url = "";
                 url = "/members?summary=true&access_token=";
 
                 FB.api(
                     "/" + arrayid[0] + url + token,
                     function(response) {
-                        mem_count = response.summary.total_count;
-                    });
+                        mem_count = 18000
+                    });*/
+        mem_count=18000;
                 return mem_count;
 
             }
