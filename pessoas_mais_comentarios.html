@@ -67,9 +67,32 @@
         var arrayid = [];
         arrayid = id.split('_;_', 2);
         document.getElementById('link_grp').href = "https://www.facebook.com/groups/" + arrayid[0];
-        var string = [];
+        var string = ["idpost_;_" + "1" + "_;_comentario_;_" + "Maria Rodrigues" + "_;_id_;_" + "1",
+        "idpost_;_" + "1" + "_;_comentario_;_" + "Maria Silva" + "_;_id_;_" + "2",
+    "idpost_;_" + "2" + "_;_comentario_;_" + "Ana Paula" + "_;_id_;_" + "3",
+"idpost_;_" + "3" + "_;_comentario_;_" + "Paula Rodrigues" + "_;_id_;_" + "4",
+"idpost_;_" + "4" + "_;_comentario_;_" + "Ana Maria" + "_;_id_;_" + "5",
+"idpost_;_" + "5" + "_;_comentario_;_" + "Larissa Santos" + "_;_id_;_" + "6",
+"idpost_;_" + "6" + "_;_comentario_;_" + "João Silva" + "_;_id_;_" + "7",
+"idpost_;_" + "7" + "_;_comentario_;_" + "José Rodrigues" + "_;_id_;_" + "8",
+"idpost_;_" + "8" + "_;_comentario_;_" + "Maria Rodrigues" + "_;_id_;_" + "1",
+"idpost_;_" + "9" + "_;_comentario_;_" + "Ana Paula" + "_;_id_;_" + "3",
+"idpost_;_" + "10" + "_;_comentario_;_" + "Fernanda Castro" + "_;_id_;_" + "9",
+"idpost_;_" + "11" + "_;_comentario_;_" + "Maria Oliveira" + "_;_id_;_" + "10",
+"idpost_;_" + "12" + "_;_comentario_;_" + "Marcela Lopes" + "_;_id_;_" + "11",
+"idpost_;_" + "13" + "_;_comentario_;_" + "Felipe Araujo" + "_;_id_;_" + "12",
+"idpost_;_" + "14" + "_;_comentario_;_" + "Ana Maria" + "_;_id_;_" + "5",
+"idpost_;_" + "15" + "_;_comentario_;_" + "Ana Maria" + "_;_id_;_" + "5",
+"idpost_;_" + "16" + "_;_comentario_;_" + "Larissa Santos" + "_;_id_;_" + "6",
+"idpost_;_" + "17" + "_;_comentario_;_" + "José Rodrigues" + "_;_id_;_" + "8",
+"idpost_;_" + "18" + "_;_comentario_;_" + "Amélia Oliveira" + "_;_id_;_" + "13",
+"idpost_;_" + "19" + "_;_comentario_;_" + "Ana Maria" + "_;_id_;_" + "5",
+"idpost_;_" + "20" + "_;_comentario_;_" + "Ana Maria" + "_;_id_;_" + "5",
+"idpost_;_" + "21" + "_;_comentario_;_" + "Ana Maria" + "_;_id_;_" + "5",
+"idpost_;_" + "22" + "_;_comentario_;_" + "Ana Maria" + "_;_id_;_" + "5",
+"idpost_;_" + "23" + "_;_comentario_;_" + "Larissa Santos" + "_;_id_;_" + "6"];
         var string2 = [];
-        var tempo = 35000;
+        var tempo = 15000;
 
 
         var hide = "sim";
@@ -97,7 +120,7 @@
 
 
             function getInfo1(token) {
-                var url = "";
+                /*var url = "";
                 url = "/feed?fields=comments&limit=100&access_token=";
                 var cn = 0;
                 FB.api(
@@ -167,7 +190,7 @@
                         cn++;
                     }
 
-                }
+                }*/
                 return string.concat(string2);
             }
 
