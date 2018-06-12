@@ -43,10 +43,50 @@
         var arrayid = [];
         arrayid = id.split('_;_', 2);
         var string = [];
-        var string2 = [];
+        var string2 = ["04" + "_;_" + "06" + "_;_" + "18" + "_;_" + "12" + "_;_" + "30" + "_;_" + "00" + "_;_reacoes_;_" + "66" +
+                                "_;_comentarios_;_" + "23" + "_;_id_;_" + "1" + "_;_descricao_;_" + "Camisetas do Brasil (réplica) identica..",
+                    "04" + "_;_" + "06" + "_;_" + "18" + "_;_" + "12" + "_;_" + "00" + "_;_" + "00" + "_;_reacoes_;_" + "86" +
+                                "_;_comentarios_;_" + "33" + "_;_id_;_" + "2" + "_;_descricao_;_" + "Estamos adorando a repercussão dos workshops! \nÉ muito bom poder passar pra vocês um pouquinho do que sabemos fazer, uma parcela de algo que nos deixa tão feliz. \nAS INSCRIÇÕES PARA MAIS UM WORKSHOP ESTÃO ABERTAS!",
+                    "14" + "_;_" + "05" + "_;_" + "18" + "_;_" + "18" + "_;_" + "35" + "_;_" + "00" + "_;_reacoes_;_" + "30" +
+                                "_;_comentarios_;_" + "10" + "_;_id_;_" + "3" + "_;_descricao_;_" + "Entre em contato para maiores informações e saiba mais sobre nossas prestações de serviço.",
+                    "24" + "_;_" + "05" + "_;_" + "18" + "_;_" + "15" + "_;_" + "34" + "_;_" + "00" + "_;_reacoes_;_" + "26" +
+                                "_;_comentarios_;_" + "10" + "_;_id_;_" + "4" + "_;_descricao_;_" + "Alugo, um Ponto Comercial recém reformado,com uma cozinha. O Ponto está localizado no Bairro São Vicente.",
+                    "12" + "_;_" + "06" + "_;_" + "18" + "_;_" + "1" + "_;_" + "11" + "_;_" + "00" + "_;_reacoes_;_" + "10" +
+                                "_;_comentarios_;_" + "2" + "_;_id_;_" + "5" + "_;_descricao_;_" + "Aluga_ se casa nova, boa localização próximo igreja santo Antônio, dois quartos,cozinha americana, área de serviço. Tudo novo\nO aluguel é R$650",
+                    "12" + "_;_" + "06" + "_;_" + "18" + "_;_" + "6" + "_;_" + "18" + "_;_" + "00" + "_;_reacoes_;_" + "5" +
+                                "_;_comentarios_;_" + "1" + "_;_id_;_" + "6" + "_;_descricao_;_" + "Pedacinho do Céu - Doces\nEspecializada em sabores de família, fazemos doces para diversas ocasiões, completar seus momentos fora de rotina e comemorações!",
+                    "10" + "_;_" + "06" + "_;_" + "18" + "_;_" + "6" + "_;_" + "30" + "_;_" + "00" + "_;_reacoes_;_" + "6" +
+                                "_;_comentarios_;_" + "1" + "_;_id_;_" + "7" + "_;_descricao_;_" + "Excursão para compras no BRÁS em São Paulo-SP\n SAÍDA TODA TERÇA E SEXTA FEIRA .",
+                    "03" + "_;_" + "06" + "_;_" + "18" + "_;_" + "8" + "_;_" + "55" + "_;_" + "00" + "_;_reacoes_;_" + "12" +
+                                "_;_comentarios_;_" + "3" + "_;_id_;_" + "8" + "_;_descricao_;_" + "Vendo um microfone sem fio karsest semi novo original interessado falar comigo",
+                    "07" + "_;_" + "06" + "_;_" + "18" + "_;_" + "9" + "_;_" + "44" + "_;_" + "00" + "_;_reacoes_;_" + "17" +
+                                "_;_comentarios_;_" + "6" + "_;_id_;_" + "9" + "_;_descricao_;_" + "VENDE-SE OU TROCA-SE APTO NA CIDADE DE CAMPINAS SP COM ÁREA DE 233M² NO 2º ANDAR",
+                    "09" + "_;_" + "06" + "_;_" + "18" + "_;_" + "7" + "_;_" + "20" + "_;_" + "00" + "_;_reacoes_;_" + "9" +
+                                "_;_comentarios_;_" + "3" + "_;_id_;_" + "10" + "_;_descricao_;_" + "VENDE-SE APTO NO PRIMEIRO PISO NO BAIRRO BOA VISTA EM ITAJUBÁ MG ",
+                    "03" + "_;_" + "06" + "_;_" + "18" + "_;_" + "19" + "_;_" + "30" + "_;_" + "00" + "_;_reacoes_;_" + "22" +
+                                "_;_comentarios_;_" + "13" + "_;_id_;_" + "11" + "_;_descricao_;_" + "CURSO DE ATENDENTE DE FARMÁCIA E AUXILIAR DE MANIPULAÇÃO DE MEDICAMENTOS",
+                    "02" + "_;_" + "06" + "_;_" + "18" + "_;_" + "13" + "_;_" + "34" + "_;_" + "00" + "_;_reacoes_;_" + "80" +
+                                "_;_comentarios_;_" + "44" + "_;_id_;_" + "12" + "_;_descricao_;_" + "Em caso de acidente de trânsito, acione o Minas Seguro DPVAT",
+                    "01" + "_;_" + "06" + "_;_" + "18" + "_;_" + "13" + "_;_" + "39" + "_;_" + "00" + "_;_reacoes_;_" + "90" +
+                                "_;_comentarios_;_" + "50" + "_;_id_;_" + "13" + "_;_descricao_;_" + "Manutençao em Notebooks, Netbooks, Desktop, Tablets, Celular e GPS - Serviço totalmente online para seu conforto!!",
+                    "01" + "_;_" + "06" + "_;_" + "18" + "_;_" + "13" + "_;_" + "22" + "_;_" + "00" + "_;_reacoes_;_" + "75" +
+                                "_;_comentarios_;_" + "47" + "_;_id_;_" + "14" + "_;_descricao_;_" + "Refil algodão 22 reais. Cereja e avelã 20 reais....entrego",
+                    "10" + "_;_" + "06" + "_;_" + "18" + "_;_" + "18" + "_;_" + "12" + "_;_" + "00" + "_;_reacoes_;_" + "30" +
+                                "_;_comentarios_;_" + "12" + "_;_id_;_" + "15" + "_;_descricao_;_" + "Vende-se esse tênis original da fila usado apenas 2vezes",
+                    "10" + "_;_" + "06" + "_;_" + "18" + "_;_" + "20" + "_;_" + "00" + "_;_" + "00" + "_;_reacoes_;_" + "33" +
+                                "_;_comentarios_;_" + "13" + "_;_id_;_" + "16" + "_;_descricao_;_" + "Venha fazer um incrível passeio nas cidades históricas de São João Del Rei e Tiradentes",
+                    "10" + "_;_" + "06" + "_;_" + "18" + "_;_" + "22" + "_;_" + "02" + "_;_" + "00" + "_;_reacoes_;_" + "23" +
+                                "_;_comentarios_;_" + "9" + "_;_id_;_" + "17" + "_;_descricao_;_" + "Vende-se Mesa pequena usada cor cinza sem gavetas R$ 80",
+                    "08" + "_;_" + "06" + "_;_" + "18" + "_;_" + "23" + "_;_" + "06" + "_;_" + "00" + "_;_reacoes_;_" + "19" +
+                                "_;_comentarios_;_" + "8" + "_;_id_;_" + "18" + "_;_descricao_;_" + "Alugo sala comercial no edifício Santa Clara, rua Coronel Francisco Braz, 185,Centro. Itajubá.",
+                    "09" + "_;_" + "06" + "_;_" + "18" + "_;_" + "4" + "_;_" + "39" + "_;_" + "00" + "_;_reacoes_;_" + "5" +
+                                "_;_comentarios_;_" + "1" + "_;_id_;_" + "19" + "_;_descricao_;_" + "Venha conhecer as incríveis fazendas históricas de BANANAL nesse DOMINGO dia 17 de junho",
+                    "09" + "_;_" + "06" + "_;_" + "18" + "_;_" + "20" + "_;_" + "31" + "_;_" + "00" + "_;_reacoes_;_" + "18" +
+                                "_;_comentarios_;_" + "6" + "_;_id_;_" + "20" + "_;_descricao_;_" + "[VENDO] Guarda roupa - R$ 150,00"];
+                      
         var string3 = [];
         var string4 = [];
-        var mem_count = "";
+        var mem_count = 18000;
 
         var hide = "sim";
         setTimeout(function() {
@@ -54,7 +94,7 @@
             location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_hora_popularidade.html';
 
 
-        }, 35000);
+        }, 30000);
 
         window.fbAsyncInit = function() {
             var numero = localStorage.getItem("numero4");
@@ -69,20 +109,20 @@
             FB.AppEvents.logPageView();
 
             function getCount(token) {
-                var url = "";
+               /* var url = "";
                 url = "/members?summary=true&access_token=";
 
                 FB.api(
                     "/" + arrayid[0] + url + token,
                     function(response) {
                         mem_count = response.summary.total_count;
-                    });
+                    });*/
                 return mem_count;
 
             }
 
             function getInfo2(token) {
-                var url = "";
+              /*  var url = "";
                 url = "/feed?fields=reactions.summary(true),comments.summary(true), message, created_time&limit=50&access_token=";
                 var cn = 0;
                 FB.api(
@@ -112,7 +152,8 @@
                         hide = "nao";
                     }
 
-                }
+                }*/
+        hide = "nao";
                 return string2;
 
             }
