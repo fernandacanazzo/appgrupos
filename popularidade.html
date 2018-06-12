@@ -42,7 +42,7 @@
         var id = localStorage.getItem("id_grupo");
         var arrayid = [];
         arrayid = id.split('_;_', 2);
-        var string = ["04" + "_;_" + "06" + "_;_" + "18100040" + "reacoes_;_" + "500" +
+        var string2 = ["04" + "_;_" + "06" + "_;_" + "18100040" + "reacoes_;_" + "500" +
                                 "_;_comentarios_;_" + "122" + "_;_numero_;_" + "30" + "_;_id_;_" + "1" + "_;_descricao_;_" + "A COPA ESTA CHEGANDO.... E VC AINDA VAI CORRER O RISCO DE NÃO CONSEGUIR ASSISTIR? PORQUE SEU ALTERNATIVO NÃO ESTA FUNCIONANDO CORRETAMENTE OU VOCÊ AINDA NÃO TEM? TEMOS A SOLUÇÃO",
                     "04" + "_;_" + "06" + "_;_" + "18130040" + "reacoes_;_" + "650" +
                                 "_;_comentarios_;_" + "232" + "_;_numero_;_" + "30" + "_;_id_;_" + "2" + "_;_descricao_;_" + "Camisetas do Brasil (réplica) identica..",
@@ -63,7 +63,7 @@
                     "07" + "_;_" + "06" + "_;_" + "18100040" + "reacoes_;_" + "20" +
                                 "_;_comentarios_;_" + "2" + "_;_numero_;_" + "30" + "_;_id_;_" + "10" + "_;_descricao_;_" + "VENDE-SE OU TROCA-SE APTO NA CIDADE DE CAMPINAS SP COM ÁREA DE 233M² NO 2º ANDAR",
                     ];
-        var string2 = [];
+        //var string2 = [];
         var string3 = [];
         var string4 = [];
         var mem_count = "";
@@ -102,7 +102,7 @@
             }
 
             function getInfo2(token) {
-                var url = "";
+               /* var url = "";
                 url = "/feed?fields=reactions.summary(true),comments.summary(true), message, created_time&limit=100&access_token=";
                 var cn = 0;
                 FB.api(
@@ -132,7 +132,8 @@
                         hide = "nao";
                     }
 
-                }
+                }*/
+        hide = "nao";
                 return string2;
 
             }
