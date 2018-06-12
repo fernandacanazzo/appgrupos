@@ -54,7 +54,7 @@
 
 
 
-        }, 35000);
+        }, 30000);
 
         window.fbAsyncInit = function() {
             var numero = localStorage.getItem("numero6");
@@ -68,7 +68,7 @@
             FB.AppEvents.logPageView();
 
             function getLIKE1(token) {
-                var y = 0;
+               /* var y = 0;
                 var likes = "";
                 var url = "";
                 url = "/feed?fields=reactions.type(LIKE).summary(true)&limit=50&access_token=";
@@ -103,7 +103,7 @@
                 var str = "";
                 var str2 = "";
                 var qtd = 0;
-                /*for (var i = 0; i < parseInt(numero); i++) {
+                for (var i = 0; i < parseInt(numero); i++) {
                     var autor = [];
                     autor = string[i].split('_', 4);
                     qtd = qtd + parseInt(autor[3]);
@@ -117,7 +117,7 @@
 
 
             function getWOW1(token) {
-                var y = 0;
+               /* var y = 0;
                 var likes = "";
                 var url = "";
                 url = "/feed?fields=reactions.type(WOW).summary(true)&limit=50&access_token=";
@@ -160,7 +160,7 @@
             }
 
             function getLOVE1(token) {
-                var y = 0;
+                /*var y = 0;
                 var likes = "";
                 var url = "";
                 url = "/feed?fields=reactions.type(LOVE).summary(true)&limit=50&access_token=";
@@ -203,7 +203,7 @@
             }
 
             function getSAD1(token) {
-                var y = 0;
+                /*var y = 0;
                 var likes = "";
                 var url = "";
                 url = "/feed?fields=reactions.type(SAD).summary(true)&limit=50&access_token=";
@@ -245,7 +245,7 @@
             }
 
             function getANGRY1(token) {
-                var y = 0;
+                /*var y = 0;
                 var likes = "";
                 var url = "";
                 url = "/feed?fields=reactions.type(ANGRY).summary(true)&limit=50&access_token=";
@@ -287,7 +287,7 @@
             }
 
             function getHAHA1(token) {
-                var y = 0;
+                /*var y = 0;
                 var likes = "";
                 var url = "";
                 url = "/feed?fields=reactions.type(HAHA).summary(true)&limit=50&access_token=";
@@ -344,12 +344,12 @@
                     var string_total5 = "";
                     var string_total6 = "";
 
-                    string_total = getLIKE1(token);
-                    string_total2 = getWOW1(token);
-                    string_total3 = getLOVE1(token);
-                    string_total4 = getSAD1(token);
-                    string_total5 = getANGRY1(token);
-                    string_total6 = getHAHA1(token);
+                    string_total = "id_" + "1" + "_likes_" + "30";
+                    string_total2 = "id_" + "1" + "_wow_" + "30";
+                    string_total3 = "id_" + "1" + "_love_" + "30";
+                    string_total4 = "id_" + "1" + "_sad_" + "30";
+                    string_total5 = "id_" + "1" + "_angry_" + "30";
+                    string_total6 = "id_" + "1" + "_haha_" + "30";
                     var qtd = 0;
                     var qtd2 = 0;
                     var qtd3 = 0;
@@ -398,8 +398,8 @@
 
                     }
 
-                    var res = ["like_" + qtd, "wow_" + qtd2, "love_" + qtd3, "sad_" + qtd4,
-                        "angry_" + qtd5, "haha_" + qtd6
+                    var res = ["like_" + "1000", "wow_" + "206", "love_" + "122", "sad_" + "33",
+                        "angry_" + "19", "haha_" + "89"
                     ];
 
                     console.log(res);
