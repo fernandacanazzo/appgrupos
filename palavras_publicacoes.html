@@ -65,7 +65,7 @@
 
             setTimeout(function () {
                 window.fbAsyncInit();
-                location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_palavras_publicacoes.html';
+                //location.href = 'https://fernandacanazzo.github.io/appgrupos/vis_palavras_publicacoes.html';
 
             }, tempo);
 
@@ -176,6 +176,7 @@
                         }
 
                         res = res.sort(naturalCompare);
+                        console.log(res.length);
                         for (i = 0; i < res.length; i++) {
 
                             if (ctd <= parseInt(numero)) {
