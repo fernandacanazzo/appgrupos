@@ -98,7 +98,7 @@
 
             var frequency_list = localStorage.getItem("freq_comentario");
             //document.getElementById('resp2').innerHTML = frequency_list;
-
+            console.log(frequency_list);
             var lines = frequency_list.split(/[,\.]+/g),
                 data = Highcharts.reduce(lines, function(arr, word) {
                     var obj = Highcharts.find(arr, function(obj) {
@@ -143,7 +143,7 @@
                     text: 'Pessoas que mais comentaram'
                 }
             });
-            json_autores = JSON.parse(frequency_list);
+            /*json_autores = JSON.parse(frequency_list);
             console.log(json_autores);
             var cont = 6.0;
             var cont2 = 1.0;
@@ -284,7 +284,7 @@
                         }
                         // return d.size;
                     });
-            }
+            }*/
         </script>
     </body>
 
