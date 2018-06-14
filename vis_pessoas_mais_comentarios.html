@@ -144,7 +144,7 @@
                 }
             });
             json_autores = JSON.parse(frequency_list);
-
+            console.log(json_autores);
             var cont = 6.0;
             var cont2 = 1.0;
             var m1 = 0;
@@ -168,7 +168,7 @@
             var contador = Object.keys(teste2).length;
             document.getElementById('subtitulo').innerHTML = 'As ' + Object.keys(teste2).length + ' pessoas que mais comentaram ';
 
-            //console.log(json_autores_sorted);
+            console.log(json_autores_sorted);
             for (var j = 0; j < 101; j = j + 20) {
                 cont = cont / 1.2;
                 if ((parseInt(teste2[Object.keys(teste2)[0]].size) > 10) && (parseInt(teste2[Object.keys(teste2)[0]].size) <= j + 20)) {
