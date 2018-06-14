@@ -116,7 +116,7 @@
                     }
                     return arr;
                 }, []);
-               data2 = data.pop();
+               data2 = data.obj.splice(-1);
                console.log(data2);
             data_sorted = data.sort(function(a, b) {
                 return b.weight - a.weight;
