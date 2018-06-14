@@ -116,7 +116,8 @@
                     }
                     return arr;
                 }, []);
-                console.log(data);
+               data2 = data.pop();
+               console.log(data);
             data_sorted = data.sort(function(a, b) {
                 return b.weight - a.weight;
             });
@@ -134,7 +135,7 @@
             Highcharts.chart('cloud_c2', {
                 series: [{
                     type: 'wordcloud',
-                    data: data
+                    data: data2
                 }],
                 tooltip: {
                     pointFormat: 'Nome completo: <b>{point.label}</b> <br> Quantidade:<b> {point.weight}</b>'
